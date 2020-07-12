@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "codewithtmweb"
+    }
+  },
+  "defaultProject": "codewithtmweb",
+  "cli": {
+    "analytics": false
+  }
 }
