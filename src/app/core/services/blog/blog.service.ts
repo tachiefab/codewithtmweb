@@ -7,7 +7,7 @@ import { environment } from './../../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
-export class ProductsService {
+export class BlogService {
 
   baseUrl = environment.baseUrl;
   
@@ -35,7 +35,7 @@ export class ProductsService {
   // }
 
   getAuthHeaders() {
-    const token = this.cookieService.get('tm-token');
+    const token = this.cookieService.get('codewithtm-token');
     return new HttpHeaders({
       'Content-Type': 'application/json',
       Authorization: `JWT ${token}`
