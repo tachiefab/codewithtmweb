@@ -36,6 +36,8 @@ const routes: Routes = [
   // { path: 'subscribe', component: SubscribeComponent, outlet: 'popup' },
   // { path: 'dashboard', loadChildren: () => UserDashboardModule, canActivate: [RoutegaurdService]   },
   { path: 'blog', loadChildren: () => BlogModule},
+  // { path: 'blog', loadChildren: () => import(`./blog/blog.module`).then(m => m.BlogModule) },
+    // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   // { path: '404', loadChildren: () => NotfoundModule },
   // { path: '**', redirectTo: '/404' },
 ];
