@@ -12,7 +12,6 @@ export class ArticleComponent implements OnInit {
   private routeSub:any;
   article: any;
   slug:string;
-  ID: number;
 
   constructor(private route: ActivatedRoute, private blogService:BlogService) { 
     this.getArticle();
@@ -20,9 +19,8 @@ export class ArticleComponent implements OnInit {
 
   getArticle = () => {
     this.routeSub = this.route.params.subscribe(params => {
-      // this.slug = params['slug']
-      this.ID = params['ID']
-      this.req = this.blogService.getOne(this.ID).subscribe(data=>{
+      this.slug = params['slug']
+      this.req = this.blogService.getOne(this.slug).subscribe(data=>{
         this.article = data as any
       })
   })

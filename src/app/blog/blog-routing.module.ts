@@ -6,10 +6,14 @@ import { ArticleComponent }  from './article/article.component';
 
 
 const routes: Routes = [
-  {path: '', component: BlogListComponent},
-  {path: 'article/:id', component: ArticleComponent},
-  // {path: 'article-edit/:id', component: ArticleEditComponent},
-  // {path: 'article-create', component: ArticleCreateComponent}
+  {
+    path: '', 
+    component: BlogListComponent,
+  },
+  {
+    path: 'article/:slug', 
+    component: ArticleComponent,
+  },
 
 ];
 
@@ -18,3 +22,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class BlogRoutingModule { }
+

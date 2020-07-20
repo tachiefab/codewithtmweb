@@ -24,15 +24,10 @@ export class BlogService {
     	{headers: this.httpHeaders});
   }
 
-   getOne(ID: number): Observable<any> {
-    return this.httpClient.get(this.baseUrl + 'posts/' + ID + '/',
+   getOne(slug): Observable<any> {
+    return this.httpClient.get(this.baseUrl + 'posts/' + slug +'/',
     {headers: this.httpHeaders});
   }
-
-  // createProduct(productData) {
-  //   const body = JSON.stringify(productData);
-  //   return this.httpClient.post(`${this.baseUrl}api/products/`, body, {headers: this.getAuthHeaders()});
-  // }
 
   getAuthHeaders() {
     const token = this.cookieService.get('codewithtm-token');

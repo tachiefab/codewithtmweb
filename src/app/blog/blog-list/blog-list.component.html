@@ -1,10 +1,8 @@
     <!-- Blog Page -->
-    <div class="blog">
-            <app-post-card></app-post-card>
+    <div class="blog" *ngFor="let post of postList">
+            <app-post-card [post]="post"></app-post-card>
       </div>
       <!-- End of Blog Page -->
         <div  style="text-align: center">
           <a href="#" class="button small blue">Load More</a>
         </div>
-
-<router-outlet></router-outlet>

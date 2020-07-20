@@ -5,6 +5,7 @@ import { BlogRoutingModule } from './blog-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { ArticleComponent } from './article/article.component';
 import { PostCardComponent } from './post-card/post-card.component';
+import { SharedModule } from './../shared/shared.module';
 
 
 @NgModule({
@@ -15,7 +16,8 @@ import { PostCardComponent } from './post-card/post-card.component';
               ],
   imports: [
     CommonModule,
-    BlogRoutingModule
+    BlogRoutingModule,
+    SharedModule
   ]
 })
 export class BlogModule { }

@@ -9,6 +9,7 @@ import { SidebarmenuComponent } from './sidebarmenu/sidebarmenu.component';
 import { SearchComponent } from './search/search.component';
 import { SmallPostCardComponent } from './small-post-card/small-post-card.component';
 import { TagCardComponent } from './tag-card/tag-card.component';
+import { HeaderBackComponent } from './header-back/header-back.component';
 
 
 @NgModule({
@@ -18,7 +19,9 @@ import { TagCardComponent } from './tag-card/tag-card.component';
                 SidebarComponent, 
                 SidebarmenuComponent, 
                 SearchComponent, 
-                SmallPostCardComponent, TagCardComponent
+                SmallPostCardComponent, 
+                TagCardComponent, 
+                HeaderBackComponent
               ],
   imports: [
     CommonModule,
@@ -27,7 +30,8 @@ import { TagCardComponent } from './tag-card/tag-card.component';
   exports: [
     HeaderComponent,
     FooterComponent,
-    SidebarComponent
+    SidebarComponent,
+    HeaderBackComponent
   ]
 })
 export class BlockModule { }

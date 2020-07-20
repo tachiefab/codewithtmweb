@@ -8,6 +8,8 @@ import { AppComponent } from './app.component';
 import { BlogModule } from './blog/blog.module';
 import { BlockModule } from './block/block.module';
 import { CoreModule } from './core/core.module';
+import { SharedModule } from './shared/shared.module';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +21,8 @@ import { CoreModule } from './core/core.module';
     AppRoutingModule,
     BlogModule,
     BlockModule,
-    CoreModule
+    CoreModule,
+    SharedModule
   ],
   bootstrap: [AppComponent]
 })
