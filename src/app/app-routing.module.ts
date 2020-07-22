@@ -17,7 +17,7 @@ import { RouterModule, Routes } from '@angular/router';
 // import { ClientsModule } from './clients/clients.module';
 // import { TestimonialModule } from './testimonial/testimonial.module';
 // import { PricingModule } from './pricing/pricing.module';
-import { BlogModule } from './blog/blog.module';
+// import { BlogModule } from './blog/blog.module';
 
 
 
@@ -35,8 +35,10 @@ const routes: Routes = [
   // { path: 'pricing', loadChildren: () => PricingModule },
   // { path: 'subscribe', component: SubscribeComponent, outlet: 'popup' },
   // { path: 'dashboard', loadChildren: () => UserDashboardModule, canActivate: [RoutegaurdService]   },
-  { path: 'blog', loadChildren: () => BlogModule},
-  // { path: 'blog', loadChildren: () => import(`./blog/blog.module`).then(m => m.BlogModule) },
+  // { path: 'author', loadChildren: () => AuthorModule},
+  // { path: 'blog', loadChildren: () => BlogModule},
+  { path: 'author', loadChildren: () => import(`./author/author.module`).then(m => m.AuthorModule) },
+  { path: 'blog', loadChildren: () => import(`./blog/blog.module`).then(m => m.BlogModule) },
     // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   // { path: '404', loadChildren: () => NotfoundModule },
   // { path: '**', redirectTo: '/404' },

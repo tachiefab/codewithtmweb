@@ -1,0 +1,12 @@
+<!-- Article -->
+<article class="article">
+     <!-- Article Featured Image -->
+     <img src="{{ author.profile_image }}" class="article-featured-image" alt="article featured image" width="700" height="900">
+     <!-- End of Article Featured Image -->
+    <!-- Article Content -->
+       <div class="article-content" [innerHTML]="author.biography | safe: 'html'">
+
+       </div>
+    <!-- End of Article Content -->
+</article>
+<!-- End of Article -->

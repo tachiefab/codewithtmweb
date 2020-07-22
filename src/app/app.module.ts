@@ -5,28 +5,26 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+import { AuthorModule } from './author/author.module';
 import { BlogModule } from './blog/blog.module';
 import { BlockModule } from './block/block.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
-// import { HeaderService } from './core/services/blog/headerService';
-// import { HeaderService } from './core/services/blog/headerService';
 
 
 @NgModule({
   declarations: [
-    AppComponent,
-    // HeaderService
+    AppComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    AuthorModule,
     BlogModule,
     BlockModule,
     CoreModule,
     SharedModule
-    // HeaderService
   ],
   bootstrap: [AppComponent]
 })
