@@ -3,6 +3,7 @@ import { DomSanitizer } from '@angular/platform-browser'
 
 import { BlogService } from './../../core/services/blog/blog.service';
 import { BlogInternalService } from './../services/blog-internal.service';
+import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 @Component({
   selector: 'app-blog-list',
@@ -17,7 +18,8 @@ export class BlogListComponent implements OnInit {
   constructor(
           private sanitizer: DomSanitizer, 
           private blogService:BlogService,
-          private logInternalService:BlogInternalService
+          private logInternalService:BlogInternalService,
+          private headerService: HeaderService
           ) {
     this.getPosts();
    }
@@ -38,7 +40,7 @@ export class BlogListComponent implements OnInit {
   ngOnInit(): void {
     this.req = this.logInternalService.getBlogListHeader().subscribe(data=>{
       this.headerInfo = data[0];
-      console.log(this.headerInfo)
+      this.headerService.sendMessage(this.headerInfo);
     })
   }
 

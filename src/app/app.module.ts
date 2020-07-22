@@ -9,11 +9,14 @@ import { BlogModule } from './blog/blog.module';
 import { BlockModule } from './block/block.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
+// import { HeaderService } from './core/services/blog/headerService';
+// import { HeaderService } from './core/services/blog/headerService';
 
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    // HeaderService
   ],
   imports: [
     BrowserModule,
@@ -23,6 +26,7 @@ import { SharedModule } from './shared/shared.module';
     BlockModule,
     CoreModule,
     SharedModule
+    // HeaderService
   ],
   bootstrap: [AppComponent]
 })

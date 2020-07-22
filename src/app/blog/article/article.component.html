@@ -378,20 +378,10 @@
     <!-- Article Widget Related Article -->
     <div class="article-widget">
         <h3 class="article-widget-title"> Related articles </h3>
-        <ul class="article-related-articles">
-            <li>
-                <a href="#">Perspiciatis illo facere alias laboriosam totam repellendus quisquam, maiores tenetur aut.</a>
-            </li>
-            <li>
-                <a href="#">Temporibus quisquam, aliquam id totam voluptas eaque inventore ut facilis minus.</a>
-            </li>
-            <li>
-                <a href="#">Voluptas deserunt, veniam, voluptatum vero dolores rem.</a>
-            </li>
-            <li>
-                <a href="#">Modi, fugiat perspiciatis assumenda animi corporis, deleniti obcaecati voluptatem temporibus.</a>
-            </li>
+        <ul class="article-related-articles" *ngFor="let post of relatedArticles">
+            <app-article-related-card [post]="post"></app-article-related-card>
         </ul>
+            
     </div>
     <!-- End of Article Widget Related Article -->
 </article>

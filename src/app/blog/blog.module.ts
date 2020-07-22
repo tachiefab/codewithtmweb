@@ -6,13 +6,15 @@ import { BlogListComponent } from './blog-list/blog-list.component';
 import { ArticleComponent } from './article/article.component';
 import { PostCardComponent } from './post-card/post-card.component';
 import { SharedModule } from './../shared/shared.module';
+import { ArticleRelatedCardComponent } from './article-related-card/article-related-card.component';
 
 
 @NgModule({
   declarations: [
                 BlogListComponent, 
                 ArticleComponent, 
-                PostCardComponent
+                PostCardComponent,
+                 ArticleRelatedCardComponent
               ],
   imports: [
     CommonModule,

@@ -29,6 +29,11 @@ export class BlogService {
     {headers: this.httpHeaders});
   }
 
+  getRelated(slug): Observable<any> {
+    return this.httpClient.get(this.baseUrl + 'posts/related/?post_slug=' + slug, 
+    	{headers: this.httpHeaders});
+  }
+
   getAuthHeaders() {
     const token = this.cookieService.get('codewithtm-token');
     return new HttpHeaders({

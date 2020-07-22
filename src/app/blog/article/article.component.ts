@@ -11,10 +11,12 @@ export class ArticleComponent implements OnInit {
 	private req: any;
   private routeSub:any;
   article: any;
+  relatedArticles: any;
   slug:string;
 
   constructor(private route: ActivatedRoute, private blogService:BlogService) { 
     this.getArticle();
+    this.getRelatedArticles()
   }
 
   getArticle = () => {
@@ -22,6 +24,16 @@ export class ArticleComponent implements OnInit {
       this.slug = params['slug']
       this.req = this.blogService.getOne(this.slug).subscribe(data=>{
         this.article = data as any
+      })
+  })
+  }
+
+  getRelatedArticles = () => {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.slug = params['slug']
+      this.req = this.blogService.getRelated(this.slug).subscribe(data=>{
+        this.relatedArticles = data.results as any
+        console.log(this.relatedArticles)
       })
   })
   }
