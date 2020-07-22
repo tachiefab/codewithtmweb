@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { CommentModule } from './../comment/comment.module';
 import { BlogRoutingModule } from './blog-routing.module';
 import { BlogListComponent } from './blog-list/blog-list.component';
 import { ArticleComponent } from './article/article.component';
@@ -19,7 +20,8 @@ import { ArticleRelatedCardComponent } from './article-related-card/article-rela
   imports: [
     CommonModule,
     BlogRoutingModule,
-    SharedModule
+    SharedModule,
+    CommentModule
   ]
 })
 export class BlogModule { }

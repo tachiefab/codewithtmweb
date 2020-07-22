@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AuthorModule } from './author/author.module';
 import { BlogModule } from './blog/blog.module';
 import { BlockModule } from './block/block.module';
+import { CommentModule } from './comment/comment.module';
 import { CoreModule } from './core/core.module';
 import { SharedModule } from './shared/shared.module';
 
@@ -23,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
     AuthorModule,
     BlogModule,
     BlockModule,
+    CommentModule,
     CoreModule,
     SharedModule
   ],
