@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'codewithtmweb';
+
+  constructor(private headerService:HeaderService) { }
+
+  bootstrapClass:any;
+  headerBack:any;
+  sideBar:any;
+
+  ngOnInit(): void {
+    this.headerService.sendBootstrapClass({});
+    this.headerService.headerCast.subscribe(content=> this.bootstrapClass = content);
+
+    this.headerService.sendHeaderBack({});
+    this.headerService.headerBackCast.subscribe(content=> this.headerBack = content);
+
+    this.headerService.sendsideBar({});
+    this.headerService.sideBarCast.subscribe(content=> this.sideBar = content);
+  }
+
 }

@@ -10,6 +10,7 @@ import { BlogModule } from './blog/blog.module';
 import { BlockModule } from './block/block.module';
 import { CommentModule } from './comment/comment.module';
 import { CoreModule } from './core/core.module';
+import { NotfoundModule } from './notfound/notfound.module';
 import { SharedModule } from './shared/shared.module';
 
 
@@ -26,6 +27,7 @@ import { SharedModule } from './shared/shared.module';
     BlockModule,
     CommentModule,
     CoreModule,
+    NotfoundModule,
     SharedModule
   ],
   bootstrap: [AppComponent]

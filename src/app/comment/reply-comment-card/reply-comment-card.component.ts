@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-reply-comment-card',
@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./reply-comment-card.component.css']
 })
 export class ReplyCommentCardComponent implements OnInit {
+  @Input('reply') reply;
 
   constructor() { }
 

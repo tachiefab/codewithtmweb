@@ -13,7 +13,7 @@ import { RouterModule, Routes } from '@angular/router';
 // import { AboutModule } from './about/about.module';
 // import { ServicesModule } from './services/services.module';
 // import { GalleryModule } from './gallery/gallery.module';
-// import { NotfoundModule } from './notfound/notfound.module';
+import { NotfoundModule } from './notfound/notfound.module';
 // import { ClientsModule } from './clients/clients.module';
 // import { TestimonialModule } from './testimonial/testimonial.module';
 // import { PricingModule } from './pricing/pricing.module';
@@ -41,7 +41,8 @@ const routes: Routes = [
   { path: 'blog', loadChildren: () => import(`./blog/blog.module`).then(m => m.BlogModule) },
     // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
   // { path: '404', loadChildren: () => NotfoundModule },
-  // { path: '**', redirectTo: '/404' },
+  { path: '404', loadChildren: () => import(`./notfound/notfound.module`).then(m => m.NotfoundModule) },
+  { path: '**', redirectTo: '/404' },
 ];
 
 

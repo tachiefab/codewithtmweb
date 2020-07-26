@@ -13,7 +13,10 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 export class BlogListComponent implements OnInit {
   postList : any;
   private req: any;
-	headerInfo : any;
+  headerInfo : any;
+  bootstrapClass = 'header header-over large'
+  headerBack: boolean = true;
+  sideBar: boolean = true;
 
   constructor(
           private sanitizer: DomSanitizer, 
@@ -24,12 +27,11 @@ export class BlogListComponent implements OnInit {
     this.getPosts();
    }
 
-
+   
    getPosts = () => {
     this.blogService.getAll().subscribe(
       data => {
         this.postList = data.results;
-        // console.log(data)
       },
       error => {
         console.log(error);
@@ -40,7 +42,10 @@ export class BlogListComponent implements OnInit {
   ngOnInit(): void {
     this.req = this.logInternalService.getBlogListHeader().subscribe(data=>{
       this.headerInfo = data[0];
-      this.headerService.sendMessage(this.headerInfo);
+      this.headerService.sendHeaderInfo(this.headerInfo);
+      this.headerService.sendBootstrapClass(this.bootstrapClass);
+      this.headerService.sendHeaderBack(this.headerBack);
+      this.headerService.sendsideBar(this.sideBar)
     })
   }
 

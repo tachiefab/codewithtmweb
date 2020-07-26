@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { AuthorService } from './../services/author.service';
+import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 @Component({
   selector: 'app-author-page',
@@ -12,10 +13,16 @@ export class AuthorPageComponent implements OnInit {
   private req: any;
   private routeSub:any;
   author: any;
-  // relatedArticles: any;
   id:number;
+  bootstrapClass = 'header background-2'
+  headerBack: boolean = false;
+  sideBar: boolean = true;
 
-  constructor(private route: ActivatedRoute, private authorService:AuthorService)  { 
+  constructor(
+          private route: ActivatedRoute, 
+          private authorService:AuthorService, 
+          private headerService: HeaderService
+          )  { 
     this.getAuthor();
   }
 
@@ -29,6 +36,9 @@ export class AuthorPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.headerService.sendBootstrapClass(this.bootstrapClass);
+    this.headerService.sendHeaderBack(this.headerBack);
+    this.headerService.sendsideBar(this.sideBar)
   }
 
 }

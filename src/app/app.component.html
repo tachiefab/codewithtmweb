@@ -11,16 +11,17 @@
  <div class="page js-page ">
 
    <!-- Header -->
-   <div class="header header-over large">
+   <div class="{{ bootstrapClass.content }}" >
         <app-header></app-header>
    </div>
    <!-- End of Header -->
 
    <!-- Header Back -->
-   <div class="header-back header-back-simple header-back-small">
+   <div class="header-back header-back-simple header-back-small" *ngIf="headerBack.content">
         <app-header-back></app-header-back>
    </div>
    <!-- End of Header Back -->
+
    <div id="content">
      <div class="container">
        <div class="layout with-right-sidebar js-layout">
@@ -32,7 +33,7 @@
              </div>
            </div>
 
-           <div class="col-md-3 hidden-sm hidden-xs">
+           <div class="col-md-3 hidden-sm hidden-xs" *ngIf="sideBar.content">
                 <app-sidebar></app-sidebar>
            </div>
            

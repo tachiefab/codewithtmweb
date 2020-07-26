@@ -3,25 +3,25 @@
     <div class="comment-content">
         <!-- Comment User Photo -->
         <div class="comment-user-photo">
-            <img src="http://placehold.it/120x120" class="" alt="user profile photo"> </div>
+            <img src="{{ comment.user.profile_image }}" class="" alt="user profile photo"> </div>
         <!-- End of Comment User Photo -->
         <!-- Comment Body -->
         <div class="comment-body">
             <div class="comment-header">
                 <!-- Comment User Name -->
                 <div class="comment-username">
-                    <a href="#">Kimber Korgie</a>
+                    <a routerLink="/author/{{ comment.user.id }}">{{ comment.user.first_name }} {{ comment.user.last_name }}</a>
                 </div>
                 <!-- End of Comment User Name -->
                 <!-- Comment Meta -->
                 <ul class="comment-meta">
                     <li class="comment-likes">11 likes</li>
-                    <li class="comment-date">2015-02-18</li>
+                    <li class="comment-date">{{ comment.date_display }}</li>
                 </ul>
                 <!-- End of Comment Meta -->
             </div>
             <!-- Comment Message -->
-            <p class="comment-message"> Maxime, blanditiis impedit aperiam ut. Adipisci itaque ex perferendis autem voluptates nemo, blanditiis atque saepe officia aut soluta recusandae quas eius asperiores. </p>
+            <p class="comment-message"> {{ comment.content }}</p>
             <!-- End of Comment Message -->
             <!-- Comment Actions -->
             <ul class="comment-actions">
@@ -44,8 +44,9 @@
 
 
     <div class="comment-reply">
-        <ul class="comment-list">
-            <app-reply-comment-card></app-reply-comment-card>
+     
+        <ul class="comment-list" *ngFor="let reply of replies">
+            <app-reply-comment-card [reply]='reply'></app-reply-comment-card>
         </ul>
     </div>
 </li>

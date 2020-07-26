@@ -15,7 +15,7 @@ import { ArticleRelatedCardComponent } from './article-related-card/article-rela
                 BlogListComponent, 
                 ArticleComponent, 
                 PostCardComponent,
-                 ArticleRelatedCardComponent
+                ArticleRelatedCardComponent
               ],
   imports: [
     CommonModule,

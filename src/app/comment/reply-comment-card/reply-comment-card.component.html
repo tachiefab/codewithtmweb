@@ -3,25 +3,25 @@
     <div class="comment-content">
         <!-- Comment User Photo -->
         <div class="comment-user-photo">
-            <img src="http://placehold.it/120x120" class="" alt="user profile photo"> </div>
+            <img src="{{ reply.user.profile_image }}" class="" alt="user profile photo"> </div>
         <!-- End of Comment User Photo -->
         <!-- Comment Body -->
         <div class="comment-body">
             <div class="comment-header">
                 <!-- Comment User Name -->
                 <div class="comment-username">
-                    <a href="#">Liane Gochie</a>
+                    <a routerLink="/author/{{ reply.user.id }}">{{ reply.user.first_name }} {{ reply.user.last_name }}</a>
                 </div>
                 <!-- End of Comment User Name -->
                 <!-- Comment Meta -->
                 <ul class="comment-meta">
                     <li class="comment-likes">1 likes</li>
-                    <li class="comment-date">2015-09-15</li>
+                    <li class="comment-date">{{ reply.date_display }}</li>
                 </ul>
                 <!-- End of Comment Meta -->
             </div>
             <!-- Comment Message -->
-            <p class="comment-message"> Eveniet, asperiores, atque ratione excepturi tempore rem, illum eius nam qui nostrum laboriosam nihil. Soluta ipsam minima dolorem labore placeat inventore temporibus. </p>
+            <p class="comment-message"> {{ reply.content }}</p>
             <!-- End of Comment Message -->
             <!-- Comment Actions -->
             <ul class="comment-actions">
