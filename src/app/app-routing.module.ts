@@ -37,10 +37,9 @@ const routes: Routes = [
   // { path: 'dashboard', loadChildren: () => UserDashboardModule, canActivate: [RoutegaurdService]   },
   // { path: 'author', loadChildren: () => AuthorModule},
   // { path: 'blog', loadChildren: () => BlogModule},
+  { path: 'about', loadChildren: () => import(`./aboutus/aboutus.module`).then(m => m.AboutusModule) },
   { path: 'author', loadChildren: () => import(`./author/author.module`).then(m => m.AuthorModule) },
   { path: 'blog', loadChildren: () => import(`./blog/blog.module`).then(m => m.BlogModule) },
-    // { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  // { path: '404', loadChildren: () => NotfoundModule },
   { path: '404', loadChildren: () => import(`./notfound/notfound.module`).then(m => m.NotfoundModule) },
   { path: '**', redirectTo: '/404' },
 ];
