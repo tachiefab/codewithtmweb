@@ -14,6 +14,7 @@ export class AppComponent {
   bootstrapClass:any;
   headerBack:any;
   sideBar:any;
+  isMainPage:any;
 
   ngOnInit(): void {
     this.headerService.sendBootstrapClass({});
@@ -21,6 +22,9 @@ export class AppComponent {
 
     this.headerService.sendHeaderBack({});
     this.headerService.headerBackCast.subscribe(content=> this.headerBack = content);
+
+    this.headerService.sendisMainPage({});
+    this.headerService.isMainPageCast.subscribe(content=> this.isMainPage = content);
 
     this.headerService.sendsideBar({});
     this.headerService.sideBarCast.subscribe(content=> this.sideBar = content);

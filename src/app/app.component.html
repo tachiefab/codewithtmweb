@@ -23,7 +23,9 @@
    <!-- End of Header Back -->
 
    <div id="content">
-     <div class="container">
+
+    <!-- container for majority of the project -->
+     <div class="container" *ngIf="isMainPage.content">
        <div class="layout with-right-sidebar js-layout">
          <div class="row">
            <div class="col-md-9">
@@ -40,6 +42,12 @@
          </div>
        </div>
      </div>
+
+     <!-- container for contact us -->
+     <div class="container" *ngIf="!isMainPage.content">
+      <router-outlet></router-outlet>
+    </div>
+
    </div>
 
    <!-- Footer -->

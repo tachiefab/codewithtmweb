@@ -14,7 +14,6 @@ export class ArticleComponent implements OnInit {
   article: any = {};
   relatedArticles: any;
   slug:string;
-
   bootstrapClass = 'header background-2'
   headerBack: boolean = false;
   sideBar: boolean = true;

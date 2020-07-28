@@ -19,8 +19,9 @@ export class BlogService {
   ) { }
 
 
-  getAll(): Observable<any> {
-    return this.httpClient.get(this.baseUrl + "posts/", 
+  getAll(slug): Observable<any> {
+    // return this.httpClient.get(this.baseUrl + "posts/", 
+    return this.httpClient.get(this.baseUrl + 'posts' + slug,
     	{headers: this.httpHeaders});
   }
 

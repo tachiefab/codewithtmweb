@@ -40,6 +40,7 @@ const routes: Routes = [
   { path: 'about', loadChildren: () => import(`./aboutus/aboutus.module`).then(m => m.AboutusModule) },
   { path: 'author', loadChildren: () => import(`./author/author.module`).then(m => m.AuthorModule) },
   { path: 'blog', loadChildren: () => import(`./blog/blog.module`).then(m => m.BlogModule) },
+  { path: 'contact', loadChildren: () => import(`./contactus/contactus.module`).then(m => m.ContactusModule) },
   { path: '404', loadChildren: () => import(`./notfound/notfound.module`).then(m => m.NotfoundModule) },
   { path: '**', redirectTo: '/404' },
 ];

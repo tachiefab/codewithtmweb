@@ -27,6 +27,9 @@ export class HeaderService {
     private sideBar = new BehaviorSubject<Message>(new Message({}));
     sideBarCast = this.sideBar.asObservable();
 
+    private isMainPage = new BehaviorSubject<Message>(new Message({}));
+    isMainPageCast = this.isMainPage.asObservable();
+
     constructor() { }
 
     sendHeaderInfo(content: any) {
@@ -43,6 +46,10 @@ export class HeaderService {
 
     sendsideBar(content: any) {
         this.sideBar.next(new Message(content));
+    }
+
+    sendisMainPage(content: any) {
+        this.isMainPage.next(new Message(content));
     }
 
 }
