@@ -9,7 +9,7 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
   templateUrl: './blog-list.component.html',
   styleUrls: ['./blog-list.component.css']
 })
-export class BlogListComponent implements OnInit {
+export class BlogListTaggedComponent implements OnInit {
   postList : any;
   private req: any;
   headerInfo : any;
