@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { SharedModule } from './../shared/shared.module';
 import { BlockRoutingModule } from './block-routing.module';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
@@ -25,7 +26,8 @@ import { HeaderBackComponent } from './header-back/header-back.component';
               ],
   imports: [
     CommonModule,
-    BlockRoutingModule
+    BlockRoutingModule,
+    SharedModule
   ],
   exports: [
     HeaderComponent,

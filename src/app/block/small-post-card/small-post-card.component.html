@@ -1,72 +1,28 @@
 <ul class="widget-recommended-products">
     <!-- Recommended product Item -->
-    <li class="widget-recommended-product">
-      <img src="http://placehold.it/67x67" class="widget-recommended-product-img" alt="Recommended products">
-      <a href="#" class="widget-recommended-product-link">
-        <h5 class="widget-recommended-product-link-title"> VSResume
+    <li class="widget-recommended-product"  *ngFor="let post of postList | slice:0:3">
+      <img src="{{ post.image }}" height="67" width="67" class="widget-recommended-product-img" alt="Recommended products">
+      <a routerLink='/blog/article/{{post.slug}}' class="widget-recommended-product-link">
+        <h5 class="widget-recommended-product-link-title"> {{ post.title }}
           <i class="fa fa-angle-right"></i>
         </h5>
-        <p class="widget-recommended-product-link-description">Online CV / Resume Template</p>
-      </a>
-    </li>
-    <!-- End of Recommended product Item -->
-    <!-- Recommended product Item -->
-    <li class="widget-recommended-product">
-      <img src="http://placehold.it/67x67" class="widget-recommended-product-img" alt="Recommended products">
-      <a href="#" class="widget-recommended-product-link">
-        <h5 class="widget-recommended-product-link-title"> VSDocs
-          <i class="fa fa-angle-right"></i>
-        </h5>
-        <p class="widget-recommended-product-link-description">Online Documentation Template</p>
-      </a>
-    </li>
-    <!-- End of Recommended product Item -->
-    <!-- Recommended product Item -->
-    <li class="widget-recommended-product">
-      <img src="http://placehold.it/67x67" class="widget-recommended-product-img" alt="Recommended products">
-      <a href="#" class="widget-recommended-product-link">
-        <h5 class="widget-recommended-product-link-title"> Triablo
-          <i class="fa fa-angle-right"></i>
-        </h5>
-        <p class="widget-recommended-product-link-description">eCommerce Landing Page</p>
+        <p class="widget-recommended-product-link-description" [innerHTML]="post.summary | safe: 'html'"></p>
       </a>
     </li>
     <!-- End of Recommended product Item -->
   </ul>
-  <!-- End of Recommended products -->
-  <!-- Recommended products -->
+
   <ul class="widget-recommended-products">
     <!-- Recommended product Item -->
-    <li class="widget-recommended-product">
-      <img src="http://placehold.it/67x67" class="widget-recommended-product-img" alt="Recommended products">
-      <a href="#" class="widget-recommended-product-link">
-        <h5 class="widget-recommended-product-link-title"> Paradise Cakes
+    <li class="widget-recommended-product"  *ngFor="let post of postList | slice:3:6">
+      <img src="{{ post.image }}" height="67" width="67" class="widget-recommended-product-img" alt="Recommended products">
+      <a routerLink='/blog/article/{{post.slug}}' class="widget-recommended-product-link">
+        <h5 class="widget-recommended-product-link-title"> {{ post.title }}
           <i class="fa fa-angle-right"></i>
         </h5>
-        <p class="widget-recommended-product-link-description">eCommerce Landing Page</p>
-      </a>
-    </li>
-    <!-- End of Recommended product Item -->
-    <!-- Recommended product Item -->
-    <li class="widget-recommended-product">
-      <img src="http://placehold.it/67x67" class="widget-recommended-product-img" alt="Recommended products">
-      <a href="#" class="widget-recommended-product-link">
-        <h5 class="widget-recommended-product-link-title"> EatLand
-          <i class="fa fa-angle-right"></i>
-        </h5>
-        <p class="widget-recommended-product-link-description">eCommerce Landing Page</p>
-      </a>
-    </li>
-    <!-- End of Recommended product Item -->
-    <!-- Recommended product Item -->
-    <li class="widget-recommended-product">
-      <img src="http://placehold.it/67x67" class="widget-recommended-product-img" alt="Recommended products">
-      <a href="#" class="widget-recommended-product-link">
-        <h5 class="widget-recommended-product-link-title"> VSBuilder
-          <i class="fa fa-angle-right"></i>
-        </h5>
-        <p class="widget-recommended-product-link-description">Pure HTML and CSS Page Builder</p>
+        <p class="widget-recommended-product-link-description" [innerHTML]="post.summary | safe: 'html'"></p>
       </a>
     </li>
     <!-- End of Recommended product Item -->
   </ul>
+

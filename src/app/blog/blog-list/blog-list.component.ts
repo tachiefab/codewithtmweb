@@ -26,7 +26,6 @@ export class BlogListComponent implements OnInit {
     this.getPosts();
    }
 
-   
    getPosts = () => {
     this.blogService.getAll('/').subscribe(
       data => {
@@ -37,8 +36,6 @@ export class BlogListComponent implements OnInit {
       }
     );
   }
-
-  
 
   ngOnInit(): void {
     this.req = this.logInternalService.getBlogListHeader().subscribe(data=>{

@@ -1,25 +1,5 @@
 <!-- Tag card -->
-<li class="tag-item">
-    <a href="#">html</a>
-  </li>
-  <li class="tag-item">
-    <a href="#">css</a>
-  </li>
-  <li class="tag-item">
-    <a href="#">javascript</a>
-  </li>
-  <li class="tag-item">
-    <a href="#">jquery</a>
-  </li>
-  <li class="tag-item">
-    <a href="#">less</a>
-  </li>
-  <li class="tag-item">
-    <a href="#">sass</a>
-  </li>
-  <li class="tag-item">
-    <a href="#">haml</a>
-  </li>
-  <li class="tag-item">
-    <a href="#">gulp</a>
-  </li>
+<li class="tag-item" *ngFor="let tag of tagList">
+  <a routerLink="/blog/tag/{{ tag.slug }}">{{ tag.title }}</a>
+</li> 
+

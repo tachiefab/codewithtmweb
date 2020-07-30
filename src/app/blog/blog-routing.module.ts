@@ -13,6 +13,14 @@ const routes: Routes = [
     component: BlogListComponent,
   },
   {
+    path: 'category/:slug', 
+    component: BlogListCategorizedComponent,
+  },
+  {
+    path: 'tag/:slug', 
+    component: BlogListTaggedComponent,
+  },
+  {
     path: 'article/:slug', 
     component: ArticleComponent,
   },
