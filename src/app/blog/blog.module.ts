@@ -10,6 +10,7 @@ import { ArticleComponent } from './article/article.component';
 import { PostCardComponent } from './post-card/post-card.component';
 import { SharedModule } from './../shared/shared.module';
 import { ArticleRelatedCardComponent } from './article-related-card/article-related-card.component';
+import { SocialShareComponent } from './social-share/social-share.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { ArticleRelatedCardComponent } from './article-related-card/article-rela
                 BlogListComponent, 
                 BlogListCategorizedComponent,
                 BlogListTaggedComponent,
-                PostCardComponent
+                PostCardComponent,
+                SocialShareComponent
               ],
   imports: [
     CommonModule,

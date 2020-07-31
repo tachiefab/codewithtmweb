@@ -12,6 +12,7 @@ export class ArticleComponent implements OnInit {
 	private req: any;
   private routeSub:any;
   article: any = {};
+  tagList : any;
   relatedArticles: any;
   slug:string;
   bootstrapClass = 'header background-2'
@@ -24,7 +25,8 @@ export class ArticleComponent implements OnInit {
             private headerService: HeaderService
             ) { 
     this.getArticle();
-    this.getRelatedArticles()
+    this.getRelatedArticles();
+    this.getArticleTags();
   }
 
   getArticle = () => {
@@ -32,6 +34,16 @@ export class ArticleComponent implements OnInit {
       this.slug = params['slug']
       this.req = this.blogService.getOne(this.slug).subscribe(data=>{
         this.article = data as any
+      })
+  })
+  }
+
+  getArticleTags = () => {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.slug = params['slug']
+      this.req = this.blogService.getItemTags(this.slug).subscribe(data=>{
+      this.tagList = data.results;
+        console.log(this.tagList)
       })
   })
   }

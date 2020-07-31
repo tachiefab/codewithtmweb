@@ -18,7 +18,7 @@ export class SmallPostCardComponent implements OnInit {
     this.blogService.getAll().subscribe(
       data => {
         this.postList = data.results;
-        console.log(this.postList)
+        // console.log(this.postList)
       },
       error => {
         console.log(error);

@@ -20,13 +20,17 @@ export class BlogService {
 
 
   getAll(slug): Observable<any> {
-    // return this.httpClient.get(this.baseUrl + "posts/", 
     return this.httpClient.get(this.baseUrl + 'posts' + slug,
     	{headers: this.httpHeaders});
   }
 
    getOne(slug): Observable<any> {
     return this.httpClient.get(this.baseUrl + 'posts/' + slug +'/',
+    {headers: this.httpHeaders});
+  }
+
+  getItemTags(slug): Observable<any> {
+    return this.httpClient.get(this.baseUrl + 'tags/?post_slug=' + slug,
     {headers: this.httpHeaders});
   }
 

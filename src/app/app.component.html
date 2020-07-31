@@ -22,10 +22,10 @@
    </div>
    <!-- End of Header Back -->
 
-   <div id="content">
+   <div id="content"  *ngIf="isMainPage.content">
 
     <!-- container for majority of the project -->
-     <div class="container" *ngIf="isMainPage.content">
+     <div class="container">
        <div class="layout with-right-sidebar js-layout">
          <div class="row">
            <div class="col-md-9">
@@ -42,13 +42,19 @@
          </div>
        </div>
      </div>
-
-     <!-- container for contact us -->
-     <div class="container" *ngIf="!isMainPage.content">
-      <router-outlet></router-outlet>
     </div>
 
+    <div id="content"  *ngIf="!isMainPage.content">
+     <!-- container for contact us -->
+     <div class="container">
+      <router-outlet></router-outlet>
+    </div>
    </div>
+
+   <div id="content">
+    <router-outlet></router-outlet>
+  </div>
+
 
    <!-- Footer -->
    <footer class="js-footer-is-fixed">

@@ -18,7 +18,7 @@
         </li>
         <li>
             <span class="article-meta-category article-meta-item">
-                <a href="blog-grid.html">{{ article.category.title }}</a>
+                <a routerLink="/blog/category/{{ article.category.slug }}">{{ article.category.title }}</a>
             </span>
         </li>
         <li>
@@ -45,20 +45,11 @@
 
         <!-- Article Tags -->
         <div class="article-tags"> Tags:
-            <a class="article-tag" href="#">apple</a>
-            <a class="article-tag" href="#">startup</a>
-            <a class="article-tag" href="#">design</a>
-            <a class="article-tag" href="#">gadget</a>
-            <a class="article-tag" href="#">productivity</a>
+            <a class="article-tag"routerLink="/blog/tag/{{ tag.slug }}" *ngFor="let tag of tagList">{{ tag.title }}</a>
         </div>
         <!-- End of Article Tags -->
         <!-- Social Share -->
-        <div class="social-likes social-share">
-            <div class="facebook" title="Share link on Facebook">Facebook</div>
-            <div class="twitter" title="Share link on Twitter">Twitter</div>
-            <div class="plusone" title="Share link on Google+">Google+</div>
-            <div class="pinterest" title="Share image on Pinterest" data-media="http://themes.vsart.me/vsdocs/img/demos/blog/article.jpg">Pinterest</div>
-        </div>
+           <app-social-share></app-social-share>
         <!-- End of Social Share -->
     </div>
     <!-- End of Article Content -->

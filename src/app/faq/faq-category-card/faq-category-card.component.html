@@ -1,0 +1,12 @@
+
+    <!-- FAQ Category -->
+    <div class="faq-table-of-contents " data-icon="">
+        <h3 class="faq-table-of-contents-title">{{ category.title }}</h3>
+        <ul class="faq-table-of-contents-list" *ngFor="let faq of category.faqs">
+            <li>
+                <a href="#" class="js-scroll-to" data-target="#js-structure" [innerHTML]="faq.question | safe: 'html'"></a>
+            </li>
+           
+        </ul>
+    </div>
+    <!-- End of FAQ Category -->
