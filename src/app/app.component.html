@@ -8,7 +8,7 @@
 
  <!-- <div class="preloader js-preloader"><div class="preloader-animation"></div></div> -->
  <!-- End of Preloader -->
- <div class="page js-page ">
+ <div class="page js-page " *ngIf="isMainPage.mallam">
 
    <!-- Header -->
    <div class="{{ bootstrapClass.content }}" >
@@ -55,13 +55,29 @@
     <router-outlet></router-outlet>
   </div>
 
-
    <!-- Footer -->
    <footer class="js-footer-is-fixed">
          <app-footer></app-footer>
    </footer>
    <!-- End of Footer -->
  </div>
+
+
+   <!-- Auth pages -->
+   <div class="page js-page login-page">
+		<div class="login">
+			<div class="login-content">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-12">
+              <!-- Auth pages goes here -->
+              <router-outlet></router-outlet>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
  
  <!-- <script src="js/all.js"></script>
  <script src="js/custom.js"></script> -->

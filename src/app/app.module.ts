@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Local imports
+import { AuthModule } from './auth/auth.module';
 import { AuthorModule } from './author/author.module';
 import { BlogModule } from './blog/blog.module';
 import { BlockModule } from './block/block.module';
@@ -22,6 +24,7 @@ import { SharedModule } from './shared/shared.module';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
+    AuthModule,
     AuthorModule,
     BlogModule,
     BlockModule,

@@ -12,6 +12,10 @@ const routes: Routes = [
     path: 'about', 
     loadChildren: () => import(`./aboutus/aboutus.module`).then(m => m.AboutusModule)
    },
+  { 
+    path: 'auth', 
+    loadChildren: () => import(`./auth/auth.module`).then(m => m.AuthModule)
+   },
   { path: 'author', 
   loadChildren: () => import(`./author/author.module`).then(m => m.AuthorModule)
  },
