@@ -2,10 +2,11 @@
     <div class="helper center">
         <app-logo></app-logo>
      </div>
-    <form action="#" class="login-form">
+    <form class="login-form" [formGroup]="loginForm" (ngSubmit)="login()">
         <div class="login-inputs">
-            <input type="text" class="form-control" placeholder="Email">
-            <input type="password" class="form-control" placeholder="Password"> </div>
+            <input type="text" class="form-control" id="username" placeholder="Username or Email" formControlName="username" required>
+            <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password" required>
+         </div>
         <button type="submit" class="button green full">Sign in</button>
     </form>
     <ul class="login-helpers">
@@ -17,3 +18,22 @@
         </li>
     </ul>
 </div>
+
+<!-- 
+<div class="header center">Log In</div>
+
+<form [formGroup]="loginForm" (ngSubmit)="login()">
+
+  <mat-form-field>
+    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" required>
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
+  </mat-form-field>
+
+  <div class="actions">
+    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">LOG IN</button>
+  </div>
+
+</form> -->
