@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import * as $ from 'jquery';
 
 @Component({
   selector: 'app-header',
@@ -13,3 +14,4 @@ export class HeaderComponent implements OnInit {
   }
 
 }
+// C:\Users\fadil\Documents\Dev\angularworkspace\codewithtmweb\src\assets\js\dev\libs\jquery.min.js
