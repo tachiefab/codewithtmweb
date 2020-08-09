@@ -7,11 +7,14 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(
+            private authService: AuthService, 
+            private router: Router
+            ) { }
 
   canActivate() {
     if (this.authService.isLoggedIn()) {
-      this.router.navigate(['/secret-random-number']);
+      this.router.navigate(['/profile']);
     }
     return !this.authService.isLoggedIn();
   }
