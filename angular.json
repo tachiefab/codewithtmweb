@@ -25,9 +25,46 @@
             ],
             "styles": [
               "src/styles.css"
+              
             ],
             "scripts": [
-             
+              "src/assets/js/all.js",
+              "src/assets/js/dev/libs/plugins/bootstrap-rating.min.js",
+              "src/assets/js/dev/libs/plugins/clipboard.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.animateNumbers.js",
+              "src/assets/js/dev/libs/plugins/jquery.bpopup.js",
+              "src/assets/js/dev/libs/plugins/jquery.equalHeight.js",
+              "src/assets/js/dev/libs/plugins/jquery.event.move.js",
+              "src/assets/js/dev/libs/plugins/jquery.fastLiveFilter.js",
+              "src/assets/js/dev/libs/plugins/jquery.fitvids.js",
+              "src/assets/js/dev/libs/plugins/jquery.form-validator.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.gifplayer.js",
+              "src/assets/js/dev/libs/plugins/jquery.hoverIntent.js",
+              "src/assets/js/dev/libs/plugins/jquery.instafilta.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.jscrollpane.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.morphext.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.mousewheel-3.0.6.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.nav.js",
+              "src/assets/js/dev/libs/plugins/jquery.owl.carousel.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.placeholder.js",
+              "src/assets/js/dev/libs/plugins/jquery.rating.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.resmenu.js",
+              "src/assets/js/dev/libs/plugins/jquery.sidr.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.slicknav.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.steps.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.superfish.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.supersubs.js",
+              "src/assets/js/dev/libs/plugins/jquery.tendina.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.treeView.js",
+              "src/assets/js/dev/libs/plugins/jquery.twentytwenty.js",
+              "src/assets/js/dev/libs/plugins/jquery.vide.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.ytv.js",
+              "src/assets/js/dev/libs/plugins/prism.js",
+              "src/assets/js/dev/libs/plugins/social-likes.min.js",
+              "src/assets/js/dev/libs/plugins/video.js",
+              "src/assets/js/dev/libs/plugins/videojs-playlist.js",
+
+              "src/assets/js/custom.js"
             ]
           },
           "configurations": {

@@ -8,7 +8,7 @@
 
  <!-- <div class="preloader js-preloader"><div class="preloader-animation"></div></div> -->
  <!-- End of Preloader -->
- <div class="page js-page ">
+ <div class="page js-page"  *ngIf="isMainPage.mallam">
 
    <!-- Header -->
    <div class="{{ bootstrapClass.content }}" >
@@ -64,7 +64,7 @@
 
 
    <!-- Auth pages -->
-   <div class="page js-page login-page" *ngIf="isMainPage.mallam">
+   <div class="page js-page login-page">
 		<div class="login">
 			<div class="login-content">
 				<div class="container">

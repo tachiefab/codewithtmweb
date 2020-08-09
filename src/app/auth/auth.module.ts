@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
-
-// import { AuthService } from './services/auth.service';
+import { AuthService } from './../core/services/auth/auth.service';
 import { AuthGuard } from './guards/auth.guard';
 import { TokenInterceptor } from './token.interceptor';
 import { SharedModule } from './../shared/shared.module';
@@ -23,7 +22,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
             ],
   providers: [
             AuthGuard,
-            // AuthService,
+            AuthService,
             {
               provide: HTTP_INTERCEPTORS,
               useClass: TokenInterceptor,

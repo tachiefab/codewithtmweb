@@ -44,11 +44,23 @@ export class AuthService {
     return !!this.getJwtToken();
   }
 
+  // refreshToken(token: { token: string }): Observable<boolean> {
+  //   return this.http.post<any>(`${this.baseUrl}jwt/refresh/`, token, {
+  //     'refreshToken': this.getRefreshToken()
+  //   }).pipe(
+  //       tap(tokens => Tokens),
+  //       mapTo(true),
+  //       catchError(error => {
+  //         alert(error.error);
+  //         return of(false);
+  //       }));
+  // }
+
   refreshToken() {
     return this.http.post<any>(`${this.baseUrl}jwt/refresh`, {
       'refreshToken': this.getRefreshToken()
     }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.jwt);
+      this.storeJwtToken(tokens.token);
     }));
   }
 
@@ -59,6 +71,9 @@ export class AuthService {
   private doLoginUser(username: string, tokens: Tokens) {
     this.loggedUser = username;
     this.storeTokens(tokens);
+    // console.log(tokens.token)
+    // console.log(tokens.username)
+    // console.log(this.loggedUser)
   }
 
   private doLogoutUser() {
@@ -70,17 +85,17 @@ export class AuthService {
     return localStorage.getItem(this.REFRESH_TOKEN);
   }
 
-  private storeJwtToken(jwt: string) {
-    localStorage.setItem(this.JWT_TOKEN, jwt);
+  private storeJwtToken(token: string) {
+    localStorage.setItem(this.JWT_TOKEN, token);
   }
 
   private storeTokens(tokens: Tokens) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.jwt);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
+    localStorage.setItem(this.JWT_TOKEN, tokens.token);
+    // localStorage.setItem(this.REFRESH_TOKEN, tokens.refreshToken);
   }
 
   private removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
-    localStorage.removeItem(this.REFRESH_TOKEN);
+    // localStorage.removeItem(this.REFRESH_TOKEN);
   }
 }
