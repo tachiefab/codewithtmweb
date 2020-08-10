@@ -11,29 +11,10 @@
     </form>
     <ul class="login-helpers">
         <li class="login-helper-item">Don't have an account?
-            <a href="#">Sign Up.</a>
+            <a routerLink="/auth/register">Sign Up.</a>
         </li>
         <li class="login-helper-item">
-            <a href="#">Forgot your password</a>
+            <a routerLink="/auth/reset-password">Forgot your password</a>
         </li>
     </ul>
 </div>
-
-<!-- 
-<div class="header center">Log In</div>
-
-<form [formGroup]="loginForm" (ngSubmit)="login()">
-
-  <mat-form-field>
-    <input matInput type="text" id="username" placeholder="Username" autocomplete="off" formControlName="username" required>
-  </mat-form-field>
-
-  <mat-form-field>
-    <input matInput type="password" id="password" placeholder="Password" formControlName="password" required>
-  </mat-form-field>
-
-  <div class="actions">
-    <button mat-raised-button color="primary" type="submit" [disabled]="!loginForm.valid">LOG IN</button>
-  </div>
-
-</form> -->

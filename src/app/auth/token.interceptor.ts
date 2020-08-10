@@ -13,6 +13,8 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(public authService: AuthService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    // if (request.headers.get('No-Auth') == "True")
+    // return next.handle(request.clone());
 
     if (this.authService.getJwtToken()) {
       request = this.addToken(request, this.authService.getJwtToken());

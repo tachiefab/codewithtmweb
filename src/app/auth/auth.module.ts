@@ -11,6 +11,7 @@ import { SharedModule } from './../shared/shared.module';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 
 
@@ -18,7 +19,7 @@ import { RegisterPageComponent } from './register-page/register-page.component';
 @NgModule({
   declarations: [
               LoginPageComponent, 
-              RegisterPageComponent
+              RegisterPageComponent, ResetPasswordComponent
             ],
   providers: [
             AuthGuard,

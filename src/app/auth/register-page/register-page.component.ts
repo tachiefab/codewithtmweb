@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
@@ -31,16 +31,18 @@ export class RegisterPageComponent implements OnInit {
      return this.registerForm.controls; 
     }
 
-  login() {
-    this.authService.login(
+  register() {
+    this.authService.register(
       {
         username: this.f.username.value,
-        password: this.f.password.value
+        email: this.f.email.value,
+        password: this.f.password.value,
+        password2: this.f.password2.value
       }
     )
     .subscribe(success => {
       if (success) {
-        this.router.navigate(['/secret-random-number']);
+        this.router.navigate(['/login']);
       }
     });
   }

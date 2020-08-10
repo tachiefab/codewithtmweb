@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
 import { environment } from './../../../../environments/environment';
@@ -9,7 +9,9 @@ import { Tokens } from './../../../auth/models/tokens';
   providedIn: 'root'
 })
 export class AuthService {
+    httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
     baseUrl = environment.baseUrl;
+    token: string;
 
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private loggedUser: string;
@@ -43,12 +45,27 @@ export class AuthService {
     return !!this.getJwtToken();
   }
 
-  
-  refreshToken() {
-    return this.http.post<any>(`${this.baseUrl}auth/jwt/refresh/`, {
-    }).pipe(tap((tokens: Tokens) => {
-      this.storeJwtToken(tokens.token);
-    }));
+  // refreshToken() {
+  //   return this.http.post<any>(`${this.baseUrl}auth/jwt/refresh/`, {
+  //     // 'refreshToken': this.getJwtToken()
+  //   }).pipe(tap((tokens: Tokens) => {
+  //     this.storeJwtToken(tokens.token);
+  //   }));
+  // }
+
+  refreshToken(): Observable<boolean> {
+    this.token = this.getJwtToken()
+    console.log(this.token)
+    return this.http.post<any>(`${this.baseUrl}auth/jwt/refresh/`, this.token)
+      .pipe(
+        tap(tokens => this.getJwtToken(),
+        mapTo(true)
+        // catchError(error => {
+        //   alert(error.error);
+        //   return of(false);
+        // }
+        )
+        );
   }
 
   getJwtToken() {
@@ -75,5 +92,12 @@ export class AuthService {
 
   private removeToken() {
     localStorage.removeItem(this.JWT_TOKEN);
+  }
+
+  register = (authData) => {
+    const body = JSON.stringify(authData);
+    return this.http.post(`${this.baseUrl}auth/register/`, body, 
+    {headers: this.httpHeaders}
+    );
   }
 }

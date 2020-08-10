@@ -11,7 +11,8 @@ export class BlogService {
 
   baseUrl = environment.baseUrl;
   
-	httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
+  // httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json','No-Auth':'False' });
 
   constructor(
     private httpClient: HttpClient,
