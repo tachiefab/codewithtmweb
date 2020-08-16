@@ -5,6 +5,8 @@ import { AuthGuard } from './guards/auth.guard';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { NewPasswordRedirectComponentComponent } from './new-password-redirect-component/new-password-redirect-component.component';
 
 
 const routes: Routes = [
@@ -25,7 +27,17 @@ const routes: Routes = [
     component: ResetPasswordComponent,
   },
 
-];
+  {
+    path: 'very-email/:token', 
+    component: VerifyEmailComponent,
+  },
+
+  {
+    path: 'password-reset/:uidb64/:token', 
+    component: NewPasswordRedirectComponentComponent,
+  },
+
+];  
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

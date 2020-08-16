@@ -100,4 +100,28 @@ export class AuthService {
     {headers: this.httpHeaders}
     );
   }
+
+  emailVerification(token): Observable<any> {
+    return this.http.get(this.baseUrl + 'auth/email-verify/?token=' + token, 
+    	{headers: this.httpHeaders});
+  }
+
+  requestPasswordResetEmail = (email) => {
+    const body = JSON.stringify(email);
+    return this.http.post(`${this.baseUrl}auth/request-reset-email/`, body, 
+    {headers: this.httpHeaders}
+    );
+  }
+
+  resetPassword = (uidb64, token, password) => {
+    const body = JSON.stringify(uidb64, token, password, );
+    console.log(body)
+    return this.http.patch(`${this.baseUrl}auth/password-reset-complete/`, body, 
+    {headers: this.httpHeaders}
+    );
+  }
+
+
+
+
 }

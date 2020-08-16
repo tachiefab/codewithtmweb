@@ -28,15 +28,15 @@ export class ResetPasswordComponent implements OnInit {
      return this.resetPasswordForm.controls; 
     }
 
-  register() {
-    this.authService.register(
+    reset() {
+    this.authService.requestPasswordResetEmail(
       {
         email: this.f.email.value
       }
     )
     .subscribe(success => {
       if (success) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth']);
       }
     });
   }

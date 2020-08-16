@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
@@ -9,13 +9,13 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent implements OnInit {
-
   registerForm: FormGroup;
 
   constructor(
     private authService: AuthService, 
     private formBuilder: FormBuilder, 
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute, 
     ) { }
 
   ngOnInit() {
@@ -42,7 +42,7 @@ export class RegisterPageComponent implements OnInit {
     )
     .subscribe(success => {
       if (success) {
-        this.router.navigate(['/login']);
+        this.router.navigate(['/auth']);
       }
     });
   }

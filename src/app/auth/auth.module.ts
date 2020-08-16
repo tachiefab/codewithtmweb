@@ -12,6 +12,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { LoginPageComponent } from './login-page/login-page.component';
 import { RegisterPageComponent } from './register-page/register-page.component';
 import { ResetPasswordComponent } from './reset-password/reset-password.component';
+import { VerifyEmailComponent } from './verify-email/verify-email.component';
+import { NewPasswordRedirectComponentComponent } from './new-password-redirect-component/new-password-redirect-component.component';
 
 
 
@@ -19,7 +21,7 @@ import { ResetPasswordComponent } from './reset-password/reset-password.componen
 @NgModule({
   declarations: [
               LoginPageComponent, 
-              RegisterPageComponent, ResetPasswordComponent
+              RegisterPageComponent, ResetPasswordComponent, VerifyEmailComponent, NewPasswordRedirectComponentComponent
             ],
   providers: [
             AuthGuard,
