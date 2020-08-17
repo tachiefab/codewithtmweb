@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { ReactiveFormsModule } from '@angular/forms';
+
 import { SharedModule } from './../shared/shared.module';
 import { ContactusRoutingModule } from './contactus-routing.module';
 import { ContactPageComponent } from './contact-page/contact-page.component';
@@ -13,7 +15,8 @@ import { ContactCardComponent } from './contact-card/contact-card.component';
   imports: [
     CommonModule,
     ContactusRoutingModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class ContactusModule { }

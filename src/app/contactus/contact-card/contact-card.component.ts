@@ -24,7 +24,7 @@ export class ContactCardComponent implements OnInit {
     this.routeSub = this.route.params.subscribe(params => {
       this.req = this.aboutusService.getOne(1).subscribe(data=>{
         this.contact = data.contact_information as any
-        console.log(this.contact)
+        // console.log(this.contact)
       })
   })
   }

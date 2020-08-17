@@ -113,8 +113,8 @@ export class AuthService {
     );
   }
 
-  resetPassword = (uidb64, token, password) => {
-    const body = JSON.stringify(uidb64, token, password, );
+  resetPassword = (resetData) => {
+    const body = JSON.stringify(resetData);
     console.log(body)
     return this.http.patch(`${this.baseUrl}auth/password-reset-complete/`, body, 
     {headers: this.httpHeaders}

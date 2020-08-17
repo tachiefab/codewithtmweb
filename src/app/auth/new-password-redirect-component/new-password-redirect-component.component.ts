@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { Router, ActivatedRoute } from '@angular/router';
+import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-new-password-redirect-component',
@@ -8,6 +9,7 @@ import { Router, ActivatedRoute } from '@angular/router';
   styleUrls: ['./new-password-redirect-component.component.css']
 })
 export class NewPasswordRedirectComponentComponent implements OnInit {
+  resetForm: FormGroup;
   token:string;
   uidb64:string;
   password: string;
@@ -16,7 +18,8 @@ export class NewPasswordRedirectComponentComponent implements OnInit {
 
   
   constructor(
-    private authService: AuthService, 
+    private authService: AuthService,
+    private formBuilder: FormBuilder,  
     private router: Router,
     private route: ActivatedRoute, 
     ) { 
@@ -24,15 +27,30 @@ export class NewPasswordRedirectComponentComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    this.resetForm = this.formBuilder.group({
+      password: ['']
+    });
   }
+
+  get f() {
+    return this.resetForm.controls; 
+   }
 
   setNewPassword = () => {
     this.routeSub = this.route.params.subscribe(params => {
       this.uidb64 = params['uidb64']
       this.token = params['token']
-      this.password = 'tachiemusah4974'
-      // console.log( this.uidb64,  this.token)
-      this.req = this.authService.resetPassword(this.uidb64, this.token, this.password).subscribe(data=>{
+      {
+      password: this.f.password.value
+      }
+      this.req = this.authService.resetPassword(
+        {
+          uidb64:this.uidb64, 
+          token:this.token, 
+          password: this.f.password.value
+        }
+       
+        ).subscribe(data=>{
         this.router.navigate(['/auth']);
       })
   })

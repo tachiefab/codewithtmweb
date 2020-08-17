@@ -21,7 +21,10 @@ import { NewPasswordRedirectComponentComponent } from './new-password-redirect-c
 @NgModule({
   declarations: [
               LoginPageComponent, 
-              RegisterPageComponent, ResetPasswordComponent, VerifyEmailComponent, NewPasswordRedirectComponentComponent
+              RegisterPageComponent, 
+              ResetPasswordComponent, 
+              VerifyEmailComponent, 
+              NewPasswordRedirectComponentComponent
             ],
   providers: [
             AuthGuard,
