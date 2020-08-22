@@ -9,17 +9,15 @@ import { Tokens } from './../../../auth/models/tokens';
   providedIn: 'root'
 })
 export class AuthService {
-    httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-    baseUrl = environment.baseUrl;
-    token: string;
-
+  baseUrl = environment.baseUrl;
   private readonly JWT_TOKEN = 'JWT_TOKEN';
+  private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private loggedUser: string;
 
   constructor(private http: HttpClient) {}
 
   login(user: { username: string, password: string }): Observable<boolean> {
-    return this.http.post<any>(`${this.baseUrl}auth/`, user)
+    return this.http.post<any>(`${this.baseUrl}auth/jwt/`, user)
       .pipe(
         tap(tokens => this.doLoginUser(user.username, tokens)),
         mapTo(true),
@@ -31,7 +29,7 @@ export class AuthService {
 
   logout() {
     return this.http.post<any>(`${this.baseUrl}/logout`, {
-      'refreshToken': this.getJwtToken()
+      'refreshToken': this.getRefreshToken()
     }).pipe(
       tap(() => this.doLogoutUser()),
       mapTo(true),
@@ -45,27 +43,12 @@ export class AuthService {
     return !!this.getJwtToken();
   }
 
-  // refreshToken() {
-  //   return this.http.post<any>(`${this.baseUrl}auth/jwt/refresh/`, {
-  //     // 'refreshToken': this.getJwtToken()
-  //   }).pipe(tap((tokens: Tokens) => {
-  //     this.storeJwtToken(tokens.token);
-  //   }));
-  // }
-
-  refreshToken(): Observable<boolean> {
-    this.token = this.getJwtToken()
-    console.log(this.token)
-    return this.http.post<any>(`${this.baseUrl}auth/jwt/refresh/`, this.token)
-      .pipe(
-        tap(tokens => this.getJwtToken(),
-        mapTo(true)
-        // catchError(error => {
-        //   alert(error.error);
-        //   return of(false);
-        // }
-        )
-        );
+  refreshToken() {
+    return this.http.post<any>(`${this.baseUrl}auth/jwt/refresh/`, {
+      'refresh': this.getRefreshToken()
+    }).pipe(tap((tokens: Tokens) => {
+      this.storeJwtToken(tokens.access);
+    }));
   }
 
   getJwtToken() {
@@ -74,54 +57,50 @@ export class AuthService {
 
   private doLoginUser(username: string, tokens: Tokens) {
     this.loggedUser = username;
-    this.storeJwtToken(tokens.token);
+    this.storeTokens(tokens);
+
   }
 
   private doLogoutUser() {
     this.loggedUser = null;
-    this.removeToken();
+    this.removeTokens();
   }
 
-  private storeJwtToken(token: string) {
-    localStorage.setItem(this.JWT_TOKEN, token);
+  private getRefreshToken() {
+    return localStorage.getItem(this.REFRESH_TOKEN);
+  }
+
+  private storeJwtToken(access: string) {
+    localStorage.setItem(this.JWT_TOKEN, access);
   }
 
   private storeTokens(tokens: Tokens) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.token);
+    localStorage.setItem(this.JWT_TOKEN, tokens.access);
+    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
   }
 
-  private removeToken() {
+  private removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
+    localStorage.removeItem(this.REFRESH_TOKEN);
   }
 
   register = (authData) => {
     const body = JSON.stringify(authData);
-    return this.http.post(`${this.baseUrl}auth/register/`, body, 
-    {headers: this.httpHeaders}
-    );
+    return this.http.post(`${this.baseUrl}auth/register/`, body);
   }
 
   emailVerification(token): Observable<any> {
-    return this.http.get(this.baseUrl + 'auth/email-verify/?token=' + token, 
-    	{headers: this.httpHeaders});
+    return this.http.get(this.baseUrl + 'auth/email-verify/?token=' + token);
   }
 
   requestPasswordResetEmail = (email) => {
     const body = JSON.stringify(email);
-    return this.http.post(`${this.baseUrl}auth/request-reset-email/`, body, 
-    {headers: this.httpHeaders}
-    );
+    return this.http.post(`${this.baseUrl}auth/request-reset-email/`, body);
   }
 
   resetPassword = (resetData) => {
     const body = JSON.stringify(resetData);
-    console.log(body)
-    return this.http.patch(`${this.baseUrl}auth/password-reset-complete/`, body, 
-    {headers: this.httpHeaders}
-    );
+    return this.http.patch(`${this.baseUrl}auth/password-reset-complete/`, body);
   }
-
-
-
-
+  
 }

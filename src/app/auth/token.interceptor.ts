@@ -1,8 +1,8 @@
+import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { Injectable } from '@angular/core';
 import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError, BehaviorSubject } from 'rxjs';
 import { catchError, filter, take, switchMap } from 'rxjs/operators';
-import { AuthService } from '../core/services/auth/auth.service';
 
 @Injectable()
 export class TokenInterceptor implements HttpInterceptor {
@@ -13,8 +13,6 @@ export class TokenInterceptor implements HttpInterceptor {
   constructor(public authService: AuthService) { }
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    // if (request.headers.get('No-Auth') == "True")
-    // return next.handle(request.clone());
 
     if (this.authService.getJwtToken()) {
       request = this.addToken(request, this.authService.getJwtToken());
@@ -32,7 +30,8 @@ export class TokenInterceptor implements HttpInterceptor {
   private addToken(request: HttpRequest<any>, token: string) {
     return request.clone({
       setHeaders: {
-        'Authorization': `JWT ${token}`
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
       }
     });
   }
@@ -45,16 +44,16 @@ export class TokenInterceptor implements HttpInterceptor {
       return this.authService.refreshToken().pipe(
         switchMap((token: any) => {
           this.isRefreshing = false;
-          this.refreshTokenSubject.next(token.token);
-          return next.handle(this.addToken(request, token.token));
+          this.refreshTokenSubject.next(token.access);
+          return next.handle(this.addToken(request, token.access));
         }));
 
     } else {
       return this.refreshTokenSubject.pipe(
         filter(token => token != null),
         take(1),
-        switchMap(token => {
-          return next.handle(this.addToken(request, token));
+        switchMap(access => {
+          return next.handle(this.addToken(request, access));
         }));
     }
   }

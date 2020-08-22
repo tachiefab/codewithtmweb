@@ -8,31 +8,25 @@ import { environment } from './../../../../environments/environment';
   providedIn: 'root'
 })
 export class CommentService {
-
   baseUrl = environment.baseUrl;
-	httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(
     private httpClient: HttpClient,
     private cookieService: CookieService
   ) { }
 
-
-  getAll(id): Observable<any> {
-    return this.httpClient.get(this.baseUrl + "comments/?obj_id=" + id, 
-      {headers: this.httpHeaders});
+  getAll(slug): Observable<any> {
+    return this.httpClient.get(this.baseUrl + "comments/?slug=" + slug );
   }
 
    getOne(slug): Observable<any> {
-    return this.httpClient.get(this.baseUrl + 'posts/' + slug +'/',
-    {headers: this.httpHeaders});
+    return this.httpClient.get(this.baseUrl + 'posts/' + slug +'/');
   }
 
-  getAuthHeaders() {
-    const token = this.cookieService.get('codewithtm-token');
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `JWT ${token}`
-    });
+  comment = (commentData) => {
+    const body = JSON.stringify(commentData);
+    return this.httpClient.post(`${this.baseUrl}comments/create/`, body
+    );
   }
+
 }

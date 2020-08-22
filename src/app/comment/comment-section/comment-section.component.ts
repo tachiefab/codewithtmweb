@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CommentService } from './../../core/services/comment/comment.service';
-import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 @Component({
   selector: 'app-comment-section',
@@ -19,8 +18,7 @@ export class CommentSectionComponent implements OnInit {
 
   constructor(
             private route: ActivatedRoute, 
-            private commentService:CommentService,
-            private headerService: HeaderService
+            private commentService:CommentService
             ){
     this.getArticleComments();
    }
@@ -28,7 +26,7 @@ export class CommentSectionComponent implements OnInit {
   getArticleComments = () => {
     this.routeSub = this.route.params.subscribe(params => {
       this.slug = params['slug']
-      this.req = this.commentService.getAll(8).subscribe(data=>{
+      this.req = this.commentService.getAll(this.slug).subscribe(data=>{
       this.comments = data.results as any
       })
   })

@@ -21,7 +21,8 @@
                 <!-- End of Comment Meta -->
             </div>
             <!-- Comment Message -->
-            <p class="comment-message"> {{ comment.content }}</p>
+            <p class="comment-message" [innerHTML]="comment.content | safe: 'html'">
+                </p>
             <!-- End of Comment Message -->
             <!-- Comment Actions -->
             <ul class="comment-actions">

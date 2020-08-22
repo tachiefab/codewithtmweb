@@ -1,6 +1,7 @@
-<form action="#" class="comment-form">
+<!-- <form action="#" class="comment-form"> -->
+<form action="#" class="comment-form" [formGroup]="commentForm" (ngSubmit)="createComment()">
     <div class="row">
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
             <ul class="comment-form-list">
                 <li class="comment-form-list-item">
                     <input type="text" class="form-control" placeholder="Name"> </li>
@@ -9,14 +10,17 @@
                 <li class="comment-form-list-item">
                     <input type="text" class="form-control" placeholder="Website"> </li>
             </ul>
-        </div>
+        </div> -->
         <div class="col-md-6">
             <ul class="comment-form-list">
                 <li class="comment-form-list-item">
-                    <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Comment"></textarea>
+                    <textarea name="" id="" cols="30" rows="10" class="form-control" placeholder="Comment" formControlName="content" required>
+
+                    </textarea>
                 </li>
                 <li class="comment-form-list-item">
-                    <button class="">Post Comment</button>
+                    <button type="submit" class="">Post Comment</button>
+                    <!-- <button type="submit" class="button green full">Create account</button> -->
                 </li>
             </ul>
         </div>

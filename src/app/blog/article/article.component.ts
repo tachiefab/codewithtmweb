@@ -43,7 +43,6 @@ export class ArticleComponent implements OnInit {
       this.slug = params['slug']
       this.req = this.blogService.getItemTags(this.slug).subscribe(data=>{
       this.tagList = data.results;
-        console.log(this.tagList)
       })
   })
   }
