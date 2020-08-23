@@ -1,11 +1,11 @@
     <!-- Comments -->
     <div class="comments" id="article-comments">
         <ul class="comment-list" *ngFor="let comment of comments">
-            <app-comment-card [comment]='comment'></app-comment-card>
+            <app-comment-card  [comment]='comment'></app-comment-card>
         </ul>
         <h3 class="article-widget-title"> Leave a comment </h3>
         <!-- Comment Form -->
-            <app-comment-form></app-comment-form>
+            <app-comment-form (commentCreated)="commentCreated($event)"></app-comment-form>
         <!-- End of Comment Form -->
     </div>
     <!-- End of Comments -->

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { CommentService } from 'src/app/core/services/comment/comment.service';
 import { Router, ActivatedRoute } from '@angular/router';
@@ -11,6 +11,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class CommentFormComponent implements OnInit {
   commentForm: FormGroup;
   type: string;
+  @Output() commentCreated = new EventEmitter();
   
   private req: any;
   private routeSub:any;
@@ -42,12 +43,10 @@ export class CommentFormComponent implements OnInit {
         slug:this.slug, 
         content: this.f.content.value
       }).subscribe(data=>{
-        alert("comment created successfully")
+           this.commentCreated.emit(data)
       })
   })
   }
-
-
 
 
 }

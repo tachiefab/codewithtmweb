@@ -1,6 +1,4 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { HeaderService } from 'src/app/core/services/blog/headerService';
-import { ThrowStmt } from '@angular/compiler';
 
 @Component({
   selector: 'app-comment-card',
@@ -11,14 +9,16 @@ export class CommentCardComponent implements OnInit {
   @Input('comment') comment;
   replies: any;
 
-  constructor(private headerServie:HeaderService) {
+  constructor() {
     
    }
  
-
   getCommentReplies = () => {
     this.replies = this.comment.replies
   }
+
+  
+
   ngOnInit(): void {
     this.getCommentReplies()
   }

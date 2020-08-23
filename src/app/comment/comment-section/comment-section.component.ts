@@ -32,6 +32,10 @@ export class CommentSectionComponent implements OnInit {
   })
   }
 
+  commentCreated(comment) {
+    this.comments.push(comment);
+  }
+
   ngOnInit(): void {
   }
 
