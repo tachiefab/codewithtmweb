@@ -32,9 +32,12 @@
                     </a>
                 </li>
                 <li class="comment-action-item">
-                    <a class="comment-action-reply" href="#">
+                    <span id="reply-span" class="comment-action-reply" (click)="replyClicked()">
                         <i class="fa fa-reply"></i>
-                    </a>
+                    </span>
+                    <!-- <a class="comment-action-reply" href="#" (click)="replyClicked()">
+                        <i class="fa fa-reply"></i>
+                    </a> -->
                 </li>
             </ul>
             <!-- End of Comment Actions -->
@@ -44,7 +47,11 @@
     <!-- End of Comment Content -->
 
 
-    <div class="comment-reply">
+    <div class="comment-reply" *ngIf="isReply">
+        <h3 class="article-widget-title"> Reply to comment </h3>
+        <!-- Comment Form -->
+            <app-comment-reply-form [parentCommentId]="parentCommentId" (replyCommentCreated)="replyCommentCreated($event)"></app-comment-reply-form>
+        <!-- End of Comment Form -->
      
         <ul class="comment-list" *ngFor="let reply of replies">
             <app-reply-comment-card [reply]='reply'></app-reply-comment-card>

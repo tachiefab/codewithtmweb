@@ -5,16 +5,17 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
-  selector: 'app-comment-form',
-  templateUrl: './comment-form.component.html',
-  styleUrls: ['./comment-form.component.css']
+  selector: 'app-comment-reply-form',
+  templateUrl: './comment-reply-form.component.html',
+  styleUrls: ['./comment-reply-form.component.css']
 })
-export class CommentFormComponent implements OnInit {
-  @Output() commentCreated = new EventEmitter();
+export class CommentReplyFormComponent implements OnInit {
+  @Output() replyCommentCreated = new EventEmitter();
   @Input('parentCommentId') parentCommentId;
   commentForm: FormGroup;
   type: string;
   slug:string;
+  parent_id:number;
   private req: any;
   private routeSub:any;
 
@@ -34,18 +35,19 @@ export class CommentFormComponent implements OnInit {
   get f() {
      return this.commentForm.controls; 
     }
-  
-  createNewComment = () => {
+ 
+  replyComment = () => {
     this.type = "post";
     this.routeSub = this.route.params.subscribe(params => {
       this.slug = params['slug']
       this.req = this.commentService.comment(  {
         type:this.type, 
         slug:this.slug, 
+        parent_id: this.parentCommentId,
         content: this.f.content.value
       }).subscribe(data=>{
-           this.commentCreated.emit(data)
-          //  clear comment inputs
+           this.replyCommentCreated.emit(data)
+          //clear comment inputs
            this.clearCommentFormInputs();
       })
   })

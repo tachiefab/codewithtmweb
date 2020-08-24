@@ -33,7 +33,7 @@ export class CommentSectionComponent implements OnInit {
   }
 
   commentCreated(comment) {
-    this.comments.push(comment);
+    this.comments.unshift(comment);
   }
 
   ngOnInit(): void {

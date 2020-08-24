@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { CommentRoutingModule } from './comment-routing.module';
 import { CommentFormComponent } from './comment-form/comment-form.component';
+import { CommentReplyFormComponent } from './comment-reply-form/comment-reply-form.component';
 import { CommentCardComponent } from './comment-card/comment-card.component';
 import { ReplyCommentCardComponent } from './reply-comment-card/reply-comment-card.component';
 import { CommentThreadComponent } from './comment-thread/comment-thread.component';
@@ -12,9 +13,11 @@ import { SharedModule } from '../shared/shared.module';
 
 
 
+
 @NgModule({
   declarations: [
             CommentFormComponent, 
+            CommentReplyFormComponent,
             CommentCardComponent, 
             ReplyCommentCardComponent, 
             CommentThreadComponent, 

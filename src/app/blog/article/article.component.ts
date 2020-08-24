@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { BlogService } from './../../core/services/blog/blog.service';
 import { HeaderService } from 'src/app/core/services/blog/headerService';
+import { AuthUserService } from 'src/app/shared/utility/authUser.service';
 
 @Component({
   selector: 'app-article',
@@ -20,6 +21,7 @@ export class ArticleComponent implements OnInit {
   sideBar: boolean = true;
 
   constructor(
+            private authUserService:AuthUserService,
             private route: ActivatedRoute, 
             private blogService:BlogService, 
             private headerService: HeaderService
