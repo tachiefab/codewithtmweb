@@ -1,16 +1,19 @@
 <!-- <form action="#" class="comment-form"> -->
 <form action="#" class="comment-form" [formGroup]="commentForm" (ngSubmit)="createNewComment()">
     <div class="row">
-        <!-- <div class="col-md-6" >
+        <div class="col-md-6" *ngIf="!isLoggedIn">
             <ul class="comment-form-list">
                 <li class="comment-form-list-item">
-                    <input type="text" class="form-control" placeholder="Name"> </li>
+                    <input type="text" class="form-control" placeholder="Name" formControlName="name" required>
+                 </li>
                 <li class="comment-form-list-item">
-                    <input type="text" class="form-control" placeholder="Email"> </li>
+                    <input type="text" class="form-control" placeholder="Email" formControlName="email" required>
+                 </li>
                 <li class="comment-form-list-item">
-                    <input type="text" class="form-control" placeholder="Website"> </li>
+                    <input type="text" class="form-control" placeholder="Website" formControlName="website" required>
+                 </li>
             </ul>
-        </div> -->
+        </div>
         <div class="col-md-6">
             <ul class="comment-form-list">
                 <li class="comment-form-list-item">

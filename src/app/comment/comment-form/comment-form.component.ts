@@ -12,6 +12,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class CommentFormComponent implements OnInit {
   @Output() commentCreated = new EventEmitter();
   @Input('parentCommentId') parentCommentId;
+  isLoggedIn: boolean = false;
   commentForm: FormGroup;
   type: string;
   slug:string;
@@ -29,6 +30,12 @@ export class CommentFormComponent implements OnInit {
   ngOnInit() {
     //  clear comment inputs
     this.clearCommentFormInputs();
+
+    const token = this.authService.isLoggedIn();
+    if (token) {
+      this.isLoggedIn = token;
+      // this.router.navigate(['/products/create']);
+    }
   }
 
   get f() {
@@ -42,7 +49,10 @@ export class CommentFormComponent implements OnInit {
       this.req = this.commentService.comment(  {
         type:this.type, 
         slug:this.slug, 
-        content: this.f.content.value
+        content: this.f.content.value,
+        name: this.f.name.value,
+        email: this.f.email.value,
+        website: this.f.website.value
       }).subscribe(data=>{
            this.commentCreated.emit(data)
           //  clear comment inputs
@@ -53,7 +63,10 @@ export class CommentFormComponent implements OnInit {
 
   clearCommentFormInputs = () => {
     this.commentForm = this.formBuilder.group({
-      content: ['']
+      content: [''],
+      name: [''],
+      email: [''],
+      website: ['']
     });
   }
 

@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { CookieService } from 'ngx-cookie-service';
 import { Observable } from 'rxjs';
 import { environment } from './../../../../environments/environment';
 
@@ -10,43 +9,28 @@ import { environment } from './../../../../environments/environment';
 export class BlogService {
 
   baseUrl = environment.baseUrl;
-  
-  httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-  // httpHeaders = new HttpHeaders({ 'Content-Type': 'application/json','No-Auth':'False' });
 
-  constructor(
-    private httpClient: HttpClient,
-    private cookieService: CookieService
-  ) { }
-
+  constructor(private http: HttpClient) { }
 
   getAll(slug): Observable<any> {
-    return this.httpClient.get(this.baseUrl + 'posts' + slug,
-    	{headers: this.httpHeaders});
+    return this.http.get(this.baseUrl + 'posts' + slug);
   }
 
    getOne(slug): Observable<any> {
-    return this.httpClient.get(this.baseUrl + 'posts/' + slug +'/',
-    {headers: this.httpHeaders});
+    return this.http.get(this.baseUrl + 'posts/' + slug +'/');
   }
 
+  LikeOne(slug): Observable<any> {
+    return this.http.get(this.baseUrl + 'posts/' + slug +'/like/');
+  }
+
+
   getItemTags(slug): Observable<any> {
-    return this.httpClient.get(this.baseUrl + 'tags/?post_slug=' + slug,
-    {headers: this.httpHeaders});
+    return this.http.get(this.baseUrl + 'tags/?post_slug=' + slug);
   }
 
   getRelated(slug): Observable<any> {
-    return this.httpClient.get(this.baseUrl + 'posts/related/?post_slug=' + slug, 
-    	{headers: this.httpHeaders});
+    return this.http.get(this.baseUrl + 'posts/related/?post_slug=' + slug);
   }
-
-  getAuthHeaders() {
-    const token = this.cookieService.get('codewithtm-token');
-    return new HttpHeaders({
-      'Content-Type': 'application/json',
-      Authorization: `JWT ${token}`
-    });
-  }
-
 
 }

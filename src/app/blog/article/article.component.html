@@ -24,8 +24,11 @@
         <li>
             <span class="article-meta-views article-meta-item">{{ article.view_count }}</span>
         </li>
-        <li>
-            <span class="article-meta-likes article-meta-item">{{ article.likes_count }}</span>
+        <li class="comment-action-item">
+            <span id="article-like" class="comment-action-like" [ngClass]="{'comment-action-liked': article.did_like}" (click)="likeToggle()">
+                <i class="fa fa-heart-o"></i>
+                {{ likes_count }}
+            </span>
         </li>
         <li>
             <span class="article-meta-comments article-meta-item">

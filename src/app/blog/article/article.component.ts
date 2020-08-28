@@ -13,6 +13,8 @@ export class ArticleComponent implements OnInit {
 	private req: any;
   private routeSub:any;
   article: any = {};
+  likedClass:string;
+  likes_count:number;
   tagList : any;
   relatedArticles: any;
   slug:string;
@@ -36,6 +38,7 @@ export class ArticleComponent implements OnInit {
       this.slug = params['slug']
       this.req = this.blogService.getOne(this.slug).subscribe(data=>{
         this.article = data as any
+        this.likes_count = this.article.likes_count
       })
   })
   }
@@ -57,6 +60,23 @@ export class ArticleComponent implements OnInit {
         
       })
   })
+  }
+
+  likeToggle = () => {
+    this.routeSub = this.route.params.subscribe(params => {
+      this.slug = params['slug']
+      this.req = this.blogService.LikeOne(this.slug).subscribe(data=>{
+        this.likes_count = data.likes_count;
+        this.article.did_like = !this.article.did_like;
+      })
+  })
+  }
+
+  addLikedClass = () => {
+          if (this.article.did_like == true){
+            this.likedClass = 'comment-action-liked';
+            return this.likedClass
+          }
   }
 
   ngOnInit(): void {
