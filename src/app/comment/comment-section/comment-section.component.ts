@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { CommentService } from './../../core/services/comment/comment.service';
+import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 @Component({
   selector: 'app-comment-section',
@@ -18,7 +19,8 @@ export class CommentSectionComponent implements OnInit {
 
   constructor(
             private route: ActivatedRoute, 
-            private commentService:CommentService
+            private commentService:CommentService,
+            private headerService: HeaderService
             ){
     this.getArticleComments();
    }
@@ -30,6 +32,10 @@ export class CommentSectionComponent implements OnInit {
       this.comments = data.results as any
       })
   })
+  }
+
+  articleCommentCount(commentCount) {
+    this.headerService.sendCommentCount(commentCount);
   }
 
   commentCreated(comment) {

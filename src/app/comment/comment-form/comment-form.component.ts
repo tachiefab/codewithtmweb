@@ -1,3 +1,4 @@
+import { BlogService } from './../../core/services/blog/blog.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { CommentService } from 'src/app/core/services/comment/comment.service';
@@ -11,6 +12,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class CommentFormComponent implements OnInit {
   @Output() commentCreated = new EventEmitter();
+  @Output() articleCommentCount = new EventEmitter();
   @Input('parentCommentId') parentCommentId;
   isLoggedIn: boolean = false;
   commentForm: FormGroup;
@@ -21,6 +23,7 @@ export class CommentFormComponent implements OnInit {
 
   constructor(
     private authService:AuthService,
+    private blogService:BlogService,
     private commentService:CommentService,
     private formBuilder: FormBuilder, 
     private router: Router,
@@ -54,9 +57,13 @@ export class CommentFormComponent implements OnInit {
         email: this.f.email.value,
         website: this.f.website.value
       }).subscribe(data=>{
-           this.commentCreated.emit(data)
+           this.commentCreated.emit(data);
+            // getting article from database
+           this.req = this.blogService.getOne(this.slug).subscribe(data=>{
+            this.articleCommentCount.emit(data.comment_count);
+          })
           //  clear comment inputs
-           this.clearCommentFormInputs();
+          this.clearCommentFormInputs();
       })
   })
   }

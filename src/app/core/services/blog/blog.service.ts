@@ -24,7 +24,6 @@ export class BlogService {
     return this.http.get(this.baseUrl + 'posts/' + slug +'/like/');
   }
 
-
   getItemTags(slug): Observable<any> {
     return this.http.get(this.baseUrl + 'tags/?post_slug=' + slug);
   }

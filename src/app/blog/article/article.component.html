@@ -32,7 +32,7 @@
         </li>
         <li>
             <span class="article-meta-comments article-meta-item">
-                <a href="#" class="js-scroll-to" data-target="#article-comments" data-speed="600">{{ article.comment_count }}</a>
+                <a href="#" class="js-scroll-to" data-target="#article-comments" data-speed="600">{{ commentCount.content }}</a>
             </span>
         </li>
     </ul>
@@ -64,8 +64,8 @@
     <!-- End of Article Navigation -->
     <!-- Article Widget Comments -->
     <div class="article-widget">
-        <h3 class="article-widget-title"> Comments ({{ article.comment_count }}) </h3>
-        <app-comment-section></app-comment-section>
+        <h3 class="article-widget-title"> Comments ({{ commentCount.content }}) </h3>
+        <app-comment-section ></app-comment-section>
     </div>
     <!-- End of Article Widget Comments -->
     <!-- Article Widget Related Article -->

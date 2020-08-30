@@ -15,7 +15,8 @@
                 <!-- End of Comment User Name -->
                 <!-- Comment Meta -->
                 <ul class="comment-meta">
-                    <li class="comment-likes">11 likes</li>
+                    <li class="comment-likes">{{ commentReplyCount }}</li>
+                    <li class="comment-likes">{{ likes_count }} likes</li>
                     <li class="comment-date">{{ comment.date_display }}</li>
                 </ul>
                 <!-- End of Comment Meta -->
@@ -27,17 +28,15 @@
             <!-- Comment Actions -->
             <ul class="comment-actions">
                 <li class="comment-action-item">
-                    <a class="comment-action-like comment-action-liked" href="#">
+                    <span id="comment-like" class="comment-action-like" [ngClass]="{'comment-action-liked': comment.did_like}" (click)="likeToggle()">
                         <i class="fa fa-heart-o"></i>
-                    </a>
+                        {{ likes_count }}
+                    </span>
                 </li>
                 <li class="comment-action-item">
                     <span id="reply-span" class="comment-action-reply" (click)="replyClicked()">
                         <i class="fa fa-reply"></i>
                     </span>
-                    <!-- <a class="comment-action-reply" href="#" (click)="replyClicked()">
-                        <i class="fa fa-reply"></i>
-                    </a> -->
                 </li>
             </ul>
             <!-- End of Comment Actions -->

@@ -30,6 +30,9 @@ export class HeaderService {
     private isMainPage = new BehaviorSubject<Message>(new Message({}));
     isMainPageCast = this.isMainPage.asObservable();
 
+    private commentCount = new BehaviorSubject<Message>(new Message({}));
+    commentCountCast = this.commentCount.asObservable();
+
     constructor() { }
 
     sendHeaderInfo(content: any) {
@@ -50,6 +53,10 @@ export class HeaderService {
 
     sendisMainPage(content: any) {
         this.isMainPage.next(new Message(content));
+    }
+
+    sendCommentCount(content: any) {
+        this.commentCount.next(new Message(content));
     }
 
 }

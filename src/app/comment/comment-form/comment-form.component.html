@@ -1,4 +1,3 @@
-<!-- <form action="#" class="comment-form"> -->
 <form action="#" class="comment-form" [formGroup]="commentForm" (ngSubmit)="createNewComment()">
     <div class="row">
         <div class="col-md-6" *ngIf="!isLoggedIn">

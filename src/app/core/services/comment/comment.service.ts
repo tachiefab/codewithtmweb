@@ -11,21 +11,25 @@ export class CommentService {
   baseUrl = environment.baseUrl;
 
   constructor(
-    private httpClient: HttpClient,
+    private http: HttpClient,
     private cookieService: CookieService
   ) { }
 
   getAll(slug): Observable<any> {
-    return this.httpClient.get(this.baseUrl + "comments/?slug=" + slug );
+    return this.http.get(this.baseUrl + "comments/?slug=" + slug );
   }
 
    getOne(slug): Observable<any> {
-    return this.httpClient.get(this.baseUrl + 'posts/' + slug +'/');
+    return this.http.get(this.baseUrl + 'posts/' + slug +'/');
+  }
+
+  LikeOne(id): Observable<any> {
+    return this.http.get(this.baseUrl + 'comments/' + id +'/like/');
   }
 
   comment = (commentData) => {
     const body = JSON.stringify(commentData);
-    return this.httpClient.post(`${this.baseUrl}comments/create/`, body
+    return this.http.post(`${this.baseUrl}comments/create/`, body
     );
   }
 
