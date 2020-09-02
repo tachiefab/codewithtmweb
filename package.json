@@ -22,8 +22,6 @@
     "font-awesome": "^4.7.0",
     "jquery": "^3.5.1",
     "ngx-cookie-service": "^3.0.4",
-    "ngx-infinite-scroll": "^9.0.0",
-    "ngx-spinner": "^10.0.1",
     "rxjs": "^6.5.5",
     "tslib": "^1.13.0",
     "zone.js": "~0.10.2"

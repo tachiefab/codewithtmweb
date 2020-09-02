@@ -17,6 +17,7 @@ import { LogoComponent } from './logo/logo.component';
   ],
   imports: [
     CommonModule,
+    NgModule,
     SharedRoutingModule
   ],
  exports: [

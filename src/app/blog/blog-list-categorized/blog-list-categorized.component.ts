@@ -14,6 +14,7 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 export class BlogListCategorizedComponent implements OnInit {
   private req: any;
   private routeSub:any;
+  nextUrl:string;
   slug:string;
   postList : any;
   headerInfo : any;
@@ -36,10 +37,43 @@ export class BlogListCategorizedComponent implements OnInit {
       this.slug = params['slug']
       this.req = this.blogService.getAll('/?category=' + this.slug).subscribe(data=>{
         this.postList = data.results;
-        console.log(this.postList)
+        this.nextUrl = data.next;
+        // console.log(this.postList)
       })
   })
   }
+
+  getNextPosts = (url) => {
+    this.blogService.getNext(url).subscribe(
+      data => {
+        // add newly fetched posts to the existing post
+        this.postList = this.postList.concat(data.results);
+        this.nextUrl = data.next;
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );
+  }
+
+  //  getPosts = () => {
+  //   this.blogService.getAll('/').subscribe(
+  //     data => {
+  //       this.postList = data.results;
+  //       this.nextUrl = data.next;
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
+
+    loadMore() {
+      if (this.nextUrl) {
+        this.getNextPosts(this.nextUrl);
+       }
+      }
 
   ngOnInit(): void {
     this.req = this.logInternalService.getBlogListHeader().subscribe(data=>{

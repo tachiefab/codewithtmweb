@@ -26,6 +26,7 @@ import { HeaderBackComponent } from './header-back/header-back.component';
               ],
   imports: [
     CommonModule,
+    NgModule,
     BlockRoutingModule,
     SharedModule
   ],

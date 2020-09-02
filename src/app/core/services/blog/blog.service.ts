@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { environment } from './../../../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +12,11 @@ export class BlogService {
 
   constructor(private http: HttpClient) { }
 
+  getNext(url): Observable<any> {
+    return this.http.get(url);
+  }
+
+  
   getAll(slug): Observable<any> {
     return this.http.get(this.baseUrl + 'posts' + slug);
   }

@@ -15,6 +15,10 @@ export class CommentService {
     private cookieService: CookieService
   ) { }
 
+  getNext(url): Observable<any> {
+    return this.http.get(url);
+  }
+
   getAll(slug): Observable<any> {
     return this.http.get(this.baseUrl + "comments/?slug=" + slug );
   }

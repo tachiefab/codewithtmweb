@@ -12,6 +12,7 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 export class CommentSectionComponent implements OnInit {
   private req: any;
   private routeSub:any;
+   nextUrl:string;
   comments: any;
   relatedArticles: any;
   slug:string;
@@ -29,9 +30,24 @@ export class CommentSectionComponent implements OnInit {
     this.routeSub = this.route.params.subscribe(params => {
       this.slug = params['slug']
       this.req = this.commentService.getAll(this.slug).subscribe(data=>{
-      this.comments = data.results as any
+      this.comments = data.results;
+      this.nextUrl = data.next;
       })
   })
+  }
+
+  getNextPosts = (url) => {
+    this.commentService.getNext(url).subscribe(
+      data => {
+        // add newly fetched posts to the existing post
+        this.comments = this.comments.concat(data.results);
+        this.nextUrl = data.next;
+        
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
   articleCommentCount(commentCount) {
@@ -41,6 +57,12 @@ export class CommentSectionComponent implements OnInit {
   commentCreated(comment) {
     this.comments.unshift(comment);
   }
+
+  loadMore() {
+    if (this.nextUrl) {
+      this.getNextPosts(this.nextUrl);
+     }
+    }
 
   ngOnInit(): void {
   }

@@ -1,4 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +15,8 @@ import { CoreModule } from './core/core.module';
 import { FaqModule } from './faq/faq.module';
 import { NotfoundModule } from './notfound/notfound.module';
 import { SharedModule } from './shared/shared.module';
+import { CommonModule } from '@angular/common';
+import { UserModule } from './user/user.module';
 
 
 @NgModule({
@@ -22,8 +25,13 @@ import { SharedModule } from './shared/shared.module';
   ],
   imports: [
     BrowserModule,
+   CommonModule,
+    NgModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+    // local modules
+    SharedModule,
     AuthModule,
     AuthorModule,
     BlogModule,
@@ -32,7 +40,8 @@ import { SharedModule } from './shared/shared.module';
     CoreModule,
     FaqModule,
     NotfoundModule,
-    SharedModule
+    UserModule
+  
   ],
   bootstrap: [AppComponent]
 })

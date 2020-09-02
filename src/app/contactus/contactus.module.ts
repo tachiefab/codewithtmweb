@@ -14,6 +14,7 @@ import { ContactCardComponent } from './contact-card/contact-card.component';
   declarations: [ContactPageComponent, ContactFormComponent, ContactCardComponent],
   imports: [
     CommonModule,
+    NgModule,
     ContactusRoutingModule,
     SharedModule,
     ReactiveFormsModule

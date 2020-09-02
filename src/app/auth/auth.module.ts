@@ -37,6 +37,7 @@ import { NewPasswordRedirectComponentComponent } from './new-password-redirect-c
           ],
   imports: [
     CommonModule,
+    NgModule,
     RouterModule,
     HttpClientModule,
     ReactiveFormsModule,

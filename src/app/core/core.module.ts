@@ -9,6 +9,7 @@ import { CoreRoutingModule } from './core-routing.module';
   declarations: [],
   imports: [
     CommonModule,
+    NgModule,
     CoreRoutingModule,
     SharedModule
   ]  

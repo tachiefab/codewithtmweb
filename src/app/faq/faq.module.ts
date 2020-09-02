@@ -21,6 +21,7 @@ import { FaqArticleComponent } from './faq-article/faq-article.component';
               ],
   imports: [
     CommonModule,
+    NgModule,
     FaqRoutingModule,
     SharedModule
   ]

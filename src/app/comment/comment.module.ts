@@ -25,6 +25,7 @@ import { SharedModule } from '../shared/shared.module';
           ],
   imports: [
     CommonModule,
+    NgModule,
     CommentRoutingModule,
     SharedModule,
     ReactiveFormsModule

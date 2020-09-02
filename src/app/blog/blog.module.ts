@@ -25,9 +25,10 @@ import { SocialShareComponent } from './social-share/social-share.component';
               ],
   imports: [
     CommonModule,
+    NgModule,
     BlogRoutingModule,
     SharedModule,
-    CommentModule
+    CommentModule,
   ]
 })
 export class BlogModule { }
