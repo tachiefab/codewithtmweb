@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AuthorRoutingModule } from './author-routing.module';
 import { AuthorPageComponent } from './author-page/author-page.component';
-import { SharedModule } from './../shared/shared.module';
+import { SharedModule } from '../shared/SharedModule';
 
 
 
@@ -11,7 +11,6 @@ import { SharedModule } from './../shared/shared.module';
   declarations: [AuthorPageComponent],
   imports: [
     CommonModule,
-    NgModule,
     AuthorRoutingModule,
     SharedModule
   ]

@@ -19,7 +19,6 @@ import { NotificationCardComponent } from './notification-card/notification-card
       ],
   imports: [
     CommonModule,
-    NgModule,
     UserRoutingModule
   ]
 })

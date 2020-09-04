@@ -9,7 +9,7 @@ import { CommentCardComponent } from './comment-card/comment-card.component';
 import { ReplyCommentCardComponent } from './reply-comment-card/reply-comment-card.component';
 import { CommentThreadComponent } from './comment-thread/comment-thread.component';
 import { CommentSectionComponent } from './comment-section/comment-section.component';
-import { SharedModule } from '../shared/shared.module';
+import { SharedModule } from '../shared/SharedModule';
 
 
 
@@ -25,7 +25,6 @@ import { SharedModule } from '../shared/shared.module';
           ],
   imports: [
     CommonModule,
-    NgModule,
     CommentRoutingModule,
     SharedModule,
     ReactiveFormsModule

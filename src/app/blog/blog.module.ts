@@ -8,9 +8,9 @@ import { BlogListCategorizedComponent } from './blog-list-categorized/blog-list-
 import { BlogListTaggedComponent } from './blog-list-tagged/blog-list-tagged.component';
 import { ArticleComponent } from './article/article.component';
 import { PostCardComponent } from './post-card/post-card.component';
-import { SharedModule } from './../shared/shared.module';
 import { ArticleRelatedCardComponent } from './article-related-card/article-related-card.component';
 import { SocialShareComponent } from './social-share/social-share.component';
+import { SharedModule } from '../shared/SharedModule';
 
 
 @NgModule({
@@ -25,7 +25,6 @@ import { SocialShareComponent } from './social-share/social-share.component';
               ],
   imports: [
     CommonModule,
-    NgModule,
     BlogRoutingModule,
     SharedModule,
     CommentModule,

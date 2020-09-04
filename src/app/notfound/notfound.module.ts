@@ -9,7 +9,6 @@ import { NotfoundPageComponent } from './notfound-page/notfound-page.component';
   declarations: [NotfoundPageComponent],
   imports: [
     CommonModule,
-    NgModule,
     NotfoundRoutingModule
   ]
 })

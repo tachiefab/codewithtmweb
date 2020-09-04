@@ -1,13 +1,14 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { SharedModule } from './../shared/shared.module';
+// import { SharedModule } from './../shared/shared.module';
 import { FaqRoutingModule } from './faq-routing.module';
 import { FaqPageComponent } from './faq-page/faq-page.component';
 import { FaqSearchComponent } from './faq-search/faq-search.component';
 import { FaqDropdownCardComponent } from './faq-dropdown-card/faq-dropdown-card.component';
 import { FaqCategoryCardComponent } from './faq-category-card/faq-category-card.component';
 import { FaqArticleComponent } from './faq-article/faq-article.component';
+import { SharedModule } from '../shared/SharedModule';
 
 
 
@@ -21,7 +22,6 @@ import { FaqArticleComponent } from './faq-article/faq-article.component';
               ],
   imports: [
     CommonModule,
-    NgModule,
     FaqRoutingModule,
     SharedModule
   ]
