@@ -33,6 +33,9 @@ export class HeaderService {
     private commentCount = new BehaviorSubject<Message>(new Message({}));
     commentCountCast = this.commentCount.asObservable();
 
+    private hasWhiteTheme = new BehaviorSubject<Message>(new Message({}));
+    hasWhiteThemeCast = this.hasWhiteTheme.asObservable();
+
     constructor() { }
 
     sendHeaderInfo(content: any) {
@@ -57,6 +60,10 @@ export class HeaderService {
 
     sendCommentCount(content: any) {
         this.commentCount.next(new Message(content));
+    }
+
+    sendHasWhiteTheme(content: any) {
+        this.hasWhiteTheme.next(new Message(content));
     }
 
 }

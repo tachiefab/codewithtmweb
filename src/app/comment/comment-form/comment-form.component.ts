@@ -3,7 +3,7 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { CommentService } from 'src/app/core/services/comment/comment.service';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { AuthUserService } from 'src/app/shared/utility/authUser.service';
 
 @Component({
   selector: 'app-comment-form',
@@ -22,7 +22,7 @@ export class CommentFormComponent implements OnInit {
   private routeSub:any;
 
   constructor(
-    private authService:AuthService,
+    private userAuthService:AuthUserService,
     private blogService:BlogService,
     private commentService:CommentService,
     private formBuilder: FormBuilder, 
@@ -34,7 +34,7 @@ export class CommentFormComponent implements OnInit {
     //  clear comment inputs
     this.clearCommentFormInputs();
 
-    const token = this.authService.isLoggedIn();
+    const token = this.userAuthService.isLoggedIn();
     if (token) {
       this.isLoggedIn = token;
       // this.router.navigate(['/products/create']);

@@ -6,6 +6,7 @@ import { NotificationComponent } from './notification/notification.component';
 import { ProfileFormComponent } from './profile-form/profile-form.component';
 import { BlogGridCardComponent } from './blog-grid-card/blog-grid-card.component';
 import { NotificationCardComponent } from './notification-card/notification-card.component';
+import { SharedModule } from '../shared/SharedModule';
 
 
 
@@ -19,7 +20,11 @@ import { NotificationCardComponent } from './notification-card/notification-card
       ],
   imports: [
     CommonModule,
-    UserRoutingModule
+    UserRoutingModule,
+    SharedModule
+  ],
+  exports: [
+    NotificationCardComponent
   ]
 })
 export class UserModule { }

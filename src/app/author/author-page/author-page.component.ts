@@ -17,6 +17,7 @@ export class AuthorPageComponent implements OnInit {
   bootstrapClass = 'header background-2'
   headerBack: boolean = false;
   sideBar: boolean = true;
+  whiteTheme: boolean = true;
 
   constructor(
           private route: ActivatedRoute, 
@@ -39,6 +40,7 @@ export class AuthorPageComponent implements OnInit {
     this.headerService.sendBootstrapClass(this.bootstrapClass);
     this.headerService.sendHeaderBack(this.headerBack);
     this.headerService.sendsideBar(this.sideBar)
+    this.headerService.sendHasWhiteTheme(this.whiteTheme)
   }
 
 }

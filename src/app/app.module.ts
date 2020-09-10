@@ -14,7 +14,6 @@ import { CommentModule } from './comment/comment.module';
 import { CoreModule } from './core/core.module';
 import { FaqModule } from './faq/faq.module';
 import { NotfoundModule } from './notfound/notfound.module';
-// SharedModule
 import { CommonModule } from '@angular/common';
 import { UserModule } from './user/user.module';
 import { SharedModule } from './shared/SharedModule';
@@ -26,7 +25,7 @@ import { SharedModule } from './shared/SharedModule';
   ],
   imports: [
     BrowserModule,
-   CommonModule,
+    CommonModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,

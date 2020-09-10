@@ -19,6 +19,7 @@ export class BlogListComponent implements OnInit {
   headerBack: boolean = true;
   sideBar: boolean = true;
   isMainPage: boolean = true;
+  whiteTheme: boolean = true;
   
   constructor(
           private blogService:BlogService,
@@ -68,6 +69,7 @@ export class BlogListComponent implements OnInit {
       this.headerService.sendBootstrapClass(this.bootstrapClass);
       this.headerService.sendHeaderBack(this.headerBack);
       this.headerService.sendsideBar(this.sideBar)
+      this.headerService.sendHasWhiteTheme(this.whiteTheme)
     })
   }
 

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { HeaderService } from 'src/app/core/services/blog/headerService';
+import { AuthUserService } from './shared/utility/authUser.service';
 
 @Component({
   selector: 'app-root',
@@ -8,13 +9,18 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 })
 export class AppComponent {
   title = 'codewithtmweb';
+ 
 
-  constructor(private headerService:HeaderService) { }
+  constructor(
+    private headerService:HeaderService,
+    ) {}
 
   bootstrapClass:any;
   headerBack:any;
   sideBar:any;
   isMainPage:any;
+  whiteTheme:any;
+  
 
   ngOnInit(): void {
     this.headerService.sendBootstrapClass({});
@@ -28,6 +34,10 @@ export class AppComponent {
 
     this.headerService.sendsideBar({});
     this.headerService.sideBarCast.subscribe(content=> this.sideBar = content);
+
+    this.headerService.sendHasWhiteTheme({});
+    this.headerService.hasWhiteThemeCast.subscribe(content=> this.whiteTheme = content);
+
   }
 
 }

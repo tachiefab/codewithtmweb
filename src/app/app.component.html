@@ -8,7 +8,7 @@
 
  <!-- <div class="preloader js-preloader"><div class="preloader-animation"></div></div> -->
  <!-- End of Preloader -->
- <div class="page js-page">
+ <div class="page js-page" *ngIf="whiteTheme.content">
 
    <!-- Header -->
    <div class="{{ bootstrapClass.content }}" >
@@ -22,8 +22,7 @@
    </div>
    <!-- End of Header Back -->
 
-   <div id="content"  *ngIf="isMainPage.content">
-
+   <div id="content"  *ngIf="isMainPage.content && sideBar.content">
     <!-- container for majority of the project -->
      <div class="container">
        <div class="layout with-right-sidebar js-layout">
@@ -35,7 +34,7 @@
              </div>
            </div>
 
-           <div class="col-md-3 hidden-sm hidden-xs" *ngIf="sideBar.content">
+           <div class="col-md-3 hidden-sm hidden-xs">
                 <app-sidebar></app-sidebar>
            </div>
            
@@ -44,12 +43,37 @@
      </div>
     </div>
 
-    <div id="content"  *ngIf="!isMainPage.content">
-     <!-- container for contact us -->
-     <div class="container">
+    <!-- contact us -->
+  <div id="content"  *ngIf="!isMainPage.content && !sideBar.content">
+    <!-- container for contact us -->
+    <div class="container">
       <router-outlet></router-outlet>
     </div>
-   </div>
+  </div>
+
+  <!-- Profile page and its components -->
+  <div id="content"  *ngIf="!isMainPage.content  && sideBar.content">
+     <div class="container-fluid container-spaced">
+       <div class="layout with-left-sidebar js-layout">
+         <div class="row">
+           <!-- left sidebar -->
+          <div class="col-md-3 hidden-sm hidden-xs">
+            <app-sidebar></app-sidebar>
+       </div>
+       <!-- page contents -->
+           <div class="col-md-9">
+             <div class="main-content">
+                <!-- Page content goes here -->
+                <router-outlet></router-outlet>
+             </div>
+           </div>
+
+         </div>
+       </div>
+     </div>
+    </div>
+
+  
 
    <div id="content">
     <router-outlet></router-outlet>
@@ -64,7 +88,7 @@
 
 
    <!-- Auth pages -->
-   <div class="page js-page login-page"  *ngIf="isMainPage.mallam">
+   <div class="page js-page login-page"  *ngIf="!whiteTheme.content">
 		<div class="login">
 			<div class="login-content">
 				<div class="container">

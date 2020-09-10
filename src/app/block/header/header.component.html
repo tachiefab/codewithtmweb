@@ -18,7 +18,7 @@
             <li>
               <a routerLink="/faq">FAQ</a>
             </li>
-            <li>
+            <li *ngIf="!isLoggedIn">
               <a href="contacts.html">Suscribe</a>
             </li>
             <li>
@@ -27,19 +27,22 @@
             <li>
               <a routerLink="/contact">Contact Us</a>
             </li>
-            <li>
+            <li *ngIf="!isLoggedIn">
               <a routerLink="/auth">Login</a>
             </li>
-            <li>
+            <li *ngIf="isLoggedIn">
+              <a href="javascript: void(0)" (click)="logout()">Logout</a>
+            </li>
+            <li *ngIf="!isLoggedIn">
               <a routerLink="/auth/register">Register</a>
             </li>
             <!-- User Notifications -->
-            <li>
+            <li  *ngIf="isLoggedIn">
               <a href="javascript: void(0)" class="fa fa-bell-o bell-icon small-icon">
                  <span class="menu-label">99+</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <!-- <app-notification-card></app-notification-card> -->
+                <app-notification-card></app-notification-card>
               </ul>
             </li>
           </ul>

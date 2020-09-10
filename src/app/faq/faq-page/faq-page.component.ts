@@ -12,13 +12,13 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 export class FaqPageComponent implements OnInit {
   allFaqList : any;
   faqByCategoryList : any;
-  // categorizedFaqList : any;
   private req: any;
   headerInfo : any;
   bootstrapClass = 'header header-over large'
   headerBack: boolean = true;
   sideBar: boolean = false;
   isMainPage: boolean = false;
+  whiteTheme: boolean = true;
 
   constructor(
     private faqService:FaqService,
@@ -62,6 +62,7 @@ ngOnInit(): void {
     this.headerService.sendBootstrapClass(this.bootstrapClass);
     this.headerService.sendHeaderBack(this.headerBack);
     this.headerService.sendsideBar(this.sideBar)
+    this.headerService.sendHasWhiteTheme(this.whiteTheme)
   })
 }
 

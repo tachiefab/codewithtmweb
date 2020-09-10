@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 @Component({
   selector: 'app-register-page',
@@ -10,12 +11,14 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class RegisterPageComponent implements OnInit {
   registerForm: FormGroup;
+  whiteTheme: boolean = false;
 
   constructor(
+    private route: ActivatedRoute, 
     private authService: AuthService, 
     private formBuilder: FormBuilder, 
+    private headerService: HeaderService,
     private router: Router,
-    private route: ActivatedRoute, 
     ) { }
 
   ngOnInit() {
@@ -25,6 +28,9 @@ export class RegisterPageComponent implements OnInit {
       password: [''],
       password2: ['']
     });
+
+      // sending some conditions to app component
+      this.headerService.sendHasWhiteTheme(this.whiteTheme);
   }
 
   get f() {

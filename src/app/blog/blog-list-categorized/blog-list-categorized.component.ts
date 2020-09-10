@@ -22,6 +22,7 @@ export class BlogListCategorizedComponent implements OnInit {
   headerBack: boolean = true;
   sideBar: boolean = true;
   isMainPage: boolean = true;
+  whiteTheme: boolean = true;
 
   constructor(
     private route: ActivatedRoute, 
@@ -57,18 +58,6 @@ export class BlogListCategorizedComponent implements OnInit {
     );
   }
 
-  //  getPosts = () => {
-  //   this.blogService.getAll('/').subscribe(
-  //     data => {
-  //       this.postList = data.results;
-  //       this.nextUrl = data.next;
-  //     },
-  //     error => {
-  //       console.log(error);
-  //     }
-  //   );
-  // }
-
     loadMore() {
       if (this.nextUrl) {
         this.getNextPosts(this.nextUrl);
@@ -83,6 +72,7 @@ export class BlogListCategorizedComponent implements OnInit {
       this.headerService.sendBootstrapClass(this.bootstrapClass);
       this.headerService.sendHeaderBack(this.headerBack);
       this.headerService.sendsideBar(this.sideBar)
+      this.headerService.sendHasWhiteTheme(this.whiteTheme)
     })
   }
 

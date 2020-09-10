@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
+import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 @Component({
   selector: 'app-new-password-redirect-component',
@@ -10,6 +11,7 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 })
 export class NewPasswordRedirectComponentComponent implements OnInit {
   resetForm: FormGroup;
+  whiteTheme: boolean = false;
   token:string;
   uidb64:string;
   password: string;
@@ -18,10 +20,11 @@ export class NewPasswordRedirectComponentComponent implements OnInit {
 
   
   constructor(
+    private route: ActivatedRoute, 
     private authService: AuthService,
     private formBuilder: FormBuilder,  
+    private headerService: HeaderService,
     private router: Router,
-    private route: ActivatedRoute, 
     ) { 
       this.setNewPassword()
     }
@@ -30,6 +33,9 @@ export class NewPasswordRedirectComponentComponent implements OnInit {
     this.resetForm = this.formBuilder.group({
       password: ['']
     });
+
+       // sending some conditions to app component
+       this.headerService.sendHasWhiteTheme(this.whiteTheme);
   }
 
   get f() {

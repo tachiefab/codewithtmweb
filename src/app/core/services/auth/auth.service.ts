@@ -4,6 +4,7 @@ import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
 import { environment } from './../../../../environments/environment';
 import { Tokens } from './../../../auth/models/tokens';
+import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class AuthService {
   baseUrl = environment.baseUrl;
   private readonly JWT_TOKEN = 'JWT_TOKEN';
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
+  private readonly USERNAME = 'USERNAME';
   private loggedUser: string;
 
   constructor(private http: HttpClient) {}
@@ -57,7 +59,7 @@ export class AuthService {
 
   private doLoginUser(username: string, tokens: Tokens) {
     this.loggedUser = username;
-    this.storeTokens(tokens);
+    this.storeTokens(username, tokens);
 
   }
 
@@ -74,14 +76,16 @@ export class AuthService {
     localStorage.setItem(this.JWT_TOKEN, access);
   }
 
-  private storeTokens(tokens: Tokens) {
+  private storeTokens(username, tokens: Tokens) {
     localStorage.setItem(this.JWT_TOKEN, tokens.access);
     localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
+    localStorage.setItem(this.USERNAME, username);
   }
 
-  private removeTokens() {
+  removeTokens() {
     localStorage.removeItem(this.JWT_TOKEN);
     localStorage.removeItem(this.REFRESH_TOKEN);
+    localStorage.removeItem(this.USERNAME);
   }
 
   register = (authData) => {

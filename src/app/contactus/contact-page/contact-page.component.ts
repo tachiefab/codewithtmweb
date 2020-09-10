@@ -12,8 +12,9 @@ export class ContactPageComponent implements OnInit {
   headerInfo : any;
   bootstrapClass = 'header header-over large'
   headerBack: boolean = true;
-  sideBar: boolean = true;
+  sideBar: boolean = false;
   isMainPage: boolean = false;
+  whiteTheme: boolean = true;
 
   constructor(
             private logInternalService:ContactInternalService, 
@@ -28,7 +29,8 @@ export class ContactPageComponent implements OnInit {
 
       this.headerService.sendBootstrapClass(this.bootstrapClass);
       this.headerService.sendHeaderBack(this.headerBack);
-      // this.headerService.sendsideBar(this.sideBar)
+      this.headerService.sendsideBar(this.sideBar)
+      this.headerService.sendHasWhiteTheme(this.whiteTheme)
     })
   }
 

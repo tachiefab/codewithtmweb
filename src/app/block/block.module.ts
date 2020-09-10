@@ -11,6 +11,8 @@ import { SearchComponent } from './search/search.component';
 import { SmallPostCardComponent } from './small-post-card/small-post-card.component';
 import { TagCardComponent } from './tag-card/tag-card.component';
 import { HeaderBackComponent } from './header-back/header-back.component';
+import { UserModule } from '../user/user.module';
+
 
 
 @NgModule({
@@ -27,7 +29,8 @@ import { HeaderBackComponent } from './header-back/header-back.component';
   imports: [
     CommonModule,
     BlockRoutingModule,
-    SharedModule
+    SharedModule,
+    UserModule
   ],
   exports: [
     HeaderComponent,

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 import { Router } from '@angular/router';
+import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 @Component({
   selector: 'app-reset-password',
@@ -9,12 +10,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./reset-password.component.css']
 })
 export class ResetPasswordComponent implements OnInit {
-
  resetPasswordForm: FormGroup;
+ whiteTheme: boolean = false;
 
   constructor(
     private authService: AuthService, 
     private formBuilder: FormBuilder, 
+    private headerService: HeaderService,
     private router: Router
     ) { }
 
@@ -22,6 +24,9 @@ export class ResetPasswordComponent implements OnInit {
     this.resetPasswordForm = this.formBuilder.group({
       email: ['']
     });
+
+       // sending some conditions to app component
+       this.headerService.sendHasWhiteTheme(this.whiteTheme);
   }
 
   get f() {
