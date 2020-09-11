@@ -11,7 +11,7 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 })
 export class ResetPasswordComponent implements OnInit {
  resetPasswordForm: FormGroup;
- whiteTheme: boolean = false;
+ darkTheme: boolean = true;
 
   constructor(
     private authService: AuthService, 
@@ -26,7 +26,7 @@ export class ResetPasswordComponent implements OnInit {
     });
 
        // sending some conditions to app component
-       this.headerService.sendHasWhiteTheme(this.whiteTheme);
+       this.headerService.sendHasDarkTheme(this.darkTheme);
   }
 
   get f() {

@@ -11,11 +11,13 @@ import { AuthService } from 'src/app/core/services/auth/auth.service';
 export class ProfileComponent implements OnInit {
   postList : any;
   nextUrl:string;
-  bootstrapClass = 'header background-2'
-  headerBack: boolean = false;
-  sideBar: boolean = true;
+  darkTheme: boolean = true;
   username:string;
-  isMainPage: boolean = false;
+  // bootstrapClass = 'header background-2'
+  // headerBack: boolean = false;
+  // sideBar: boolean = true;
+
+  // isMainPage: boolean = false;
 
   constructor(
           private headerService: HeaderService, 
@@ -59,10 +61,11 @@ export class ProfileComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    this.headerService.sendBootstrapClass(this.bootstrapClass);
-    this.headerService.sendHeaderBack(this.headerBack);
-    this.headerService.sendisMainPage(this.isMainPage);
-    this.headerService.sendsideBar(this.sideBar)
+    this.headerService.sendHasDarkTheme(this.darkTheme);
+    // this.headerService.sendBootstrapClass(this.bootstrapClass);
+    // this.headerService.sendHeaderBack(this.headerBack);
+    // this.headerService.sendisMainPage(this.isMainPage);
+    // this.headerService.sendsideBar(this.sideBar)
   }
 
 }

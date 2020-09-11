@@ -15,11 +15,7 @@ export class BlogListComponent implements OnInit {
   postList : any;
   private req: any;
   headerInfo : any;
-  bootstrapClass = 'header header-over large'
-  headerBack: boolean = true;
-  sideBar: boolean = true;
-  isMainPage: boolean = true;
-  whiteTheme: boolean = true;
+  darkTheme: boolean = false;
   
   constructor(
           private blogService:BlogService,
@@ -65,11 +61,7 @@ export class BlogListComponent implements OnInit {
     this.req = this.logInternalService.getBlogListHeader().subscribe(data=>{
       this.headerInfo = data[0];
       this.headerService.sendHeaderInfo(this.headerInfo);
-      this.headerService.sendisMainPage(this.isMainPage);
-      this.headerService.sendBootstrapClass(this.bootstrapClass);
-      this.headerService.sendHeaderBack(this.headerBack);
-      this.headerService.sendsideBar(this.sideBar)
-      this.headerService.sendHasWhiteTheme(this.whiteTheme)
+      this.headerService.sendHasDarkTheme(this.darkTheme);
     })
   }
 

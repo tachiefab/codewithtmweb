@@ -18,10 +18,7 @@ export class ArticleComponent implements OnInit {
   tagList : any;
   relatedArticles: any;
   slug:string;
-  bootstrapClass = 'header background-2'
-  headerBack: boolean = false;
-  sideBar: boolean = true;
-  whiteTheme: boolean = true;
+  darkTheme: boolean = true;
 
   constructor(
             private authUserService:AuthUserService,
@@ -75,10 +72,7 @@ export class ArticleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.headerService.sendBootstrapClass(this.bootstrapClass);
-    this.headerService.sendHeaderBack(this.headerBack);
-    this.headerService.sendsideBar(this.sideBar)
-    this.headerService.sendHasWhiteTheme(this.whiteTheme)
+    this.headerService.sendHasDarkTheme(this.darkTheme);
     // updating comment count when ever a comment is created
     this.headerService.commentCountCast.subscribe(content=> this.commentCount = content);
  

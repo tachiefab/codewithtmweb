@@ -1,15 +1,55 @@
-    <!-- Blog Page -->
-    <div class="blog" *ngFor="let post of postList">
-      <app-post-card [post]="post"></app-post-card>
+ <!-- Header -->
+ <div class="header header-over large" >
+  <app-header></app-header>
 </div>
+<!-- End of Header -->
 
-<!-- End of Blog Page -->
-  <div  style="text-align: center" *ngIf = "nextUrl">
-    <a href="javascript: void(0)" class="button small blue" (click)="loadMore()">Load More</a>
+<!-- Header Back -->
+<div class="header-back header-back-simple header-back-small">
+  <app-header-back></app-header-back>
+</div>
+<!-- End of Header Back -->
+
+
+<div id="content">
+  <!-- container for majority of the project -->
+   <div class="container">
+     <div class="layout with-right-sidebar js-layout">
+       <div class="row">
+         <div class="col-md-9">
+           <div class="main-content">
+
+              <!-- Blog Page -->
+              <div class="blog" *ngFor="let post of postList">
+                  <app-post-card [post]="post"></app-post-card>
+              </div>
+              <!-- End of Blog Page -->
+              <div  style="text-align: center" *ngIf = "nextUrl">
+                  <a href="javascript: void(0)" class="button small blue" (click)="loadMore()">Load More</a>
+              </div>
+              <!-- Alert no more post -->
+              <div *ngIf = "!nextUrl" class="row pb-5" style="text-align: center">
+                  <div class="col-md-12 d-flex justify-content-center">
+                  <div class="text-muted h6 alert alert-secondary p-2">You have reached the end of the page</div>
+                  </div>
+              </div>
+              <!-- End of Blog Page -->
+
+           </div>
+         </div>
+
+         <div class="col-md-3 hidden-sm hidden-xs">
+              <app-sidebar></app-sidebar>
+         </div>
+         
+       </div>
+     </div>
+   </div>
   </div>
-  <!-- Alert no more post -->
-<div *ngIf = "!nextUrl" class="row pb-5" style="text-align: center">
-<div class="col-md-12 d-flex justify-content-center">
-  <div class="text-muted h6 alert alert-secondary p-2">You have reached the end of the page</div>
-</div>
-</div>
+
+   <!-- Footer -->
+   <footer class="js-footer-is-fixed">
+    
+    <app-footer></app-footer>
+</footer>
+<!-- End of Footer -->

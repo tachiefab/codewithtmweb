@@ -14,10 +14,7 @@ export class AuthorPageComponent implements OnInit {
   private routeSub:any;
   author: any;
   id:number;
-  bootstrapClass = 'header background-2'
-  headerBack: boolean = false;
-  sideBar: boolean = true;
-  whiteTheme: boolean = true;
+  darkTheme: boolean = true;
 
   constructor(
           private route: ActivatedRoute, 
@@ -37,10 +34,7 @@ export class AuthorPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.headerService.sendBootstrapClass(this.bootstrapClass);
-    this.headerService.sendHeaderBack(this.headerBack);
-    this.headerService.sendsideBar(this.sideBar)
-    this.headerService.sendHasWhiteTheme(this.whiteTheme)
+    this.headerService.sendHasDarkTheme(this.darkTheme);
   }
 
 }

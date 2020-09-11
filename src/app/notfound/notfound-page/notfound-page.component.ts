@@ -7,16 +7,12 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
   styleUrls: ['./notfound-page.component.css']
 })
 export class NotfoundPageComponent implements OnInit {
-  bootstrapClass = 'js-full-page page-404'
-  headerBack: boolean = false;
-  sideBar: boolean = false;
+  darkTheme: boolean = true;
 
   constructor( private headerService: HeaderService) { }
 
   ngOnInit(): void {
-    this.headerService.sendBootstrapClass(this.bootstrapClass);
-    this.headerService.sendHeaderBack(this.headerBack);
-    this.headerService.sendsideBar(this.sideBar)
+    this.headerService.sendHasDarkTheme(this.darkTheme);
   }
 
 }

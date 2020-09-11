@@ -11,7 +11,7 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 })
 export class NewPasswordRedirectComponentComponent implements OnInit {
   resetForm: FormGroup;
-  whiteTheme: boolean = false;
+  darkTheme: boolean = true;
   token:string;
   uidb64:string;
   password: string;
@@ -35,7 +35,7 @@ export class NewPasswordRedirectComponentComponent implements OnInit {
     });
 
        // sending some conditions to app component
-       this.headerService.sendHasWhiteTheme(this.whiteTheme);
+       this.headerService.sendHasDarkTheme(this.darkTheme);
   }
 
   get f() {

@@ -1,10 +1,45 @@
-<!-- About Us -->
-<article class="article">
+ <!-- Header -->
+ <div class="header background-2" >
+  <app-header></app-header>
+</div>
+<!-- End of Header -->
 
-    <!-- About Us Content -->
-    <div [innerHTML]="about | safe: 'html'">
 
+
+<div id="content">
+    <!-- container for majority of the project -->
+     <div class="container">
+       <div class="layout with-right-sidebar js-layout">
+         <div class="row">
+           <div class="col-md-9">
+             <div class="main-content">
+  
+            <!-- About Us -->
+                <article class="article">
+
+                    <!-- About Us Content -->
+                    <div [innerHTML]="about | safe: 'html'">
+
+                    </div>
+
+                </article>
+            <!-- End of About Us -->
+  
+             </div>
+           </div>
+  
+           <div class="col-md-3 hidden-sm hidden-xs">
+                <app-sidebar></app-sidebar>
+           </div>
+           
+         </div>
+       </div>
+     </div>
     </div>
 
-</article>
-<!-- End of About Us -->
+     <!-- Footer -->
+  <footer class="js-footer-is-fixed">
+    
+    <app-footer></app-footer>
+</footer>
+<!-- End of Footer -->

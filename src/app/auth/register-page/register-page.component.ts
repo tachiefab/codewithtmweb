@@ -11,7 +11,7 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 })
 export class RegisterPageComponent implements OnInit {
   registerForm: FormGroup;
-  whiteTheme: boolean = false;
+  darkTheme: boolean = true;
 
   constructor(
     private route: ActivatedRoute, 
@@ -30,7 +30,7 @@ export class RegisterPageComponent implements OnInit {
     });
 
       // sending some conditions to app component
-      this.headerService.sendHasWhiteTheme(this.whiteTheme);
+      this.headerService.sendHasDarkTheme(this.darkTheme);
   }
 
   get f() {

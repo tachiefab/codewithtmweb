@@ -11,23 +11,23 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
 })
 export class LoginPageComponent implements OnInit {
   loginForm: FormGroup;
-  whiteTheme: boolean = false;
+  darkTheme: boolean = true;
 
   constructor(
     private authService: AuthService, 
     private formBuilder: FormBuilder, 
     private headerService: HeaderService,
     private router: Router
-    ) { }
+    ) {
+  // sending some conditions to app component
+  this.headerService.sendHasDarkTheme(this.darkTheme);
+     }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
       username: [''],
       password: ['']
     });
-
-  // sending some conditions to app component
-  this.headerService.sendHasWhiteTheme(this.whiteTheme);
   }
 
   get f() {
