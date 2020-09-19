@@ -16,7 +16,10 @@ import { FaqModule } from './faq/faq.module';
 import { NotfoundModule } from './notfound/notfound.module';
 import { CommonModule } from '@angular/common';
 import { UserModule } from './user/user.module';
+import { SearchModule } from './search/search.module';
 import { SharedModule } from './shared/SharedModule';
+import { SubscribeModule } from './subscribe/subscribe.module';
+
 
 
 @NgModule({
@@ -30,7 +33,6 @@ import { SharedModule } from './shared/SharedModule';
     HttpClientModule,
     AppRoutingModule,
     // local modules
-    SharedModule,
     AuthModule,
     AuthorModule,
     BlogModule,
@@ -39,7 +41,10 @@ import { SharedModule } from './shared/SharedModule';
     CoreModule,
     FaqModule,
     NotfoundModule,
-    UserModule
+    SearchModule,
+    SharedModule,
+    SubscribeModule,
+    UserModule,
   
   ],
   bootstrap: [AppComponent]

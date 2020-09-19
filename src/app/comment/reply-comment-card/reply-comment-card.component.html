@@ -3,14 +3,14 @@
     <div class="comment-content">
         <!-- Comment User Photo -->
         <div class="comment-user-photo">
-            <img src="{{ reply.user.profile_image }}" class="" alt="user profile photo"> </div>
+            <img src="{{ reply.user_profile_image }}" class="" alt="user profile photo"> </div>
         <!-- End of Comment User Photo -->
         <!-- Comment Body -->
         <div class="comment-body">
             <div class="comment-header">
                 <!-- Comment User Name -->
                 <div class="comment-username">
-                    <a routerLink="/author/{{ reply.user.id }}">{{ reply.user.first_name }} {{ reply.user.last_name }}</a>
+                    <a href="#">{{ reply.comment_user_name }}</a>
                 </div>
                 <!-- End of Comment User Name -->
                 <!-- Comment Meta -->

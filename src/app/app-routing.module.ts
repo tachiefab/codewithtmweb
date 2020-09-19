@@ -47,6 +47,12 @@ const routes: Routes = [
     // canActivate: [AuthGuard] 
   },
 
+  
+  { 
+    path: 'search', 
+    loadChildren: () => import(`./search/search.module`).then(m => m.SearchModule) 
+  },
+
   {
      path: '404', 
      loadChildren: () => import(`./notfound/notfound.module`).then(m => m.NotfoundModule) 

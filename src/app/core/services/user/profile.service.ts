@@ -21,4 +21,9 @@ export class ProfileService {
       return this.http.get(this.baseUrl + "likes/?username=" + username );
     }
 
+    updateProfile = (profileData) => {
+      const body = JSON.stringify(profileData);
+      return this.http.put(`${this.baseUrl}user/profile/update/`, body);
+    }
+
 }

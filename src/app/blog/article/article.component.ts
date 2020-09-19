@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { BlogService } from './../../core/services/blog/blog.service';
 import { HeaderService } from 'src/app/core/services/blog/headerService';
 import { AuthUserService } from 'src/app/shared/utility/authUser.service';
@@ -10,6 +10,7 @@ import { AuthUserService } from 'src/app/shared/utility/authUser.service';
   styleUrls: ['./article.component.css']
 })
 export class ArticleComponent implements OnInit {
+  isLoggedIn: boolean = false;
 	private req: any;
   private routeSub:any;
   article: any = {};
@@ -21,10 +22,11 @@ export class ArticleComponent implements OnInit {
   darkTheme: boolean = true;
 
   constructor(
-            private authUserService:AuthUserService,
             private route: ActivatedRoute, 
             private blogService:BlogService, 
-            private headerService: HeaderService
+            private headerService: HeaderService, 
+            private userAuthService:AuthUserService,
+             private router: Router
             ) { 
     this.getArticle();
     this.getRelatedArticles();
@@ -62,6 +64,9 @@ export class ArticleComponent implements OnInit {
   }
 
   likeToggle = () => {
+     // checking if user is authenticated
+     const token = this.userAuthService.isLoggedIn();
+     if (token) {
     this.routeSub = this.route.params.subscribe(params => {
       this.slug = params['slug']
       this.req = this.blogService.LikeOne(this.slug).subscribe(data=>{
@@ -69,6 +74,9 @@ export class ArticleComponent implements OnInit {
         this.article.did_like = !this.article.did_like;
       })
   })
+}else{
+  this.router.navigate(['/auth']);
+}
   }
 
   ngOnInit(): void {

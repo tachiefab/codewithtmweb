@@ -1,10 +1,9 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
 import { environment } from './../../../../environments/environment';
 import { Tokens } from './../../../auth/models/tokens';
-import { ThrowStmt } from '@angular/compiler';
 
 @Injectable({
   providedIn: 'root'
@@ -15,11 +14,16 @@ export class AuthService {
   private readonly REFRESH_TOKEN = 'REFRESH_TOKEN';
   private readonly USERNAME = 'USERNAME';
   private loggedUser: string;
+  httpBackend = new HttpClient(this.backend);
+  httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
-  constructor(private http: HttpClient) {}
+  constructor(
+            private httpClient: HttpClient, 
+            private backend: HttpBackend
+            ) {}
 
   login(user: { username: string, password: string }): Observable<boolean> {
-    return this.http.post<any>(`${this.baseUrl}auth/jwt/`, user)
+    return this.httpClient.post<any>(`${this.baseUrl}auth/jwt/`, user)
       .pipe(
         tap(tokens => this.doLoginUser(user.username, tokens)),
         mapTo(true),
@@ -30,7 +34,7 @@ export class AuthService {
   }
 
   logout() {
-    return this.http.post<any>(`${this.baseUrl}/logout`, {
+    return this.httpClient.post<any>(`${this.baseUrl}/logout`, {
       'refreshToken': this.getRefreshToken()
     }).pipe(
       tap(() => this.doLogoutUser()),
@@ -46,7 +50,7 @@ export class AuthService {
   }
 
   refreshToken() {
-    return this.http.post<any>(`${this.baseUrl}auth/jwt/refresh/`, {
+    return this.httpClient.post<any>(`${this.baseUrl}auth/jwt/refresh/`, {
       'refresh': this.getRefreshToken()
     }).pipe(tap((tokens: Tokens) => {
       this.storeJwtToken(tokens.access);
@@ -90,21 +94,25 @@ export class AuthService {
 
   register = (authData) => {
     const body = JSON.stringify(authData);
-    return this.http.post(`${this.baseUrl}auth/register/`, body);
+    return this.httpBackend.post(`${this.baseUrl}auth/register/`, body, 
+    {headers: this.httpHeaders});
   }
 
   emailVerification(token): Observable<any> {
-    return this.http.get(this.baseUrl + 'auth/email-verify/?token=' + token);
+    return this.httpBackend.get(this.baseUrl + 'auth/email-verify/?token=' + token, 
+    {headers: this.httpHeaders});
   }
 
   requestPasswordResetEmail = (email) => {
     const body = JSON.stringify(email);
-    return this.http.post(`${this.baseUrl}auth/request-reset-email/`, body);
+    return this.httpBackend.post(`${this.baseUrl}auth/request-reset-email/`, body, 
+    {headers: this.httpHeaders});
   }
 
   resetPassword = (resetData) => {
     const body = JSON.stringify(resetData);
-    return this.http.patch(`${this.baseUrl}auth/password-reset-complete/`, body);
+    return this.httpBackend.patch(`${this.baseUrl}auth/password-reset-complete/`, body, 
+    {headers: this.httpHeaders});
   }
   
 }

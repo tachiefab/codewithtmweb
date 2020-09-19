@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CommentService } from 'src/app/core/services/comment/comment.service';
+import { AuthUserService } from 'src/app/shared/utility/authUser.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-comment-card',
@@ -7,6 +9,7 @@ import { CommentService } from 'src/app/core/services/comment/comment.service';
   styleUrls: ['./comment-card.component.css']
 })
 export class CommentCardComponent implements OnInit {
+  isLoggedIn: boolean = false;
   @Input('comment') comment;
   private req: any;
   likes_count:number;
@@ -17,8 +20,11 @@ export class CommentCardComponent implements OnInit {
   isReply: boolean = false;
   parentCommentId:number;
 
-  constructor(private commentService:CommentService) {
-   }
+  constructor(
+            private commentService:CommentService, 
+            private userAuthService:AuthUserService,
+            private router: Router
+             ) {}
  
   getCommentReplies = () => {
     this.replies = this.comment.replies
@@ -53,10 +59,18 @@ export class CommentCardComponent implements OnInit {
 
   
   likeToggle = () => {
-    this.req = this.commentService.LikeOne(this.comment.id).subscribe(data=>{
-      this.likes_count = data.likes_count;
-      this.comment.did_like = !this.comment.did_like;
-    })
+    // checking if user is authenticated
+    const token = this.userAuthService.isLoggedIn();
+    if (token) {
+      this.isLoggedIn = token;
+      this.req = this.commentService.LikeOne(this.comment.id).subscribe(data=>{
+        this.likes_count = data.likes_count;
+        this.comment.did_like = !this.comment.did_like;
+      })
+    }else{
+      this.router.navigate(['/auth']);
+    }
+    
   }
 
   ngOnInit(): void {

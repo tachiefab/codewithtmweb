@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpBackend  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from './../../../../environments/environment';
 
@@ -8,13 +8,11 @@ import { environment } from './../../../../environments/environment';
 })
 export class FaqService {
   baseUrl = environment.baseUrl;
-	httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-
-  constructor(private httpClient: HttpClient) { }
+  httpBackend = new HttpClient(this.backend);
+  constructor(private backend: HttpBackend) { }
 
   getAll(featuredEndpoint): Observable<any> {
-    return this.httpClient.get(this.baseUrl  + featuredEndpoint, 
-      {headers: this.httpHeaders});
+    return this.httpBackend.get(this.baseUrl  + featuredEndpoint);
   }
 
 }

@@ -13,11 +13,6 @@ export class ProfileComponent implements OnInit {
   nextUrl:string;
   darkTheme: boolean = true;
   username:string;
-  // bootstrapClass = 'header background-2'
-  // headerBack: boolean = false;
-  // sideBar: boolean = true;
-
-  // isMainPage: boolean = false;
 
   constructor(
           private headerService: HeaderService, 
@@ -62,10 +57,6 @@ export class ProfileComponent implements OnInit {
 
   ngOnInit(): void {
     this.headerService.sendHasDarkTheme(this.darkTheme);
-    // this.headerService.sendBootstrapClass(this.bootstrapClass);
-    // this.headerService.sendHeaderBack(this.headerBack);
-    // this.headerService.sendisMainPage(this.isMainPage);
-    // this.headerService.sendsideBar(this.sideBar)
   }
 
 }

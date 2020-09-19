@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpBackend  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
@@ -9,32 +9,33 @@ import { environment } from 'src/environments/environment';
 export class BlogService {
 
   baseUrl = environment.baseUrl;
-
-  constructor(private http: HttpClient) { }
+  httpBackend = new HttpClient(this.backend);
+  
+  constructor(private httpClient: HttpClient, private backend: HttpBackend) { }
 
   getNext(url): Observable<any> {
-    return this.http.get(url);
+    return this.httpBackend.get(url);
   }
 
   
   getAll(slug): Observable<any> {
-    return this.http.get(this.baseUrl + 'posts' + slug);
+    return this.httpBackend.get(this.baseUrl + 'posts' + slug);
   }
 
    getOne(slug): Observable<any> {
-    return this.http.get(this.baseUrl + 'posts/' + slug +'/');
+    return this.httpBackend.get(this.baseUrl + 'posts/' + slug +'/');
   }
 
   LikeOne(slug): Observable<any> {
-    return this.http.get(this.baseUrl + 'posts/' + slug +'/like/');
+    return this.httpClient.get(this.baseUrl + 'posts/' + slug +'/like/');
   }
 
   getItemTags(slug): Observable<any> {
-    return this.http.get(this.baseUrl + 'tags/?post_slug=' + slug);
+    return this.httpBackend.get(this.baseUrl + 'tags/?post_slug=' + slug);
   }
 
   getRelated(slug): Observable<any> {
-    return this.http.get(this.baseUrl + 'posts/related/?post_slug=' + slug);
+    return this.httpBackend.get(this.baseUrl + 'posts/related/?post_slug=' + slug);
   }
 
 }

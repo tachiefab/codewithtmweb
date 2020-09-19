@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpBackend, HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from './../../../environments/environment';
 
@@ -8,13 +8,11 @@ import { environment } from './../../../environments/environment';
 })
 export class TagsService {
   baseUrl = environment.baseUrl;
-	httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
-
-  constructor(private httpClient: HttpClient) { }
+  httpBackend = new HttpClient(this.backend);
+  constructor(private httpClient: HttpClient, private backend: HttpBackend) { }
 
   getAll(): Observable<any> {
-    return this.httpClient.get(this.baseUrl + "tags/", 
-      {headers: this.httpHeaders});
+    return this.httpBackend.get(this.baseUrl + "tags/");
   }
 
 }

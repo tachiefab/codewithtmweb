@@ -21,7 +21,7 @@ export class BlogListCategorizedComponent implements OnInit {
   darkTheme: boolean = true;
 
   constructor(
-    private route: ActivatedRoute, 
+          private route: ActivatedRoute, 
           private blogService:BlogService,
           private logInternalService:BlogInternalService,
           private headerService: HeaderService
