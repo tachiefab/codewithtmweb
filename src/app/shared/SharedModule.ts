@@ -15,6 +15,7 @@ import { BlockModule } from '../block/block.module';
 import { FooterComponent } from './footer/footer.component';
 import { SubscribeComponent } from '../subscribe/subscribe-form/subscribe-form.component';
 import { SearchFormComponent } from '../search/search-form/search-form.component';
+import { NotificationCardComponent } from './notification-card/notification-card.component';
 
 
 @NgModule({
@@ -28,6 +29,7 @@ import { SearchFormComponent } from '../search/search-form/search-form.component
         HeaderBackComponent,
         HeaderComponent, 
         HeaderBackComponent,
+        NotificationCardComponent,
         FooterComponent,
         SubscribeComponent,
         SidebarComponent, 
@@ -36,6 +38,7 @@ import { SearchFormComponent } from '../search/search-form/search-form.component
         CommonModule,
         SharedRoutingModule,
         BlockModule,
+        // NotificationModule,
         ReactiveFormsModule
     ],
     exports: [
@@ -45,7 +48,8 @@ import { SearchFormComponent } from '../search/search-form/search-form.component
         HeaderBackComponent,
         FooterComponent,
         SidebarComponent, 
-        SubscribeComponent
+        SubscribeComponent,
+        NotificationCardComponent
         
     ]
 })

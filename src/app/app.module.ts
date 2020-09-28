@@ -14,6 +14,7 @@ import { CommentModule } from './comment/comment.module';
 import { CoreModule } from './core/core.module';
 import { FaqModule } from './faq/faq.module';
 import { NotfoundModule } from './notfound/notfound.module';
+import { NotificationModule } from './notification/notification.module';
 import { CommonModule } from '@angular/common';
 import { UserModule } from './user/user.module';
 import { SearchModule } from './search/search.module';
@@ -41,6 +42,7 @@ import { SubscribeModule } from './subscribe/subscribe.module';
     CoreModule,
     FaqModule,
     NotfoundModule,
+    NotificationModule,
     SearchModule,
     SharedModule,
     SubscribeModule,

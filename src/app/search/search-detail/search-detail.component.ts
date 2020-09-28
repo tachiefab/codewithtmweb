@@ -16,12 +16,11 @@ export class SearchDetailComponent implements OnInit {
   nextUrl:string;
   postList : any;
   darkTheme: boolean = false;
+  totalSearchResults:number;
 
   constructor(
     private route: ActivatedRoute, 
     private headerService: HeaderService, 
-    // private router: Router,
-    // private formBuilder: FormBuilder,
     private blogService:BlogService
    ) { }
 
@@ -32,18 +31,11 @@ export class SearchDetailComponent implements OnInit {
   }
 
   search = () => {
-
-  //   this.routeSub = this.route.params.subscribe(params=>{
-  //     this.query = params['q']
-  //      this.req = this._video.search(this.query).subscribe(data=>{
-  //         this.videoList = data as [VideoItem];
-  //       })
-  // })
-
     this.routeSub = this.route.params.subscribe(params => {
       this.query = params['q']
       this.req = this.blogService.getAll('/?q=' + this.query).subscribe(data=>{
         this.postList = data.results;
+        this.totalSearchResults = data.count;
         this.nextUrl = data.next;
       })
   })

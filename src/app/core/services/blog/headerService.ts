@@ -24,6 +24,9 @@ export class HeaderService {
     private hasDarkTheme = new BehaviorSubject<Message>(new Message({}));
     hasDarkThemeCast = this.hasDarkTheme.asObservable();
 
+    private postItem = new BehaviorSubject<Message>(new Message({}));
+    postItemCast = this.postItem.asObservable();
+
     constructor() { }
 
     sendHeaderInfo(content: any) {
@@ -37,5 +40,10 @@ export class HeaderService {
     sendHasDarkTheme(content: any) {
         this.hasDarkTheme.next(new Message(content));
     }
+
+    sendPostItem(content: any) {
+        this.postItem.next(new Message(content));
+    }
+
 
 }
