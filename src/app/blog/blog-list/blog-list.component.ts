@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { BlogService } from './../../core/services/blog/blog.service';
 import { BlogInternalService } from './../services/blog-internal.service';
-import { HeaderService } from 'src/app/core/services/blog/headerService';
+import { HeaderService } from '../../core/services/blog/headerService';
 
 
 @Component({

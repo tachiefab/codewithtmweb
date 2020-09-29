@@ -5,6 +5,10 @@ import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
+// Third party modules
+// import { ToastrModule } from 'ngx-toastr';
+import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
+
 // Local imports
 import { AuthModule } from './auth/auth.module';
 import { AuthorModule } from './author/author.module';
@@ -33,6 +37,19 @@ import { SubscribeModule } from './subscribe/subscribe.module';
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
+
+    // third party
+    ToastrModule.forRoot({
+      timeOut: 1000,
+      positionClass: 'toast-bottom-right',
+      preventDuplicates: true,
+      progressBar: true,
+      progressAnimation: 'increasing',
+    }),
+
+    // ToastrModule.forRoot({ positionClass: 'inline' }),
+    ToastContainerModule,
+    
     // local modules
     AuthModule,
     AuthorModule,

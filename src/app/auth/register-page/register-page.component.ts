@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { HeaderService } from 'src/app/core/services/blog/headerService';
+import { ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../core/services/auth/auth.service';
+import { HeaderService } from '../../core/services/blog/headerService';
 
 @Component({
   selector: 'app-register-page',
@@ -19,6 +20,7 @@ export class RegisterPageComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private headerService: HeaderService,
     private router: Router,
+    private toastr: ToastrService
     ) { }
 
   ngOnInit() {

@@ -1,6 +1,9 @@
 import { ProfileService } from './../../core/services/user/profile.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+// third party
+import { ToastrService, ToastContainerDirective } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile-form',
@@ -8,7 +11,10 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./profile-form.component.css']
 })
 export class ProfileFormComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   profileForm: FormGroup;
+  // httpResult: string;
   private req: any;
   countries= [ 
     {"name": "Afghanistan", "code": "AF"}, 
@@ -260,6 +266,7 @@ export class ProfileFormComponent implements OnInit {
     constructor(
       private profileService:ProfileService,
       private formBuilder: FormBuilder, 
+      private toastrService: ToastrService
       ) { 
         this. loadProfileForm();
       }
@@ -278,11 +285,13 @@ export class ProfileFormComponent implements OnInit {
           this.req = this.profileService.updateProfile(
             this.profileForm.value
           ).subscribe(data=>{
-            console.log(data)
+            this.toastrService.success('Profile update', 'Profile updated Successfully');
+            // this.toastrService.success('in div');
           })
      }
 
   ngOnInit(): void {
+    // this.toastrService.overlayContainer = this.toastContainer;
   }
 
 }

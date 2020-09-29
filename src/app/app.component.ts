@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { HeaderService } from 'src/app/core/services/blog/headerService';
-import { AuthUserService } from './shared/utility/authUser.service';
+import { HeaderService } from './core/services/blog/headerService';
 
 @Component({
   selector: 'app-root',
