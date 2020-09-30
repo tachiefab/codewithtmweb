@@ -1,7 +1,9 @@
 import { ContactusService } from './../../core/services/contactus/contactus.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
+
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact-form',
@@ -13,8 +15,9 @@ export class ContactFormComponent implements OnInit {
 
     constructor(
       private formBuilder: FormBuilder, 
-      private router: Router, 
-      private contactusService: ContactusService
+      // private router: Router, 
+      private contactusService: ContactusService,
+      private toastrService: ToastrService
       ) { }
 
       ngOnInit() {
@@ -42,7 +45,8 @@ export class ContactFormComponent implements OnInit {
         )
         .subscribe(success => {
           if (success) {
-            this.router.navigate(['/blog']);
+            this.toastrService.info('Thanks for getting in touch. We will surely get back to you.', 'Message sent successfully');
+            // this.router.navigate(['/blog']);
           }
         });
       }

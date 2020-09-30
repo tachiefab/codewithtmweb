@@ -284,10 +284,16 @@ export class ProfileFormComponent implements OnInit {
      updateProfile = () => {
           this.req = this.profileService.updateProfile(
             this.profileForm.value
-          ).subscribe(data=>{
-            this.toastrService.success('Profile update', 'Profile updated Successfully');
+          ).subscribe(
+            data=>{
+            this.toastrService.success('Profile updated Successfully', 'Profile update');
             // this.toastrService.success('in div');
-          })
+          },
+          error => {
+            // this.loading = false;
+            console.log('error', error);
+          }
+          )
      }
 
   ngOnInit(): void {

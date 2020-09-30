@@ -5,6 +5,8 @@ import { ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { HeaderService } from '../../core/services/blog/headerService';
 
+
+
 @Component({
   selector: 'app-register-page',
   templateUrl: './register-page.component.html',
@@ -20,7 +22,7 @@ export class RegisterPageComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private headerService: HeaderService,
     private router: Router,
-    private toastr: ToastrService
+    private toastrService: ToastrService
     ) { }
 
   ngOnInit() {
@@ -50,7 +52,10 @@ export class RegisterPageComponent implements OnInit {
     )
     .subscribe(success => {
       if (success) {
-        this.router.navigate(['/auth']);
+        this.toastrService.error('Email activation link has been sent into your email.', 'Verify your email');
+        // this.router.navigate(['/auth']);
+      }else{
+        this.toastrService.error('Please check your input and try again.', 'Account registration error.');
       }
     });
   }
