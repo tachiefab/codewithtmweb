@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { ToastrService } from 'ngx-toastr';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 import { AuthService } from '../../core/services/auth/auth.service';
 import { HeaderService } from '../../core/services/blog/headerService';
 
@@ -13,6 +13,8 @@ import { HeaderService } from '../../core/services/blog/headerService';
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   registerForm: FormGroup;
   darkTheme: boolean = true;
 
@@ -35,6 +37,8 @@ export class RegisterPageComponent implements OnInit {
 
       // sending some conditions to app component
       this.headerService.sendHasDarkTheme(this.darkTheme);
+      // toast container
+      this.toastrService.overlayContainer = this.toastContainer;
   }
 
   get f() {

@@ -43,7 +43,6 @@ export class NotificationPageComponent implements OnInit {
         this.notificationList = data.results;
         this.notificationCount = data.count;
         this.nextUrl = data.next;
-        // console.log(this.notificationList)
       },
       error => {
         console.log(error);

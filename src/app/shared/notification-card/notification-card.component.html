@@ -1,6 +1,12 @@
-<li>
-    <a href="#" class="top-text-block">
-    <div class="top-text-heading">You have <b>3 new themes</b> trending</div>
-    <div class="top-text-light">15 minutes ago</div>
+    <a routerLink='/blog/article/{{notification.slug}}' class="top-text-block">
+      <!-- user profile image -->
+      <div class="comment-user-photo">
+        <img src="{{ notification.sender_object.profile_image }}" class="" alt="user profile photo">
+     </div>
+      <div class="top-text-heading">
+        <b>{{ notification.sender_object.first_name }} {{ notification.sender_object.last_name }}</b>
+        {{ notification.verb }} 
+        <b>{{ notification.target }}</b>
+      </div>
+      <div class="top-text-light">{{ notification.timesince }}</div>
     </a> 
-  </li>

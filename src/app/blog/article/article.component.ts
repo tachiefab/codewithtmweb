@@ -83,7 +83,6 @@ export class ArticleComponent implements OnInit {
     this.headerService.sendHasDarkTheme(this.darkTheme);
     // updating comment count when ever a comment is created
     this.headerService.commentCountCast.subscribe(content=> this.commentCount = content);
- 
   }
 
 }

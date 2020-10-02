@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../../core/services/notification/notification.service';
+import { Component, Input, OnInit } from '@angular/core';
+// import { NotificationService } from '../../core/services/notification/notification.service';
 
 @Component({
   selector: 'app-notification-card',
@@ -7,6 +7,7 @@ import { NotificationService } from '../../core/services/notification/notificati
   styleUrls: ['./notification-card.component.css']
 })
 export class NotificationCardComponent implements OnInit {
+  @Input('notification') notification;
 
   constructor() { }
 

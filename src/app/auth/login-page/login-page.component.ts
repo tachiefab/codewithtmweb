@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
@@ -13,6 +13,8 @@ import { ToastrService, ToastContainerDirective } from 'ngx-toastr';
   styleUrls: ['./login-page.component.css']
 })
 export class LoginPageComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   loginForm: FormGroup;
   darkTheme: boolean = true;
 
@@ -32,6 +34,9 @@ export class LoginPageComponent implements OnInit {
       username: [''],
       password: ['']
     });
+
+    // toast container
+    this.toastrService.overlayContainer = this.toastContainer;
   }
 
   get f() {

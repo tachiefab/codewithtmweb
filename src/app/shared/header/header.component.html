@@ -39,10 +39,27 @@
             <!-- User Notifications -->
             <li  *ngIf="isLoggedIn">
               <a href="javascript: void(0)" class="fa fa-bell-o bell-icon small-icon">
-                 <span class="menu-label">99+</span>
+                 <span class="menu-label">{{ notificationCount }}</span>
               </a>
               <ul class="dropdown-menu dropdown-menu-right">
-                <app-notification-card></app-notification-card>
+
+                <!-- user notifications -->
+                <li *ngFor="let notification of notificationList">
+                  <app-notification-card [notification]="notification"></app-notification-card>
+                </li> 
+
+                <!-- show all of users notifications -->
+                <li>
+                  <a routerLink="/notifications">view all</a>
+                </li> 
+
+                <!-- <br> -->
+
+                <li>
+                  <a routerLink="/profile">view profile</a>
+                </li> 
+
+
               </ul>
             </li>
           </ul>

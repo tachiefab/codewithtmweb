@@ -19,7 +19,6 @@ export class AppComponent {
 
   ngOnInit(): void {
     this.headerService.hasDarkThemeCast.subscribe(content=> this.darkTheme = content);
-
   }
 
 }

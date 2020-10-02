@@ -1,6 +1,7 @@
 import { SubscribeService } from './../../core/services/suscribe/subscribe.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-subscribe',
@@ -8,12 +9,15 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./subscribe-form.component.css']
 })
 export class SubscribeComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   subscribeForm: FormGroup;
   private req: any;
 
   constructor(
     private subscribeService:SubscribeService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private toastrService: ToastrService
     ) {}
 
   loadSubscribeForm() {
@@ -26,8 +30,12 @@ subscribe = () => {
   // alert("Thanks for your subscribtion")
   this.req = this.subscribeService.suscribe(
     this.subscribeForm.value
-  ).subscribe(data=>{
-    console.log(data)
+  ).subscribe(
+    data=>{
+      if (data) {
+        this.toastrService.info('Thanks for subscribing to us.', 'Email subscribtion');
+        // this.router.navigate(['/profile']);
+      }
   })
     //  clear subscribe inputs
     this.clearSubscribeFormInputs();
@@ -44,6 +52,9 @@ clearSubscribeFormInputs = () => {
     this. loadSubscribeForm();
     //  clear subscribe inputs
     this.clearSubscribeFormInputs();
+
+    // toast container
+    this.toastrService.overlayContainer = this.toastContainer;
   }
 
 }

@@ -1,9 +1,9 @@
 import { ContactusService } from './../../core/services/contactus/contactus.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
 // import { Router } from '@angular/router';
 
-import { ToastrService } from 'ngx-toastr';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact-form',
@@ -11,6 +11,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   contactUsForm: FormGroup;
 
     constructor(
@@ -27,6 +29,8 @@ export class ContactFormComponent implements OnInit {
           subject: [''],
           message: ['']
         });
+        // toast container
+      this.toastrService.overlayContainer = this.toastContainer;
       }
 
 

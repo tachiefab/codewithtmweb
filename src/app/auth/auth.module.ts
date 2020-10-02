@@ -15,6 +15,9 @@ import { VerifyEmailComponent } from './verify-email/verify-email.component';
 import { NewPasswordRedirectComponentComponent } from './new-password-redirect-component/new-password-redirect-component.component';
 import { SharedModule } from '../shared/SharedModule';
 
+// third party
+import {ToastContainerModule } from 'ngx-toastr';
+
 
 
 
@@ -41,7 +44,8 @@ import { SharedModule } from '../shared/SharedModule';
     HttpClientModule,
     ReactiveFormsModule,
     AuthRoutingModule,
-    SharedModule
+    SharedModule,
+    ToastContainerModule
   ]
 })
 export class AuthModule { }

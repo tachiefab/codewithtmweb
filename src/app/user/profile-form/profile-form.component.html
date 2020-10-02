@@ -1,29 +1,27 @@
-<div toastContainer></div>
-
 <form action="#" class="register-form" [formGroup]="profileForm" (ngSubmit)="updateProfile()">
         <div class="form-group col-md-6">
             <label for="country">First Name</label>
-            <input type="text" class="form-control" placeholder="First Name" formControlName="first_name">
+            <input [(ngModel)]="first_name" type="text" class="form-control" placeholder="First Name" formControlName="first_name">
         </div>
         <div class="form-group col-md-6">
             <label for="country">Last Name</label>
-            <input type="text" class="form-control" placeholder="Last Name" formControlName="last_name">
+            <input [(ngModel)]="last_name" type="email" type="text" class="form-control" placeholder="Last Name" formControlName="last_name">
         </div>
         <div class="form-group col-md-6">
             <label for="country">Email</label>
-            <input type="email" class="form-control" placeholder="Email">
+            <input [(ngModel)]="email" type="email" class="form-control" placeholder="Email" formControlName="email">
         </div>
         <div class="form-group col-md-3">
             <label for="country">Website</label>
-            <input type="text" class="form-control" placeholder="Website" formControlName="website">
+            <input [(ngModel)]="website" type="text" class="form-control" placeholder="Website" formControlName="website">
         </div>
         <div class="form-group col-md-3">
             <label for="country">Phone</label>
-            <input type="text" class="form-control" placeholder="Phone" formControlName="phone">
+            <input [(ngModel)]="phone" type="text" class="form-control" placeholder="Phone" formControlName="phone">
         </div>
         <div class="form-group col-12">
          <label for="country">Country:</label>
-            <select name="status" id="status" class="form-control" formControlName="country">
+            <select [(ngModel)]="country" name="status" id="status" class="form-control" formControlName="country">
                     <option *ngFor="let country of countries" [value]="country.name">
                         {{country.name}}
                     </option>
@@ -33,6 +31,10 @@
             <button type="submit" class="button small blue">
                 Update profile
             </button>
+        </div>
+
+        <!-- Toast success message -->
+        <div class="form-group" toastContainer>
         </div>
         
     </form>

@@ -6,7 +6,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 // Third party modules
-// import { ToastrModule } from 'ngx-toastr';
 import { ToastrModule, ToastContainerModule } from 'ngx-toastr';
 
 // Local imports
@@ -27,6 +26,7 @@ import { SubscribeModule } from './subscribe/subscribe.module';
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent
@@ -34,6 +34,7 @@ import { SubscribeModule } from './subscribe/subscribe.module';
   imports: [
     BrowserModule,
     CommonModule,
+    // FormsModule,
     BrowserAnimationsModule,
     HttpClientModule,
     AppRoutingModule,
@@ -41,7 +42,7 @@ import { SubscribeModule } from './subscribe/subscribe.module';
     // third party
     ToastrModule.forRoot({
       timeOut: 1000,
-      positionClass: 'toast-bottom-right',
+      positionClass: 'inline',
       preventDuplicates: true,
       progressBar: true,
       progressAnimation: 'increasing',

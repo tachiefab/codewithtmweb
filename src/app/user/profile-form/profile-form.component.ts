@@ -14,7 +14,14 @@ export class ProfileFormComponent implements OnInit {
   @ViewChild(ToastContainerDirective, { static: true })
   toastContainer: ToastContainerDirective;
   profileForm: FormGroup;
-  // httpResult: string;
+  first_name:string;
+  last_name:string;
+  // email = "tachiefab311@gmail.com"
+  email:string;
+  website:string;
+  phone:string;
+  country:string;
+  username:string;
   private req: any;
   countries= [ 
     {"name": "Afghanistan", "code": "AF"}, 
@@ -269,6 +276,26 @@ export class ProfileFormComponent implements OnInit {
       private toastrService: ToastrService
       ) { 
         this. loadProfileForm();
+        this.getUserDetails();
+      }
+
+
+      getUserDetails = () => {
+        this.username = localStorage.getItem('USERNAME');
+        this.profileService.getDetail(this.username).subscribe(
+          data => {
+            this.first_name = data.profile.first_name;
+            this.last_name = data.profile.last_name;
+            this.email = data.profile.email;
+            this.website = data.profile.website;
+            this.phone = data.profile.phone;
+            this.country = data.profile.country;
+            // console.log(data)
+          },
+          error => {
+            console.log(error);
+          }
+        );
       }
     
       loadProfileForm() {
@@ -278,6 +305,8 @@ export class ProfileFormComponent implements OnInit {
             phone: ['', Validators.required],
             website: ['', Validators.required],
             country: ['', Validators.required],
+            email: ['', Validators.required],
+
           });
       }
      
@@ -287,17 +316,15 @@ export class ProfileFormComponent implements OnInit {
           ).subscribe(
             data=>{
             this.toastrService.success('Profile updated Successfully', 'Profile update');
-            // this.toastrService.success('in div');
           },
           error => {
-            // this.loading = false;
             console.log('error', error);
           }
           )
      }
 
   ngOnInit(): void {
-    // this.toastrService.overlayContainer = this.toastContainer;
+    this.toastrService.overlayContainer = this.toastContainer;
   }
 
 }
