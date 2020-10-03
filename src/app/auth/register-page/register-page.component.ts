@@ -56,7 +56,7 @@ export class RegisterPageComponent implements OnInit {
     )
     .subscribe(success => {
       if (success) {
-        this.toastrService.error('Email activation link has been sent into your email.', 'Verify your email');
+        this.toastrService.success('Email activation link has been sent into your email.', 'Verify your email');
         // this.router.navigate(['/auth']);
       }else{
         this.toastrService.error('Please check your input and try again.', 'Account registration error.');

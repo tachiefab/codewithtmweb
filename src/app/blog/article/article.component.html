@@ -73,8 +73,12 @@
     <!-- End of Article Content -->
     <!-- Article Navigation -->
     <div class="article-navigation">
-        <a routerLink="/blog/article/{{ article.new_post }}/" class="article-navigation-prev">Older Post</a>
-        <a routerLink="/blog/article/{{ article.older_post }}/" class="article-navigation-next">Newer Post</a>
+        <a routerLink="/blog/article/{{ article.new_post }}/" class="article-navigation-prev" *ngIf="article.new_post">
+            Older Post
+        </a>
+        <a routerLink="/blog/article/{{ article.older_post }}/" class="article-navigation-next" *ngIf="article.older_post">
+            Newer Post
+        </a>
     </div>
     <!-- End of Article Navigation -->
     <!-- Article Widget Comments -->
