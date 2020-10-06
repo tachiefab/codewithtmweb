@@ -37,7 +37,7 @@ getAllFaqs = () => {
 }
 
 getFaqsByCategory = () => {
-  this.faqService.getAll('categories/').subscribe(
+  this.faqService.getAll('categories/faq/').subscribe(
     data => {
       this.faqByCategoryList = data.results;
     },

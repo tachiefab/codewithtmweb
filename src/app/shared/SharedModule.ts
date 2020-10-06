@@ -38,7 +38,6 @@ import { NotificationCardComponent } from './notification-card/notification-card
         CommonModule,
         SharedRoutingModule,
         BlockModule,
-        // NotificationModule,
         ReactiveFormsModule
     ],
     exports: [

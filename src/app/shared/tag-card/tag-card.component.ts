@@ -18,7 +18,6 @@ export class TagCardComponent implements OnInit {
     this.tagsService.getAll().subscribe(
       data => {
         this.tagList = data.results;
-        console.log(this.tagList)
       },
       error => {
         console.log(error);
