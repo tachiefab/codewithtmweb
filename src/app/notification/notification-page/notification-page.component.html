@@ -1,0 +1,63 @@
+ <!-- Header -->
+ <div class="header background-2" >
+    <app-header></app-header>
+  </div>
+  <!-- End of Header -->
+  
+  
+  
+  <div id="content">
+    <!-- container for majority of the project -->
+      <div class="container">
+        <div class="layout with-right-sidebar js-layout">
+          <div class="row">
+  
+            <!-- Left sidebar begins -->
+              <div class="col-md-3 hidden-sm hidden-xs">
+                <app-sidebar></app-sidebar>
+              </div>
+            <!-- Left sidebar  ends -->
+  
+            <div class="col-md-9">
+              <div class="main-content">
+
+                   <!-- Article Widget Comments -->
+    <div class="article-widget">
+        <h3 class="article-widget-title"> Notification({{ notificationCount }}) </h3>
+        <!-- Comments -->
+    <div class="comments" id="article-comments">
+
+        <ul class="comment-list" *ngFor="let notification of notificationList">
+            <app-notification-main-card [notification]='notification'></app-notification-main-card>
+            <!-- <app-comment-card  [comment]='comment'></app-comment-card> -->
+        </ul> 
+
+        <div  style="text-align: center" *ngIf = "nextUrl">
+            <a href="javascript: void(0)" class="button small blue" (click)="loadMore()">Load More</a>
+          </div>
+          <!-- Alert no more post -->
+      <div *ngIf = "!nextUrl" class="row pb-5" style="text-align: center">
+        <div class="col-md-12 d-flex justify-content-center">
+          <div class="text-muted h6 alert alert-secondary p-2">You have reached the end of the comments</div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Comments -->
+        
+    </div>
+    <!-- End of Article Widget Comments -->
+                        
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  
+   <!-- Footer -->
+   <footer class="js-footer-is-fixed">
+      
+    <app-footer></app-footer>
+  </footer>
+  <!-- End of Footer -->

@@ -7,7 +7,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class ProfileService {
-
+  
   baseUrl = environment.baseUrl;
 
   constructor(
@@ -19,6 +19,11 @@ export class ProfileService {
 
     getAll(username): Observable<any> {
       return this.http.get(this.baseUrl + "likes/?username=" + username );
+    }
+
+
+    getDetail(username): Observable<any> {
+      return this.http.get(this.baseUrl + "user/" + username + "/");
     }
 
     updateProfile = (profileData) => {

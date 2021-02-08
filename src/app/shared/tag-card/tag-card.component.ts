@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { TagsService } from './../services/tags.service';
 
@@ -18,7 +19,6 @@ export class TagCardComponent implements OnInit {
     this.tagsService.getAll().subscribe(
       data => {
         this.tagList = data.results;
-        console.log(this.tagList)
       },
       error => {
         console.log(error);

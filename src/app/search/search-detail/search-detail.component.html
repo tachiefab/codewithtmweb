@@ -12,12 +12,25 @@
              <div class="row">
                <div class="col-md-9">
                  <div class="main-content">
+
+              <!-- Search query Info -->
+                <div class="blog">
+                  <h4 class="category-description">
+                    {{ totalSearchResults }} results found for: {{ query }}
+                  </h4>
+              </div>
+              <hr>
+              <!-- End of Search query Info -->
   
                     <!-- Blog Page -->
                     <!-- <div class="blog" *ngFor="let post of postList">
                         <app-post-card [post]="post"></app-post-card>
                     </div> -->
+                    <div class="blog" *ngFor="let post of postList">
+                        <app-search-post-card [post]="post"></app-search-post-card>
+                    </div>
                     <!-- End of Blog Page -->
+                    
                     <div  style="text-align: center" *ngIf = "nextUrl">
                         <a href="javascript: void(0)" class="button small blue" (click)="loadMore()">Load More</a>
                     </div>

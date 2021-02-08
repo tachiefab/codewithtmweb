@@ -2,7 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-// import { SharedModule } from './../shared/shared.module';
+// third party
+import {ToastContainerModule } from 'ngx-toastr';
 
 import { ContactusRoutingModule } from './contactus-routing.module';
 import { ContactPageComponent } from './contact-page/contact-page.component';
@@ -18,7 +19,8 @@ import { SharedModule } from '../shared/SharedModule';
     CommonModule,
     ContactusRoutingModule,
     SharedModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastContainerModule
   ]
 })
 export class ContactusModule { }

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 import { FaqService } from './../../core/services/faq/faq.service';
 import { FaqInternalService } from '../services/faq-internal.service';
@@ -37,7 +38,7 @@ getAllFaqs = () => {
 }
 
 getFaqsByCategory = () => {
-  this.faqService.getAll('categories/').subscribe(
+  this.faqService.getAll('categories/faq/').subscribe(
     data => {
       this.faqByCategoryList = data.results;
     },

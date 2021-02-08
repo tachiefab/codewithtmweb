@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ContactInternalService } from './../services/contact-internal.service';
 import { HeaderService } from 'src/app/core/services/blog/headerService';
 

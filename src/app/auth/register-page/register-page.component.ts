@@ -1,8 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormGroup, FormBuilder, FormControl } from '@angular/forms';
 import { Router, ActivatedRoute } from '@angular/router';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
-import { HeaderService } from 'src/app/core/services/blog/headerService';
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
+import { AuthService } from '../../core/services/auth/auth.service';
+import { HeaderService } from '../../core/services/blog/headerService';
+
+
 
 @Component({
   selector: 'app-register-page',
@@ -10,6 +14,8 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
   styleUrls: ['./register-page.component.css']
 })
 export class RegisterPageComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   registerForm: FormGroup;
   darkTheme: boolean = true;
 
@@ -19,6 +25,7 @@ export class RegisterPageComponent implements OnInit {
     private formBuilder: FormBuilder, 
     private headerService: HeaderService,
     private router: Router,
+    private toastrService: ToastrService
     ) { }
 
   ngOnInit() {
@@ -31,6 +38,8 @@ export class RegisterPageComponent implements OnInit {
 
       // sending some conditions to app component
       this.headerService.sendHasDarkTheme(this.darkTheme);
+      // toast container
+      this.toastrService.overlayContainer = this.toastContainer;
   }
 
   get f() {
@@ -48,7 +57,10 @@ export class RegisterPageComponent implements OnInit {
     )
     .subscribe(success => {
       if (success) {
-        this.router.navigate(['/auth']);
+        this.toastrService.success('Email activation link has been sent into your email.', 'Verify your email');
+        // this.router.navigate(['/auth']);
+      }else{
+        this.toastrService.error('Please check your input and try again.', 'Account registration error.');
       }
     });
   }

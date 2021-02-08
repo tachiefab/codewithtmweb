@@ -1,7 +1,10 @@
 import { ContactusService } from './../../core/services/contactus/contactus.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-import { Router } from '@angular/router';
+// import { Router } from '@angular/router';
+
+import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-contact-form',
@@ -9,12 +12,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./contact-form.component.css']
 })
 export class ContactFormComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   contactUsForm: FormGroup;
 
     constructor(
       private formBuilder: FormBuilder, 
-      private router: Router, 
-      private contactusService: ContactusService
+      // private router: Router, 
+      private contactusService: ContactusService,
+      private toastrService: ToastrService
       ) { }
 
       ngOnInit() {
@@ -24,6 +30,8 @@ export class ContactFormComponent implements OnInit {
           subject: [''],
           message: ['']
         });
+        // toast container
+      this.toastrService.overlayContainer = this.toastContainer;
       }
 
 
@@ -42,7 +50,8 @@ export class ContactFormComponent implements OnInit {
         )
         .subscribe(success => {
           if (success) {
-            this.router.navigate(['/blog']);
+            this.toastrService.info('Thanks for getting in touch. We will surely get back to you.', 'Message sent successfully');
+            // this.router.navigate(['/blog']);
           }
         });
       }

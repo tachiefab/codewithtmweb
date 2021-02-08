@@ -18,9 +18,6 @@
             <li>
               <a routerLink="/faq">FAQ</a>
             </li>
-            <li *ngIf="!isLoggedIn">
-              <a href="contacts.html">Suscribe</a>
-            </li>
             <li>
               <a routerLink="/about">About Us</a>
             </li>
@@ -36,15 +33,33 @@
             <li *ngIf="!isLoggedIn">
               <a routerLink="/auth/register">Register</a>
             </li>
-            <!-- User Notifications -->
-            <li  *ngIf="isLoggedIn">
+     <!-- User Notifications -->
+            <!-- <li  *ngIf="isLoggedIn">
               <a href="javascript: void(0)" class="fa fa-bell-o bell-icon small-icon">
-                 <span class="menu-label">99+</span>
+                 <span class="menu-label">{{ notificationCount }}</span>
               </a>
-              <ul class="dropdown-menu dropdown-menu-right">
-                <app-notification-card></app-notification-card>
+              <ul class="dropdown-menu dropdown-menu-right"> -->
+
+                <!-- user notifications -->
+                <!-- <li *ngFor="let notification of notificationList">
+                  <app-notification-card [notification]="notification"></app-notification-card>
+                </li>  -->
+
+                <!-- show all of users notifications -->
+                <!-- <li>
+                  <a routerLink="/notifications">view all</a>
+                </li>  -->
+
+                <!-- <br> -->
+
+                <!-- <li>
+                  <a routerLink="/profile">view profile</a>
+                </li> 
+
+
               </ul>
-            </li>
+            </li> -->
+      <!-- End of user Notifications -->
           </ul>
         </nav>
         <!-- End of Menu -->

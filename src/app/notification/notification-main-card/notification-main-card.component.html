@@ -1,0 +1,50 @@
+<li class="comment-list-item">
+    <!-- Notification Content -->
+    <div class="comment-content">
+        <!-- Notification User Photo -->
+        <div class="comment-user-photo">
+            <img src="{{ notification.sender_object.profile_image }}" class="" alt="user profile photo">
+         </div>
+        <!-- End of Notification User Photo -->
+        <!-- Notification Body -->
+        <div class="comment-body">
+            <div class="comment-header">
+                <!-- Notification User Name -->
+                <div class="comment-username">
+                    <a routerLink="/author/{{ notification.sender_object.id }}">{{ notification.sender_object.first_name }} {{ notification.sender_object.last_name }}</a>
+                </div>
+                <!-- End of Notification User Name -->
+                <!-- Notification Meta -->
+                <ul class="comment-meta">
+                    <!-- <li class="comment-likes">{{ commentReplyCount }}</li> -->
+                    <li class="comment-date">{{ notification.received_date }}</li>
+                    <li class="comment-likes">{{ notification.status }}</li>
+                </ul>
+                <!-- End of Notification Meta -->
+            </div>
+            <!-- Comment Message -->
+            <p class="comment-message">
+                {{ notification.verb }}
+                <a routerLink='/blog/article/{{notification.slug}}'>{{ notification.target }}</a>
+            </p>
+            <!-- End of Notification Message -->
+            <!-- Notification Actions -->
+            <!-- <ul class="comment-actions">
+                <li class="comment-action-item">
+                    <span id="comment-like" class="comment-action-like" [ngClass]="{'comment-action-liked': comment.did_like}" (click)="likeToggle()">
+                        <i class="fa fa-heart-o"></i>
+                        {{ likes_count }}
+                    </span>
+                </li>
+                <li class="comment-action-item">
+                    <span id="reply-span" class="comment-action-reply" (click)="replyClicked()">
+                        <i class="fa fa-reply"></i>
+                    </span>
+                </li>
+            </ul> -->
+            <!-- End of Notification Actions -->
+        </div>
+        <!-- End of Notification Body -->
+    </div>
+    <!-- End of Notification Content -->
+</li>

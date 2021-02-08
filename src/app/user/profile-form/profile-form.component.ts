@@ -1,6 +1,10 @@
 import { ProfileService } from './../../core/services/user/profile.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+
+// third party
+import { ToastrService, ToastContainerDirective } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile-form',
@@ -8,7 +12,17 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./profile-form.component.css']
 })
 export class ProfileFormComponent implements OnInit {
+  @ViewChild(ToastContainerDirective, { static: true })
+  toastContainer: ToastContainerDirective;
   profileForm: FormGroup;
+  first_name:string;
+  last_name:string;
+  // email = "tachiefab311@gmail.com"
+  email:string;
+  website:string;
+  phone:string;
+  country:string;
+  username:string;
   private req: any;
   countries= [ 
     {"name": "Afghanistan", "code": "AF"}, 
@@ -260,8 +274,29 @@ export class ProfileFormComponent implements OnInit {
     constructor(
       private profileService:ProfileService,
       private formBuilder: FormBuilder, 
+      private toastrService: ToastrService
       ) { 
         this. loadProfileForm();
+        this.getUserDetails();
+      }
+
+
+      getUserDetails = () => {
+        this.username = localStorage.getItem('USERNAME');
+        this.profileService.getDetail(this.username).subscribe(
+          data => {
+            this.first_name = data.profile.first_name;
+            this.last_name = data.profile.last_name;
+            this.email = data.profile.email;
+            this.website = data.profile.website;
+            this.phone = data.profile.phone;
+            this.country = data.profile.country;
+            // console.log(data)
+          },
+          error => {
+            console.log(error);
+          }
+        );
       }
     
       loadProfileForm() {
@@ -271,18 +306,26 @@ export class ProfileFormComponent implements OnInit {
             phone: ['', Validators.required],
             website: ['', Validators.required],
             country: ['', Validators.required],
+            email: ['', Validators.required],
+
           });
       }
      
      updateProfile = () => {
           this.req = this.profileService.updateProfile(
             this.profileForm.value
-          ).subscribe(data=>{
-            console.log(data)
-          })
+          ).subscribe(
+            data=>{
+            this.toastrService.success('Profile updated Successfully', 'Profile update');
+          },
+          error => {
+            console.log('error', error);
+          }
+          )
      }
 
   ngOnInit(): void {
+    this.toastrService.overlayContainer = this.toastContainer;
   }
 
 }

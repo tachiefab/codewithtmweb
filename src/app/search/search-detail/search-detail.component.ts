@@ -1,5 +1,6 @@
 // import { BlogService } from './../../shared/services/blog.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { HeaderService } from 'src/app/core/services/blog/headerService';
 import { BlogService } from './../../core/services/blog/blog.service';
@@ -16,12 +17,11 @@ export class SearchDetailComponent implements OnInit {
   nextUrl:string;
   postList : any;
   darkTheme: boolean = false;
+  totalSearchResults:number;
 
   constructor(
     private route: ActivatedRoute, 
     private headerService: HeaderService, 
-    // private router: Router,
-    // private formBuilder: FormBuilder,
     private blogService:BlogService
    ) { }
 
@@ -32,18 +32,11 @@ export class SearchDetailComponent implements OnInit {
   }
 
   search = () => {
-
-  //   this.routeSub = this.route.params.subscribe(params=>{
-  //     this.query = params['q']
-  //      this.req = this._video.search(this.query).subscribe(data=>{
-  //         this.videoList = data as [VideoItem];
-  //       })
-  // })
-
     this.routeSub = this.route.params.subscribe(params => {
       this.query = params['q']
       this.req = this.blogService.getAll('/?q=' + this.query).subscribe(data=>{
         this.postList = data.results;
+        this.totalSearchResults = data.count;
         this.nextUrl = data.next;
       })
   })

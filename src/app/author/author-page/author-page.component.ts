@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 
 import { AuthorService } from './../services/author.service';
@@ -13,7 +14,7 @@ export class AuthorPageComponent implements OnInit {
   private req: any;
   private routeSub:any;
   author: any;
-  id:number;
+  username:string;
   darkTheme: boolean = true;
 
   constructor(
@@ -26,8 +27,8 @@ export class AuthorPageComponent implements OnInit {
 
   getAuthor = () => {
     this.routeSub = this.route.params.subscribe(params => {
-      this.id = params['id']
-      this.req = this.authorService.getOne(this.id).subscribe(data=>{
+      this.username = params['username']
+      this.req = this.authorService.getOne(this.username).subscribe(data=>{
         this.author = data as any
       })
   })

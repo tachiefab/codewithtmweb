@@ -1,5 +1,6 @@
 import { ProfileService } from './../../core/services/user/profile.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { HeaderService } from 'src/app/core/services/blog/headerService';
 import { AuthService } from 'src/app/core/services/auth/auth.service';
 

@@ -9,6 +9,11 @@
                 <div class="helper center">
                    <app-logo></app-logo>
                 </div>
+
+                 <!-- Toast success message -->
+              <div class="form-group" toastContainer>
+              </div>
+
                 <form action="#" class="register-form" [formGroup]="registerForm" (ngSubmit)="register()">
                     <div class="register-inputs">
                         <input type="text" class="form-control" placeholder="Username" formControlName="username" required>

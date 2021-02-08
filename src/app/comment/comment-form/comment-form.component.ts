@@ -1,5 +1,6 @@
 import { BlogService } from './../../core/services/blog/blog.service';
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID, EventEmitter, Input, Output } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { CommentService } from 'src/app/core/services/comment/comment.service';
 import { Router, ActivatedRoute } from '@angular/router';

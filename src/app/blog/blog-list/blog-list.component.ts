@@ -1,8 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Title, Meta } from '@angular/platform-browser';
 
 import { BlogService } from './../../core/services/blog/blog.service';
 import { BlogInternalService } from './../services/blog-internal.service';
-import { HeaderService } from 'src/app/core/services/blog/headerService';
+import { HeaderService } from '../../core/services/blog/headerService';
 
 
 @Component({
@@ -11,6 +13,7 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
   styleUrls: ['./blog-list.component.css']
 })
 export class BlogListComponent implements OnInit {
+  title = 'All blog list page';
   nextUrl:string;
   postList : any;
   private req: any;
@@ -18,10 +21,24 @@ export class BlogListComponent implements OnInit {
   darkTheme: boolean = false;
   
   constructor(
+          @Inject(PLATFORM_ID) private platformId: object,
+          private titleService: Title,
+          private metaTagService: Meta,
           private blogService:BlogService,
           private logInternalService:BlogInternalService,
           private headerService: HeaderService
           ) {
+
+            // window.addEventListener('orientationchange', this.handleOrientationChange); // Orientation change event
+
+            if (isPlatformBrowser(this.platformId)) {
+              localStorage.setItem('App_name', 'Seo-Demo');
+        
+              setTimeout(() => {
+                console.log('App Name: ', localStorage.getItem('App_name'));
+              }, 2000);
+            }
+
     this.getPosts();
    }
 
@@ -58,6 +75,15 @@ export class BlogListComponent implements OnInit {
     }
 
   ngOnInit(): void {
+
+    
+    
+    // adding meta data
+    this.titleService.setTitle(this.title);
+    this.metaTagService.updateTag(
+      { name: 'description', content: 'All blog list page' }
+    );
+
     this.req = this.logInternalService.getBlogListHeader().subscribe(data=>{
       this.headerInfo = data[0];
       this.headerService.sendHeaderInfo(this.headerInfo);

@@ -41,6 +41,11 @@ const routes: Routes = [
     loadChildren: () => import(`./faq/faq.module`).then(m => m.FaqModule) 
   },
 
+  // { 
+  //   path: 'notifications', 
+  //   loadChildren: () => import(`./notification/notification.module`).then(m => m.NotificationModule) 
+  // },
+
   { 
     path: 'profile', 
     loadChildren: () => import(`./user/user.module`).then(m => m.UserModule) 
@@ -69,7 +74,9 @@ const routes: Routes = [
 @NgModule({
   imports: [
     CommonModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes, {
+    initialNavigation: 'enabled'
+})
   ],
   declarations: [],
   exports: [ RouterModule ]
