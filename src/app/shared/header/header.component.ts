@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthUserService } from './../utility/authUser.service';
 import { AuthService } from 'src/app/core/services/auth/auth.service';

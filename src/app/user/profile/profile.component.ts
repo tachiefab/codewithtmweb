@@ -1,8 +1,7 @@
 import { ProfileService } from './../../core/services/user/profile.service';
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit} from '@angular/core';
 import { HeaderService } from 'src/app/core/services/blog/headerService';
-import { AuthService } from 'src/app/core/services/auth/auth.service';
+// import { AuthService } from 'src/app/core/services/auth/auth.service';
 
 @Component({
   selector: 'app-profile',

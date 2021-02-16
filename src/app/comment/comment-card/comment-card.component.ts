@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID, Input } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, Input } from '@angular/core';
 import { CommentService } from 'src/app/core/services/comment/comment.service';
 import { AuthUserService } from 'src/app/shared/utility/authUser.service';
 import { Router } from '@angular/router';

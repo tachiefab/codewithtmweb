@@ -1,11 +1,9 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
 import { BlogService } from './../../core/services/blog/blog.service';
 import { BlogInternalService } from './../services/blog-internal.service';
 import { HeaderService } from '../../core/services/blog/headerService';
-// import { HeaderService } from 'src/app/core/services/blog/headerService';
 
 
 @Component({

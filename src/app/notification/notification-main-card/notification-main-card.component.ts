@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID, Input } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-notification-main-card',

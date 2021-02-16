@@ -1,6 +1,5 @@
 import { ProfileService } from './../../core/services/user/profile.service';
-import { Component, OnInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 // third party
@@ -17,7 +16,6 @@ export class ProfileFormComponent implements OnInit {
   profileForm: FormGroup;
   first_name:string;
   last_name:string;
-  // email = "tachiefab311@gmail.com"
   email:string;
   website:string;
   phone:string;
@@ -291,7 +289,6 @@ export class ProfileFormComponent implements OnInit {
             this.website = data.profile.website;
             this.phone = data.profile.phone;
             this.country = data.profile.country;
-            // console.log(data)
           },
           error => {
             console.log(error);

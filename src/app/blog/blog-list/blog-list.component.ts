@@ -1,7 +1,5 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { Title, Meta } from '@angular/platform-browser';
-
 import { BlogService } from './../../core/services/blog/blog.service';
 import { BlogInternalService } from './../services/blog-internal.service';
 import { HeaderService } from '../../core/services/blog/headerService';
@@ -21,23 +19,12 @@ export class BlogListComponent implements OnInit {
   darkTheme: boolean = false;
   
   constructor(
-          @Inject(PLATFORM_ID) private platformId: object,
           private titleService: Title,
           private metaTagService: Meta,
           private blogService:BlogService,
           private logInternalService:BlogInternalService,
           private headerService: HeaderService
           ) {
-
-            // window.addEventListener('orientationchange', this.handleOrientationChange); // Orientation change event
-
-            if (isPlatformBrowser(this.platformId)) {
-              localStorage.setItem('App_name', 'Seo-Demo');
-        
-              setTimeout(() => {
-                console.log('App Name: ', localStorage.getItem('App_name'));
-              }, 2000);
-            }
 
     this.getPosts();
    }

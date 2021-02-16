@@ -8,10 +8,6 @@ import { AppServerModule } from './src/main.server';
 import { APP_BASE_HREF } from '@angular/common';
 import { existsSync } from 'fs';
 
-// import 'localstorage-polyfill'
-
-// global['localStorage'] = localStorage;
-
 const domino = require('domino');
 
 const fs = require('fs');

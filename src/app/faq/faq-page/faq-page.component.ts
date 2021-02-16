@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 
 import { FaqService } from './../../core/services/faq/faq.service';
 import { FaqInternalService } from '../services/faq-internal.service';

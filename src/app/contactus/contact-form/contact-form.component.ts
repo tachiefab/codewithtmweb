@@ -1,8 +1,6 @@
 import { ContactusService } from './../../core/services/contactus/contactus.service';
-import { Component, OnInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, FormControl, Validators, NgForm } from '@angular/forms';
-// import { Router } from '@angular/router';
 
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 

@@ -1,5 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
 import { HeaderService } from 'src/app/core/services/blog/headerService';
 import { NotificationService } from 'src/app/core/services/notification/notification.service';
 
@@ -20,7 +19,7 @@ export class NotificationPageComponent implements OnInit {
             private notificationService:NotificationService,
             private headerService: HeaderService
             ) { 
-              this.getNotifications();
+              // this.getNotifications();
             }
 
 

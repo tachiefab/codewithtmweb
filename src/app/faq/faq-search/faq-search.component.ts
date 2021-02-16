@@ -1,6 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
-
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-faq-search',
   templateUrl: './faq-search.component.html',

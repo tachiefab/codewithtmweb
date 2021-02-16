@@ -1,4 +1,5 @@
-import { Injectable } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Injectable, Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { HttpBackend, HttpClient, HttpHeaders } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
 import { catchError, mapTo, tap } from 'rxjs/operators';
@@ -18,6 +19,7 @@ export class AuthService {
   httpHeaders = new HttpHeaders({'Content-Type': 'application/json'});
 
   constructor(
+            @Inject(PLATFORM_ID) private platformId: object,
             private httpClient: HttpClient, 
             private backend: HttpBackend
             ) {}
@@ -58,7 +60,9 @@ export class AuthService {
   }
 
   getJwtToken() {
-    return localStorage.getItem(this.JWT_TOKEN);
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem(this.JWT_TOKEN);
+    }
   }
 
   private doLoginUser(username: string, tokens: Tokens) {
@@ -73,23 +77,35 @@ export class AuthService {
   }
 
   private getRefreshToken() {
-    return localStorage.getItem(this.REFRESH_TOKEN);
+    if (isPlatformBrowser(this.platformId)) {
+      return localStorage.getItem(this.REFRESH_TOKEN);
+    }
+    
   }
 
   private storeJwtToken(access: string) {
-    localStorage.setItem(this.JWT_TOKEN, access);
+    if (isPlatformBrowser(this.platformId)) {
+          localStorage.setItem(this.JWT_TOKEN, access);
+    }
+   
   }
 
   private storeTokens(username, tokens: Tokens) {
-    localStorage.setItem(this.JWT_TOKEN, tokens.access);
-    localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
-    localStorage.setItem(this.USERNAME, username);
+    if (isPlatformBrowser(this.platformId)) {
+            localStorage.setItem(this.JWT_TOKEN, tokens.access);
+            localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
+            localStorage.setItem(this.USERNAME, username);
+    }
+   
   }
 
   removeTokens() {
-    localStorage.removeItem(this.JWT_TOKEN);
-    localStorage.removeItem(this.REFRESH_TOKEN);
-    localStorage.removeItem(this.USERNAME);
+    if (isPlatformBrowser(this.platformId)) {
+        localStorage.removeItem(this.JWT_TOKEN);
+        localStorage.removeItem(this.REFRESH_TOKEN);
+        localStorage.removeItem(this.USERNAME);
+    }
+   
   }
 
   register = (authData) => {

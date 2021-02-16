@@ -1,6 +1,5 @@
 import { SubscribeService } from './../../core/services/suscribe/subscribe.service';
-import { Component, OnInit, Inject, PLATFORM_ID, ViewChild } from '@angular/core';
-import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { ToastContainerDirective, ToastrService } from 'ngx-toastr';
 
@@ -28,7 +27,6 @@ export class SubscribeComponent implements OnInit {
 }
 
 subscribe = () => {
-  // alert("Thanks for your subscribtion")
   this.req = this.subscribeService.suscribe(
     this.subscribeForm.value
   ).subscribe(
