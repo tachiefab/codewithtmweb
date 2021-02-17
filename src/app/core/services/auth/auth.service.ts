@@ -60,10 +60,9 @@ export class AuthService {
   }
 
   getJwtToken() {
-    // Uncomment to use SERVER SIDE RENDERING
-    // if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem(this.JWT_TOKEN);
-    // }
+    }
   }
 
   private doLoginUser(username: string, tokens: Tokens) {
@@ -78,33 +77,34 @@ export class AuthService {
   }
 
   private getRefreshToken() {
-    // if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
       return localStorage.getItem(this.REFRESH_TOKEN);
-    // }   
+    }
+    
   }
 
   private storeJwtToken(access: string) {
-    // if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
           localStorage.setItem(this.JWT_TOKEN, access);
-    // }
+    }
    
   }
 
   private storeTokens(username, tokens: Tokens) {
-    // if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
             localStorage.setItem(this.JWT_TOKEN, tokens.access);
             localStorage.setItem(this.REFRESH_TOKEN, tokens.refresh);
             localStorage.setItem(this.USERNAME, username);
-    // }
+    }
    
   }
 
   removeTokens() {
-    // if (isPlatformBrowser(this.platformId)) {
+    if (isPlatformBrowser(this.platformId)) {
         localStorage.removeItem(this.JWT_TOKEN);
         localStorage.removeItem(this.REFRESH_TOKEN);
         localStorage.removeItem(this.USERNAME);
-    // }
+    }
    
   }
 

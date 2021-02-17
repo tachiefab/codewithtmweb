@@ -14,9 +14,9 @@ export class AuthUserService {
   }
 
   getJwtToken() {
-        // if (isPlatformBrowser(this.platformId)) {
+        if (isPlatformBrowser(this.platformId)) {
           return localStorage.getItem(this.JWT_TOKEN);
-        // }
+        }
   }
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) {
