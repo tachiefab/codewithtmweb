@@ -1,0 +1,5 @@
+<!-- Tag card -->
+<li class="tag-item" *ngFor="let tag of tagList">
+  <a routerLink="/blog/tag/{{ tag.slug }}">{{ tag.title }}</a>
+</li> 
+

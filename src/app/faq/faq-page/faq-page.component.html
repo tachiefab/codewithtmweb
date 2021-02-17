@@ -1,0 +1,78 @@
+     <!-- Header -->
+ <div class="header header-over large" >
+    <app-header></app-header>
+  </div>
+  <!-- End of Header -->
+  
+  <!-- Header Back -->
+  <div class="header-back header-back-simple header-back-small">
+    <app-header-back></app-header-back>
+  </div>
+  <!-- End of Header Back -->
+    
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <!-- Category Info -->
+                <div class="category-info helper pt0" id="instant-search">
+                    <h3 class="category-title"> Instant search
+                        <!-- Fragment Identifier -->
+                        <a class="fragment-identifier js-fragment-identifier fragment-identifier-scroll" href="#instant-search">
+                            <i class="fa fa-link"></i>
+                        </a>
+                        <!-- End of Fragment Identifier -->
+                    </h3>
+                    <h4 class="category-description">A small FAQ component with an instant search feature, useful for a small FAQ knowledge base.</h4>
+                </div>
+                <!-- End of Caregory Info -->
+                <!-- Faq -->
+                <div class="faq-filter js-faq-filter" data-target="#my-faq">
+                    <!-- Faq search component -->
+                    <app-faq-search></app-faq-search>
+                </div>
+                <ul class="faq js-faq" id="my-faq">
+                    <!-- Faq Item is toggle down -->
+                    <li class="faq-item"  *ngFor="let faq of allFaqList">
+                        <app-faq-dropdown-card [faq]="faq"></app-faq-dropdown-card>
+                    </li>
+                    
+                </ul>
+                <!-- End of Faq -->
+                <!-- Category Info -->
+                <div class="category-info " id="faq-categories">
+                    <h3 class="category-title"> FAQ categories
+                        <!-- Fragment Identifier -->
+                        <a class="fragment-identifier js-fragment-identifier fragment-identifier-scroll" href="#faq-categories">
+                            <i class="fa fa-link"></i>
+                        </a>
+                        <!-- End of Fragment Identifier -->
+                    </h3>
+                    <h4 class="category-description">FAQ articles split into categories for a massive FAQ knowledge base.</h4>
+                </div>
+                <!-- End of Caregory Info -->
+                <div class="row">
+                    <div class="col-md-6"  *ngFor="let category of faqByCategoryList">
+                        <!-- Faq category card -->
+                        <app-faq-category-card [category]="category"></app-faq-category-card>
+                    </div>
+                </div>
+
+                <div class="row" *ngFor="let category of faqByCategoryList">
+                    <h3 class="faq-category-title" data-icon="">{{ category.title }}</h3>
+                    <!-- FAQ Article -->
+                        <app-faq-article [category]="category"></app-faq-article>
+                    <!-- End of FAQ Article -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+     <!-- Footer -->
+  <footer class="js-footer-is-fixed">
+    
+    <app-footer></app-footer>
+</footer>
+<!-- End of Footer -->

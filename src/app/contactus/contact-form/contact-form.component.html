@@ -1,0 +1,37 @@
+<div class="contacts">
+    <h3 class="contacts-title"> Still have questions? Leave us a message. </h3>
+    <!-- Success Modal -->
+    <div class="contacts-success js-contacts-success">
+        <i class="pe-7s-check"></i>Your message was sent successfully.
+        <br>Thank you!</div>
+    <!-- End of Success Modal -->
+    <form action="#" id="js-contact-form" [formGroup]="contactUsForm" (ngSubmit)="sendMessage()">
+        <ul class="contacts-inputs">
+            <li class="contacts-item">
+                <label for="full-name" class="contacts-label">Full Name</label>
+                <!-- This input is required -->
+                <input type="text" name="full_name" id="full-name" class="contacts-input form-control" formControlName="full_name" data-validation="required">
+             </li>
+            <li class="contacts-item">
+                <label for="email" class="contacts-label">Email</label>
+                <!-- This input should be filled with a valid email and it's required -->
+                <input type="text" name="email" id="email" class="contacts-input form-control" formControlName="email" data-validation="required email">
+             </li>
+             <li class="contacts-item">
+                <label for="subject" class="contacts-label">Subject</label>
+                <!-- This input is required -->
+                <input type="text" name="subject" id="subject" class="contacts-input form-control" formControlName="subject" data-validation="required">
+             </li>
+            <li class="contacts-item">
+                <label for="message" class="contacts-label">Message</label>
+                <!-- This input is required -->
+                <textarea id="message" name="message" class="contacts-input form-control"  formControlName="message" data-validation="required"></textarea>
+            </li>
+        </ul>
+        <button type="submit" class="button blue full">Send Message</button>
+       
+    </form>
+     <!-- Toast success message -->
+     <div toastContainer>
+    </div>
+</div>

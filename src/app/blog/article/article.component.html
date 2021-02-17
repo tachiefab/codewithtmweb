@@ -1,0 +1,120 @@
+ <!-- Header -->
+ <div class="header background-2" >
+    <app-header></app-header>
+  </div>
+  <!-- End of Header -->
+
+
+<div id="content">
+    <!-- container for majority of the project -->
+     <div class="container">
+       <div class="layout with-right-sidebar js-layout">
+         <div class="row">
+           <div class="col-md-9">
+             <div class="main-content">
+  
+<!-- Article -->
+<article class="article">
+    <!-- Article Title -->
+    <h2 class="article-title"> {{ article.title }} </h2>
+    <!-- End of Article Title -->
+    <!-- Article Meta -->
+    <ul class="article-meta">
+        <li>
+            <span class="article-meta-date article-meta-item">{{ article.date_display }}</span>
+        </li>
+        <li>
+            <span class="article-meta-author article-meta-item">
+                <a routerLink="/author/{{ article.author.username }}">{{ article.author.first_name }} {{ article.author.last_name }}</a>
+            </span>
+        </li>
+        <li>
+            <span class="article-meta-date article-meta-item">{{ article.read_time }}</span>
+        </li>
+        <li>
+            <span class="article-meta-category article-meta-item">
+                <a routerLink="/blog/category/{{ article.category.slug }}">{{ article.category.title }}</a>
+            </span>
+        </li>
+        <li>
+            <span class="article-meta-views article-meta-item">{{ article.view_count }}</span>
+        </li>
+        <li class="comment-action-item">
+            <span id="article-like" class="comment-action-like" [ngClass]="{'comment-action-liked': article.did_like}" (click)="likeToggle()">
+                <i class="fa fa-heart-o"></i>
+                {{ likes_count }}
+            </span>
+        </li>
+        <li>
+            <span class="article-meta-comments article-meta-item">
+                <a href="#" class="js-scroll-to" data-target="#article-comments" data-speed="600">{{ commentCount.content }}</a>
+            </span>
+        </li>
+    </ul>
+    <!-- End of Article Meta -->
+    <!-- Article Featured Image -->
+    <img src="{{ article.image }}" class="article-featured-image" alt="article featured image">
+    <!-- End of Article Featured Image -->
+    <!-- Article Content -->
+    <div class="article-content">
+       <div class="article-content" [innerHTML]="article.article | safe: 'html'">
+
+       </div>
+
+        <!-- Article Tags -->
+        <div class="article-tags"> Tags:
+            <a class="article-tag"routerLink="/blog/tag/{{ tag.slug }}" *ngFor="let tag of tagList">{{ tag.title }}</a>
+        </div>
+        <!-- End of Article Tags -->
+        <!-- Social Share -->
+           <app-social-share></app-social-share>
+        <!-- End of Social Share -->
+    </div>
+    <!-- End of Article Content -->
+    <!-- Article Navigation -->
+    <div class="article-navigation">
+        <a routerLink="/blog/article/{{ article.new_post }}/" class="article-navigation-prev" *ngIf="article.new_post">
+            Older Post
+        </a>
+        <a routerLink="/blog/article/{{ article.older_post }}/" class="article-navigation-next" *ngIf="article.older_post">
+            Newer Post
+        </a>
+    </div>
+    <!-- End of Article Navigation -->
+    <!-- Article Widget Comments -->
+    <div class="article-widget">
+        <h3 class="article-widget-title"> Comments ({{ commentCount.content }}) </h3>
+        <app-comment-section ></app-comment-section>
+    </div>
+    <!-- End of Article Widget Comments -->
+    <!-- Article Widget Related Article -->
+    <div class="article-widget">
+        <h3 class="article-widget-title"> Related articles </h3>
+        <ul class="article-related-articles" *ngFor="let post of relatedArticles">
+            <app-article-related-card [post]="post"></app-article-related-card>
+        </ul>
+            
+    </div>
+    <!-- End of Article Widget Related Article -->
+</article>
+<!-- End of Article -->
+  
+             </div>
+           </div>
+  
+           <div class="col-md-3 hidden-sm hidden-xs">
+                <app-sidebar></app-sidebar>
+           </div>
+           
+         </div>
+       </div>
+     </div>
+    </div>
+
+
+     <!-- Footer -->
+  <footer class="js-footer-is-fixed">
+    
+    <app-footer></app-footer>
+</footer>
+<!-- End of Footer -->

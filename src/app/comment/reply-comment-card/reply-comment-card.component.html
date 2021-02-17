@@ -1,0 +1,50 @@
+<li class="comment-list-item">
+    <!-- Comment Content -->
+    <div class="comment-content">
+        <!-- Comment User Photo -->
+        <div class="comment-user-photo">
+            <img src="{{ reply.user_profile_image }}" class="" alt="user profile photo"> </div>
+        <!-- End of Comment User Photo -->
+        <!-- Comment Body -->
+        <div class="comment-body">
+            <div class="comment-header">
+                <!-- Comment User Name -->
+                <div class="comment-username">
+                    <a href="#">{{ reply.comment_user_name }}</a>
+                </div>
+                <!-- End of Comment User Name -->
+                <!-- Comment Meta -->
+                <ul class="comment-meta">
+                    <li class="comment-likes">{{ likes_count }} likes</li>
+                    <li class="comment-date">{{ reply.date_display }}</li>
+                </ul>
+                <!-- End of Comment Meta -->
+            </div>
+            <!-- Comment Message -->
+            <p class="comment-message"> {{ reply.content }}</p>
+            <!-- End of Comment Message -->
+            <!-- Comment Actions -->
+            <ul class="comment-actions">
+                <li class="comment-action-item">
+                    <span id="comment-reply-like" class="comment-action-like" [ngClass]="{'comment-action-liked': reply.did_like}" (click)="likeToggle()">
+                        <i class="fa fa-heart-o"></i>
+                        {{ likes_count }}
+                    </span>
+                </li>
+                <!-- <li class="comment-action-item">
+                    <a class="comment-action-like " href="#">
+                        <i class="fa fa-heart-o"></i>
+                    </a>
+                </li> -->
+                <!-- <li class="comment-action-item">
+                    <a class="comment-action-reply" href="#">
+                        <i class="fa fa-reply"></i>
+                    </a>
+                </li> -->
+            </ul>
+            <!-- End of Comment Actions -->
+        </div>
+        <!-- End of Comment Body -->
+    </div>
+    <!-- End of Comment Content -->
+</li>

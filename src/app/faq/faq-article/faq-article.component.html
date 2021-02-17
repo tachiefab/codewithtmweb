@@ -1,0 +1,14 @@
+<div id="content">
+    <!-- container for contact us and FAQ -->
+    <div class="container">
+
+       <!-- FAQ Article -->
+ <div class="faq-article" id="js-structure" *ngFor="let faq of category.faqs">
+    <h4 class="faq-article-title" [innerHTML]="faq.question | safe: 'html'"></h4>
+    <div class="faq-article-content" [innerHTML]="faq.question | safe: 'html'">
+    </div>
+</div>
+<!-- End of FAQ Article -->
+
+    </div>
+  </div>

@@ -1,0 +1,24 @@
+    <!-- Comments -->
+    <div class="comments" id="article-comments">
+        <h3 class="article-widget-title"> Leave a comment </h3>
+        <!-- Comment Form -->
+            <app-comment-form (articleCommentCount)="articleCommentCount($event)" (commentCreated)="commentCreated($event)">
+
+            </app-comment-form>
+        <!-- End of Comment Form -->
+
+        <ul class="comment-list" *ngFor="let comment of comments">
+            <app-comment-card  [comment]='comment'></app-comment-card>
+        </ul> 
+
+        <div  style="text-align: center" *ngIf = "nextUrl">
+            <a href="javascript: void(0)" class="button small blue" (click)="loadMore()">Load More</a>
+          </div>
+          <!-- Alert no more post -->
+      <div *ngIf = "!nextUrl" class="row pb-5" style="text-align: center">
+        <div class="col-md-12 d-flex justify-content-center">
+          <div class="text-muted h6 alert alert-secondary p-2">You have reached the end of the comments</div>
+        </div>
+      </div>
+    </div>
+    <!-- End of Comments -->

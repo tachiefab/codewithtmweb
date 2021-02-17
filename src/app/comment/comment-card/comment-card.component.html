@@ -1,0 +1,59 @@
+<li class="comment-list-item">
+    <!-- Comment Content -->
+    <div class="comment-content">
+        <!-- Comment User Photo -->
+        <div class="comment-user-photo">
+            <img src="{{ comment.user_profile_image }}" class="" alt="user profile photo"> </div>
+        <!-- End of Comment User Photo -->
+        <!-- Comment Body -->
+        <div class="comment-body">
+            <div class="comment-header">
+                <!-- Comment User Name -->
+                <div class="comment-username">
+                    <a href="#">{{ comment.comment_user_name }}</a>
+                </div>
+                <!-- End of Comment User Name -->
+                <!-- Comment Meta -->
+                <ul class="comment-meta">
+                    <li class="comment-likes">{{ commentReplyCount }}</li>
+                    <li class="comment-likes">{{ likes_count }} likes</li>
+                    <li class="comment-date">{{ comment.date_display }}</li>
+                </ul>
+                <!-- End of Comment Meta -->
+            </div>
+            <!-- Comment Message -->
+            <p class="comment-message" [innerHTML]="comment.content | safe: 'html'">
+                </p>
+            <!-- End of Comment Message -->
+            <!-- Comment Actions -->
+            <ul class="comment-actions">
+                <li class="comment-action-item">
+                    <span id="comment-like" class="comment-action-like" [ngClass]="{'comment-action-liked': comment.did_like}" (click)="likeToggle()">
+                        <i class="fa fa-heart-o"></i>
+                        {{ likes_count }}
+                    </span>
+                </li>
+                <li class="comment-action-item">
+                    <span id="reply-span" class="comment-action-reply" (click)="replyClicked()">
+                        <i class="fa fa-reply"></i>
+                    </span>
+                </li>
+            </ul>
+            <!-- End of Comment Actions -->
+        </div>
+        <!-- End of Comment Body -->
+    </div>
+    <!-- End of Comment Content -->
+
+
+    <div class="comment-reply" *ngIf="isReply">
+        <h3 class="article-widget-title"> Reply to comment </h3>
+        <!-- Comment Form -->
+            <app-comment-reply-form [parentCommentId]="parentCommentId" (replyCommentCreated)="replyCommentCreated($event)"></app-comment-reply-form>
+        <!-- End of Comment Form -->
+     
+        <ul class="comment-list" *ngFor="let reply of replies">
+            <app-reply-comment-card [reply]='reply'></app-reply-comment-card>
+        </ul>
+    </div>
+</li>

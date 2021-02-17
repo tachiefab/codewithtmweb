@@ -1,0 +1,34 @@
+  <!-- Header -->
+  <div class="header background-2" >
+    <app-header></app-header>
+  </div>
+  <!-- End of Header -->
+
+
+<div id="content">
+   <!-- container for majority of the project -->
+    <div class="container">
+
+      <!-- Article -->
+<article class="article">
+   <!-- Article Featured Image -->
+   <img src="{{ author.profile_image }}" class="article-featured-image" alt="article featured image" width="700" height="900">
+   <!-- End of Article Featured Image -->
+  <!-- Article Content -->
+     <div class="article-content" [innerHTML]="author.biography | safe: 'html'">
+
+     </div>
+  <!-- End of Article Content -->
+</article>
+<!-- End of Article -->
+
+    </div>
+   </div>
+
+
+    <!-- Footer -->
+  <footer class="js-footer-is-fixed">
+    
+   <app-footer></app-footer>
+</footer>
+<!-- End of Footer -->

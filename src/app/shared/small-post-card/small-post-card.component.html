@@ -1,0 +1,28 @@
+<ul class="widget-recommended-products">
+    <!-- Recommended product Item -->
+    <li class="widget-recommended-product"  *ngFor="let post of postList | slice:0:3">
+      <img src="{{ post.image }}" height="67" width="67" class="widget-recommended-product-img" alt="Recommended products">
+      <a routerLink='/blog/article/{{post.slug}}' class="widget-recommended-product-link">
+        <h5 class="widget-recommended-product-link-title"> {{ post.title }}
+          <i class="fa fa-angle-right"></i>
+        </h5>
+        <p class="widget-recommended-product-link-description" [innerHTML]="post.summary | safe: 'html'"></p>
+      </a>
+    </li>
+    <!-- End of Recommended product Item -->
+  </ul>
+
+  <ul class="widget-recommended-products">
+    <!-- Recommended product Item -->
+    <li class="widget-recommended-product"  *ngFor="let post of postList | slice:3:6">
+      <img src="{{ post.image }}" height="67" width="67" class="widget-recommended-product-img" alt="Recommended products">
+      <a routerLink='/blog/article/{{post.slug}}' class="widget-recommended-product-link">
+        <h5 class="widget-recommended-product-link-title"> {{ post.title }}
+          <i class="fa fa-angle-right"></i>
+        </h5>
+        <p class="widget-recommended-product-link-description" [innerHTML]="post.summary | safe: 'html'"></p>
+      </a>
+    </li>
+    <!-- End of Recommended product Item -->
+  </ul>
+

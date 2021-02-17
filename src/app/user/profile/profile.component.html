@@ -1,0 +1,66 @@
+ <!-- Header -->
+ <div class="header background-2" >
+  <app-header></app-header>
+</div>
+<!-- End of Header -->
+
+
+
+<div id="content">
+  <!-- container for majority of the project -->
+    <div class="container">
+      <div class="layout with-right-sidebar js-layout">
+        <div class="row">
+
+          <!-- Left sidebar begins -->
+            <div class="col-md-3 hidden-sm hidden-xs">
+              <app-sidebar></app-sidebar>
+            </div>
+          <!-- Left sidebar  ends -->
+
+          <div class="col-md-9">
+            <div class="main-content">
+                      
+          <!-- Profile Page -->
+                <!-- Category Info -->
+								<div class="category-info helper pt0" id="list-view">
+									<h3 class="category-title"> Profile
+									</h3>
+								</div>
+								<!-- End of Caregory Info -->
+								<!-- List View -->
+								<app-profile-form></app-profile-form>
+							
+							<h3>Liked Posts</h3>
+							
+              <div class="row" >
+                  <div class="col-md-3 col-sm-3" *ngFor="let post of postList"> 
+                      <app-blog-grid-card [post]="post"></app-blog-grid-card>	
+                  </div>
+              </div>
+
+              <div  style="text-align: center" *ngIf = "nextUrl">
+                  <a href="javascript: void(0)" class="button small blue" (click)="loadMore()">Load More</a>
+                </div>
+                <!-- Alert no more post -->
+            <div *ngIf = "!nextUrl" class="row pb-5" style="text-align: center">
+              <div class="col-md-12 d-flex justify-content-center">
+                <div class="text-muted h6 alert alert-secondary p-2">You have reached the end of the page</div>
+              </div>
+            </div>
+            <!-- End of Profile Page -->
+                      
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+ <!-- Footer -->
+ <footer class="js-footer-is-fixed">
+    
+  <app-footer></app-footer>
+</footer>
+<!-- End of Footer -->

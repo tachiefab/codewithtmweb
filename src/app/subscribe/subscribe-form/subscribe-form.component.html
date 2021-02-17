@@ -1,0 +1,15 @@
+      <!-- Toast success message -->
+      <div class="form-group" toastContainer>
+    </div>
+
+<form action="#" [formGroup]="subscribeForm" (ngSubmit)="subscribe()">
+    <div class="form-group">
+            <input type="text" class="search-input form-control" placeholder="Your email" formControlName="email" required>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="button small blue full">
+            Get started for free
+        </button>
+    </div>
+</form>

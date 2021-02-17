@@ -1,0 +1,41 @@
+<div class="login">
+    <div class="login-content">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+
+              <!-- Registration begins -->
+              <div class="register-wrapper">
+                <div class="helper center">
+                   <app-logo></app-logo>
+                </div>
+
+                 <!-- Toast success message -->
+              <div class="form-group" toastContainer>
+              </div>
+
+                <form action="#" class="register-form" [formGroup]="registerForm" (ngSubmit)="register()">
+                    <div class="register-inputs">
+                        <input type="text" class="form-control" placeholder="Username" formControlName="username" required>
+                        <input type="text" class="form-control" placeholder="Email" formControlName="email" required>
+                        <input type="password" class="form-control" placeholder="Password" formControlName="password" required>
+                        <input type="password" class="form-control" placeholder="Repeat password" formControlName="password2" required>
+                     </div>
+                    <input type="checkbox" class="register-checkbox" id="terms">
+                    <label for="terms">I accept the
+                        <a href="#">terms and conditions</a>.</label>
+                    <button type="submit" class="button green full">Create account</button>
+                </form>
+                <ul class="register-helpers">
+                    <li class="register-helper-item">Already have an account?
+                        <a routerLink="/auth">Sign In.</a>
+                    </li>
+                </ul>
+            </div>
+              <!-- Registration ends -->
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

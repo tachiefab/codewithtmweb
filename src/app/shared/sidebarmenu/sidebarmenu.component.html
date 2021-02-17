@@ -1,0 +1,23 @@
+<ul class="menu-vertical  js-menu-vertical" data-prepend-to=".js-layout" data-select="Menu">
+
+    <!-- categories -->
+    <li>
+      <a href="#">Categories</a>
+      <ul>
+        <li *ngFor="let category of categoryLists">
+          <a routerLink="/blog/category/{{ category.slug }}">{{ category.title }}</a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Faq -->
+    <li>
+      <a routerLink="/faq">FAQ</a>
+    </li>
+
+     <!-- contact us -->
+     <li>
+      <a routerLink="/contact">contact Us</a>
+    </li>
+
+  </ul>

@@ -1,0 +1,213 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "codewithtmweb": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/codewithtmweb/browser",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css",
+              "node_modules/ngx-toastr/toastr.css"
+            ],
+            "scripts": [
+              "src/assets/js/all.js",
+              "src/assets/js/dev/libs/plugins/bootstrap-rating.min.js",
+              "src/assets/js/dev/libs/plugins/clipboard.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.animateNumbers.js",
+              "src/assets/js/dev/libs/plugins/jquery.bpopup.js",
+              "src/assets/js/dev/libs/plugins/jquery.equalHeight.js",
+              "src/assets/js/dev/libs/plugins/jquery.event.move.js",
+              "src/assets/js/dev/libs/plugins/jquery.fastLiveFilter.js",
+              "src/assets/js/dev/libs/plugins/jquery.fitvids.js",
+              "src/assets/js/dev/libs/plugins/jquery.form-validator.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.gifplayer.js",
+              "src/assets/js/dev/libs/plugins/jquery.hoverIntent.js",
+              "src/assets/js/dev/libs/plugins/jquery.instafilta.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.jscrollpane.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.morphext.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.mousewheel-3.0.6.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.nav.js",
+              "src/assets/js/dev/libs/plugins/jquery.owl.carousel.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.placeholder.js",
+              "src/assets/js/dev/libs/plugins/jquery.rating.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.resmenu.js",
+              "src/assets/js/dev/libs/plugins/jquery.sidr.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.slicknav.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.steps.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.superfish.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.supersubs.js",
+              "src/assets/js/dev/libs/plugins/jquery.tendina.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.treeView.js",
+              "src/assets/js/dev/libs/plugins/jquery.twentytwenty.js",
+              "src/assets/js/dev/libs/plugins/jquery.vide.min.js",
+              "src/assets/js/dev/libs/plugins/jquery.ytv.js",
+              "src/assets/js/dev/libs/plugins/prism.js",
+              "src/assets/js/dev/libs/plugins/social-likes.min.js",
+              "src/assets/js/dev/libs/plugins/video.js",
+              "src/assets/js/dev/libs/plugins/videojs-playlist.js",
+
+              "src/assets/js/custom.js"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "codewithtmweb:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "codewithtmweb:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "codewithtmweb:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "codewithtmweb:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "codewithtmweb:serve:production"
+            }
+          }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/codewithtmweb/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "sourceMap": false,
+              "optimization": true
+            }
+          }
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "options": {
+            "browserTarget": "codewithtmweb:build",
+            "serverTarget": "codewithtmweb:server"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "codewithtmweb:build:production",
+              "serverTarget": "codewithtmweb:server:production"
+            }
+          }
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "browserTarget": "codewithtmweb:build:production",
+            "serverTarget": "codewithtmweb:server:production",
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {}
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "codewithtmweb",
+  "cli": {
+    "analytics": false
+  }
+}

@@ -1,0 +1,27 @@
+.menu {
+    background-color: #180030 !important;
+    line-height: 40px;
+    font-size: 15px;
+    padding: 0;
+    color: #fff !important;
+    font-weight: 300;
+    margin-left: 25px;
+}
+
+.page-info-simple .page-title {
+    font-weight: 300;
+    color: #f6f7f8 !important;
+    font-size: 4.5em;
+}
+
+.page-description {
+    background-color: #292b3ec2 !important;
+    color: #f6f7f8 !important;
+    text-transform: uppercase;
+    font-size: 1.25em;
+    letter-spacing: 2px;
+    line-height: 1.5;
+    font-weight: 300;
+    margin-bottom: 40px;
+    padding-left: 10px !important;
+}

@@ -1,0 +1,68 @@
+<div class="container">
+    <div class="row">
+      <div class="col-md-3 col-sm-6 col-xs-6">
+        <!-- Logo Image -->
+        <app-logo></app-logo>
+        <!-- End of Logo Image -->
+      </div>
+      <div class="col-md-9 col-sm-6 col-xs-6">
+        <!-- Menu -->
+        <nav class="right helper">
+          <ul class="menu sf-menu js-menu">
+            <li>
+              <a routerLink="/">Home</a>
+            </li>
+            <li>
+              <a routerLink="/blog">Blog</a>
+            </li>
+            <li>
+              <a routerLink="/faq">FAQ</a>
+            </li>
+            <li>
+              <a routerLink="/about">About Us</a>
+            </li>
+            <li>
+              <a routerLink="/contact">Contact Us</a>
+            </li>
+            <li *ngIf="!isLoggedIn">
+              <a routerLink="/auth">Login</a>
+            </li>
+            <li *ngIf="isLoggedIn">
+              <a href="javascript: void(0)" (click)="logout()">Logout</a>
+            </li>
+            <li *ngIf="!isLoggedIn">
+              <a routerLink="/auth/register">Register</a>
+            </li>
+     <!-- User Notifications -->
+            <!-- <li  *ngIf="isLoggedIn">
+              <a href="javascript: void(0)" class="fa fa-bell-o bell-icon small-icon">
+                 <span class="menu-label">{{ notificationCount }}</span>
+              </a>
+              <ul class="dropdown-menu dropdown-menu-right"> -->
+
+                <!-- user notifications -->
+                <!-- <li *ngFor="let notification of notificationList">
+                  <app-notification-card [notification]="notification"></app-notification-card>
+                </li>  -->
+
+                <!-- show all of users notifications -->
+                <!-- <li>
+                  <a routerLink="/notifications">view all</a>
+                </li>  -->
+
+                <!-- <br> -->
+
+                <!-- <li>
+                  <a routerLink="/profile">view profile</a>
+                </li> 
+
+
+              </ul>
+            </li> -->
+      <!-- End of user Notifications -->
+          </ul>
+        </nav>
+        <!-- End of Menu -->
+      </div>
+    </div>
+  </div>
