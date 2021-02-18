@@ -11,11 +11,7 @@
     "dev:ssr": "ng run codewithtmweb:serve-ssr",
     "serve:ssr": "node dist/codewithtmweb/server/main.js",
     "build:ssr": "ng build --prod && ng run codewithtmweb:server:production",
-<<<<<<< HEAD
-    "prerender": "ng run codewithtmweb:prerender --routes-file routes.txt"
-=======
     "prerender": "ng run codewithtmweb:prerender"
->>>>>>> 055ef3bbe72d20b9f759794151fa22157a398c8a
   },
   "private": true,
   "dependencies": {

@@ -1,7 +1,0 @@
-about
-author
-blog
-contact
-faq
-search
-404
