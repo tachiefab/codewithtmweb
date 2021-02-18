@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/codewithtmweb",
+    "public": "dist/codewithtmweb/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
