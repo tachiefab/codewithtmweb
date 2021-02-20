@@ -9,9 +9,9 @@
     "lint": "ng lint",
     "e2e": "ng e2e",
     "dev:ssr": "ng run codewithtmweb:serve-ssr",
+    "prerender": "ng run codewithtmweb:prerender",
     "serve:ssr": "node dist/codewithtmweb/server/main.js",
-    "build:ssr": "ng build --prod && ng run codewithtmweb:server:production",
-    "prerender": "ng run codewithtmweb:prerender"
+    "build:ssr": "ng build --prod && ng run codewithtmweb:server:production"
   },
   "private": true,
   "dependencies": {
@@ -59,6 +59,7 @@
     "ts-node": "~8.3.0",
     "tslint": "~6.1.0",
     "typescript": "~4.0.5",
-    "webpack": "^4.46.0"
+    "webpack": "^4.46.0",
+    "webpack-cli": "^4.5.0"
   }
 }
