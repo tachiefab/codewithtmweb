@@ -23,17 +23,20 @@
 
                    <!-- Article Widget Comments -->
     <div class="article-widget">
-        <h3 class="article-widget-title"> Notification({{ notificationCount }}) </h3>
+      <!-- uncomment this -->
+        <!-- <h3 class="article-widget-title"> Notification({{ notificationCount }}) </h3> -->
         <!-- Comments -->
     <div class="comments" id="article-comments">
 
         <ul class="comment-list" *ngFor="let notification of notificationList">
-            <app-notification-main-card [notification]='notification'></app-notification-main-card>
+           <!-- uncomment this -->
+            <!-- <app-notification-main-card [notification]='notification'></app-notification-main-card> -->
             <!-- <app-comment-card  [comment]='comment'></app-comment-card> -->
         </ul> 
 
         <div  style="text-align: center" *ngIf = "nextUrl">
-            <a href="javascript: void(0)" class="button small blue" (click)="loadMore()">Load More</a>
+           <!-- uncomment this -->
+            <!-- <a href="javascript: void(0)" class="button small blue" (click)="loadMore()">Load More</a> -->
           </div>
           <!-- Alert no more post -->
       <div *ngIf = "!nextUrl" class="row pb-5" style="text-align: center">

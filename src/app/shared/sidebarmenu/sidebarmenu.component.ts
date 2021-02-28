@@ -17,6 +17,7 @@ export class SidebarmenuComponent implements OnInit {
     this.categoryService.getAll().subscribe(
       data => {
         this.categoryLists = data.results;
+        // console.log(this.categoryLists)
       },
       error => {
         console.log(error);

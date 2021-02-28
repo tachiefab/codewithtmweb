@@ -5,14 +5,14 @@
         <div class="row">
           <div class="col-md-4 col-sm-5">
             <div class="blog-grid-image">
-              <a routerLink='/blog/article/{{ post.slug }}'>
+              <a routerLink='/article/{{ post.slug }}'>
                 <span class="blog-grid-image-over"></span>
                 <img src="{{ post.image }}" class="" alt="article image"> </a>
             </div>
           </div>
           <div class="col-md-8 col-sm-7">
             <h3 class="blog-grid-title">
-              <a routerLink='/blog/article/{{post.slug}}'>{{ post.title }}</a>
+              <a routerLink='/article/{{post.slug}}'>{{ post.title }}</a>
             </h3>
             <p class="blog-grid-excerpt"   [innerHTML]="post.summary | safe: 'html'"></p>
             <div class="blog-grid-meta">

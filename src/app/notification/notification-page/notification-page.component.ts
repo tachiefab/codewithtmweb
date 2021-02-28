@@ -23,37 +23,38 @@ export class NotificationPageComponent implements OnInit {
             }
 
 
-  getNextNotifications = (url) => {
-    this.notificationService.getNext(url).subscribe(
-      data => {
-        // add newly fetched posts to the existing post
-        this.notificationList = this.notificationList.concat(data.results);
-        this.nextUrl = data.next;
+  // getNextNotifications = (url) => {
+  //   this.notificationService.getNext(url).subscribe(
+  //     data => {
+  //       // add newly fetched posts to the existing post
+  //       this.notificationList = this.notificationList.concat(data.results);
+  //       this.nextUrl = data.next;
         
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
-   getNotifications = () => {
-    this.notificationService.getAll().subscribe(
-      data => {
-        this.notificationList = data.results;
-        this.notificationCount = data.count;
-        this.nextUrl = data.next;
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+  //  getNotifications = () => {
+  //   this.notificationService.getAll().subscribe(
+  //     data => {
+  //       this.notificationList = data.results;
+  //       this.notificationCount = data.count;
+  //       this.nextUrl = data.next;
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   loadMore() {
-    if (this.nextUrl) {
-      this.getNextNotifications(this.nextUrl);
-      }
+    console.log("loading more")
+    // if (this.nextUrl) {
+    //   this.getNextNotifications(this.nextUrl);
+    //   }
     }
 
   ngOnInit(): void {

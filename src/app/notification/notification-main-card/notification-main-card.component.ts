@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./notification-main-card.component.css']
 })
 export class NotificationMainCardComponent implements OnInit {
-  @Input('notification') notification;
+  // @Input('notification') notification;
 
   constructor() { }
 

@@ -29,7 +29,7 @@ export class AuthorPageComponent implements OnInit {
       this.username = params['username']
       this.req = this.authorService.getOne(this.username).subscribe(data=>{
         this.author = data as any
-        console.log(this.author)
+        // console.log(this.author)
       })
   })
   }

@@ -12,12 +12,12 @@ export class NotificationService {
   constructor(
     private http: HttpClient) { }
 
-    getNext(url): Observable<any> {
-      return this.http.get(url);
-    }
+    // getNext(url): Observable<any> {
+    //   return this.http.get(url);
+    // }
 
-    getAll(): Observable<any> {
-      return this.http.get(this.baseUrl + "notifications/");
-    }
+    // getAll(): Observable<any> {
+    //   return this.http.get(this.baseUrl + "notifications/");
+    // }
 
 }

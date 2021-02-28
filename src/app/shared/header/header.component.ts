@@ -25,20 +25,20 @@ export class HeaderComponent implements OnInit {
             // checking if user is logged in
             this.isLoggedIn = this.userAuthService.isLoggedIn();
             // getting users notifications
-            this.getNotifications();
+            // this.getNotifications();
   }
 
-  getNotifications = () => {
-    this.notificationService.getAll().subscribe(
-      data => {
-        this.notificationList = data.results;
-        this.notificationCount = data.count;
-      },
-      error => {
-        console.log(error);
-      }
-    );
-  }
+  // getNotifications = () => {
+  //   this.notificationService.getAll().subscribe(
+  //     data => {
+  //       this.notificationList = data.results;
+  //       this.notificationCount = data.count;
+  //     },
+  //     error => {
+  //       console.log(error);
+  //     }
+  //   );
+  // }
 
   logout() {
     this.authService.removeTokens();
