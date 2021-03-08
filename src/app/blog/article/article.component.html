@@ -33,7 +33,7 @@
         </li>
         <li>
             <span class="article-meta-category article-meta-item">
-                <a routerLink="/blog/category/{{ article.category.slug }}">{{ article.category.title }}</a>
+                <a routerLink="/category/{{ article.category.slug }}">{{ article.category.title }}</a>
             </span>
         </li>
         <li>
@@ -63,20 +63,26 @@
 
         <!-- Article Tags -->
         <div class="article-tags"> Tags:
-            <a class="article-tag"routerLink="/blog/tag/{{ tag.slug }}" *ngFor="let tag of tagList">{{ tag.title }}</a>
+            <a class="article-tag"routerLink="/tag/{{ tag.slug }}" *ngFor="let tag of tagList">{{ tag.title }}</a>
         </div>
         <!-- End of Article Tags -->
         <!-- Social Share -->
-           <app-social-share></app-social-share>
+        <div class="social-likes social-share">
+            <div class="facebook" title="Share link on Facebook">Facebook</div>
+            <div class="twitter" title="Share link on Twitter">Twitter</div>
+            <div class="plusone" title="Share link on Google+">Google+</div>
+            <div class="pinterest" title="Share image on Pinterest" data-media="http://themes.vsart.me/vsdocs/img/demos/blog/article.jpg">Pinterest</div>
+        </div>
+           <!-- <app-social-share></app-social-share> -->
         <!-- End of Social Share -->
     </div>
     <!-- End of Article Content -->
     <!-- Article Navigation -->
     <div class="article-navigation">
-        <a routerLink="/blog/article/{{ article.new_post }}/" class="article-navigation-prev" *ngIf="article.new_post">
+        <a routerLink="/article/{{ article.new_post }}/" class="article-navigation-prev" *ngIf="article.new_post">
             Older Post
         </a>
-        <a routerLink="/blog/article/{{ article.older_post }}/" class="article-navigation-next" *ngIf="article.older_post">
+        <a routerLink="/article/{{ article.older_post }}/" class="article-navigation-next" *ngIf="article.older_post">
             Newer Post
         </a>
     </div>

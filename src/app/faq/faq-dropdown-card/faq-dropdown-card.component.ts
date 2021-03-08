@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./faq-dropdown-card.component.css']
 })
 export class FaqDropdownCardComponent implements OnInit {
-  @Input('faq') faq;
+  // @Input('faq') faq;
 
 
 

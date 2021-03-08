@@ -10,42 +10,42 @@ import { HeaderService } from 'src/app/core/services/blog/headerService';
   styleUrls: ['./faq-page.component.css']
 })
 export class FaqPageComponent implements OnInit {
-  allFaqList : any;
-  faqByCategoryList : any;
+  // allFaqList : any;
+  // faqByCategoryList : any;
   private req: any;
   headerInfo : any;
   darkTheme: boolean = true;
 
   constructor(
-    private faqService:FaqService,
+    // private faqService:FaqService,
     private faqInternalService:FaqInternalService,
     private headerService: HeaderService
     ) {
-this.getAllFaqs();
-this.getFaqsByCategory();
+// this.getAllFaqs();
+// this.getFaqsByCategory();
 }
 
-getAllFaqs = () => {
-  this.faqService.getAll('faqs/').subscribe(
-    data => {
-      this.allFaqList = data.results;
-    },
-    error => {
-      console.log(error);
-    }
-  );
-}
+// getAllFaqs = () => {
+//   this.faqService.getAll('faqs/').subscribe(
+//     data => {
+//       this.allFaqList = data.results;
+//     },
+//     error => {
+//       console.log(error);
+//     }
+//   );
+// }
 
-getFaqsByCategory = () => {
-  this.faqService.getAll('categories/faq/').subscribe(
-    data => {
-      this.faqByCategoryList = data.results;
-    },
-    error => {
-      console.log(error);
-    }
-  );
-}
+// getFaqsByCategory = () => {
+//   this.faqService.getAll('categories/faq/').subscribe(
+//     data => {
+//       this.faqByCategoryList = data.results;
+//     },
+//     error => {
+//       console.log(error);
+//     }
+//   );
+// }
 
 ngOnInit(): void {
   this.req = this.faqInternalService.getFaqHeader().subscribe(data=>{

@@ -11,8 +11,8 @@ export class FaqService {
   httpBackend = new HttpClient(this.backend);
   constructor(private backend: HttpBackend) { }
 
-  getAll(featuredEndpoint): Observable<any> {
-    return this.httpBackend.get(this.baseUrl  + featuredEndpoint);
-  }
+  // getAll(featuredEndpoint): Observable<any> {
+  //   return this.httpBackend.get(this.baseUrl  + featuredEndpoint);
+  // }
 
 }

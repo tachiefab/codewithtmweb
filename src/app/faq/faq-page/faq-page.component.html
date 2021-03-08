@@ -34,9 +34,10 @@
                 </div>
                 <ul class="faq js-faq" id="my-faq">
                     <!-- Faq Item is toggle down -->
-                    <li class="faq-item"  *ngFor="let faq of allFaqList">
+                    <!-- Uncomment to use faq -->
+                    <!-- <li class="faq-item"  *ngFor="let faq of allFaqList">
                         <app-faq-dropdown-card [faq]="faq"></app-faq-dropdown-card>
-                    </li>
+                    </li> -->
                     
                 </ul>
                 <!-- End of Faq -->
@@ -52,19 +53,22 @@
                     <h4 class="category-description">FAQ articles split into categories for a massive FAQ knowledge base.</h4>
                 </div>
                 <!-- End of Caregory Info -->
-                <div class="row">
+
+                 <!-- Uncomment to use faq -->
+                <!-- <div class="row">
                     <div class="col-md-6"  *ngFor="let category of faqByCategoryList">
-                        <!-- Faq category card -->
+                        Faq category card
                         <app-faq-category-card [category]="category"></app-faq-category-card>
                     </div>
-                </div>
+                </div> -->
 
-                <div class="row" *ngFor="let category of faqByCategoryList">
+                 <!-- Uncomment to use faq -->
+                <!-- <div class="row" *ngFor="let category of faqByCategoryList">
                     <h3 class="faq-category-title" data-icon="">{{ category.title }}</h3>
-                    <!-- FAQ Article -->
+                    FAQ Article
                         <app-faq-article [category]="category"></app-faq-article>
-                    <!-- End of FAQ Article -->
-                </div>
+                    End of FAQ Article
+                </div> -->
 
             </div>
         </div>

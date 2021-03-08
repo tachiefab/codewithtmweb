@@ -6,7 +6,7 @@ import { Component, OnInit, Input } from '@angular/core';
   styleUrls: ['./faq-article.component.css']
 })
 export class FaqArticleComponent implements OnInit {
-  @Input('category') category;
+  // @Input('category') category;
 
   constructor() { }
 
